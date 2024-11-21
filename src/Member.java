@@ -46,15 +46,11 @@ public class Member {
             boolean active = Boolean.parseBoolean(bidder[3]);
             boolean competitive = Boolean.parseBoolean(bidder[4]);
 
-            Integer Sid;
-            Integer Salder;
             try {
-                Sid = Integer.valueOf(id);
-                int Cid = Sid;
-                Salder = Integer.valueOf(alder);
-                int CAlder = Salder;
+                int cId = Integer.parseInt(id);
+                int cAlder = Integer.parseInt(alder);
 
-                Member.members.add(new Member(Cid,navn,CAlder,active,competitive));
+                Member.members.add(new Member(cId,navn,cAlder,active,competitive));
 
             } catch (NumberFormatException e){
 
@@ -65,6 +61,3 @@ public class Member {
 
     }
 }
-
-
-
