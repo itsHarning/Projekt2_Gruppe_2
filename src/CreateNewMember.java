@@ -26,7 +26,7 @@
                 isCompeting = false;
             }
 
-            Member Members = new Member(memberId, memberName, memberAge, memberPhoneNumber, isActiveMember, isCompeting);
+            Member Members = new Member(memberId, memberName, memberAge, isActiveMember, isCompeting);
         }
 
         public static void main(String[] args) {
