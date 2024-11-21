@@ -60,7 +60,7 @@ public class Member {
 
                 System.out.println("Fejl");
             }
-
+            linje = ind.readLine();
         }
 
     }
