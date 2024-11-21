@@ -6,12 +6,13 @@ public class Member {
     boolean isActiveMember;
     boolean isCompeting;
 
-    Member(int Id, String name, int age, String phoneNum, String active, String competing){
+    Member(int Id, String name, int age, String phoneNum, boolean active, boolean competing){
         memberId = Id;
         memberName = name;
         memberPhoneNumber = phoneNum;
         memberAge = age;
-        isActiveMember = active.equalsIgnoreCase("active");
-        isCompeting = competing.equalsIgnoreCase("competing");
+        isActiveMember = active;
+        isCompeting = competing;
     }
 }
+
