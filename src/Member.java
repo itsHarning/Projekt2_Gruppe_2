@@ -5,11 +5,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 public class Member {
-    public static void main(String[] args) throws Exception {
-        Member test = new Member(1,"membername",52,true,true);
-        test.textfilogMember();
-        System.out.println(members);
-    }
+
     static ArrayList <Member> members = new ArrayList<>();
     int memberId;
     String memberName;
@@ -26,38 +22,8 @@ public class Member {
         isCompeting = competing;
     }
 
-    @Override
-    public String toString() {
-        return "Member:"+memberId+ memberName+memberAge+isActiveMember+isCompeting;
+    public String toString(){
+        return "Id: "+memberId+" Navn: "+memberName+" alder: "+memberAge+" aktive/ikke aktiv: "+isActiveMember+" Kompetetiv: "+isCompeting;
     }
 
-    //Læser text filer og input member
-    public void textfilogMember() throws IOException {
-        FileReader fil = new FileReader("src//Memberlist.txt");
-        BufferedReader ind = new BufferedReader(fil);
-        String linje = ind.readLine(); // Laver det den læser om til en String
-        while (linje !=null) {
-            String[]bidder = linje.split(",");
-
-            String id = bidder [0];
-            String navn = bidder[1];
-            String alder = bidder[2];
-
-            boolean active = Boolean.parseBoolean(bidder[3]);
-            boolean competitive = Boolean.parseBoolean(bidder[4]);
-
-            try {
-                int cId = Integer.parseInt(id);
-                int cAlder = Integer.parseInt(alder);
-
-                Member.members.add(new Member(cId,navn,cAlder,active,competitive));
-
-            } catch (NumberFormatException e){
-
-                System.out.println("Fejl");
-            }
-            linje = ind.readLine();
-        }
-
-    }
 }
