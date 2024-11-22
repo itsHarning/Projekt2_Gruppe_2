@@ -30,4 +30,10 @@ public class Member {
         return memberId;
     }
 
+    // Member skal nok have en boolean med betalt eller ikke betalt - Mads.
+    /*void setHasPaid(boolean hasPaid) {
+        this.hasPaid = hasPaid;
+    }
+     */
+
 }

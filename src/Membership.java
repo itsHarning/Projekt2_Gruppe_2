@@ -5,6 +5,7 @@ import java.util.SortedMap;
 
 public class Membership {
     public static void main(String[] args) {
+        //Imidlertidig liste
         ArrayList<Member> testlist = new ArrayList<>();
         Member a1 = new Member(1, "j1" , 16, true, true);
         Member a2 = new Member(2, "j2" , 20, true, true);
@@ -28,7 +29,7 @@ public class Membership {
         int senior = 1600;
         double seniorDiscount = 0.75;
         boolean memberfound = false;
-        boolean haspaid = false;
+        boolean hasPaid = false;
 
         System.out.println(testlist);
 
@@ -37,6 +38,7 @@ public class Membership {
             int memberId = keyboard.nextInt();
             keyboard.nextLine();
 
+            //Tjekker om ID'et matcher overens med arraylisten.
             for (Member member : testlist) {
                 if (member.getMemberId() == memberId) {
                     memberfound = true;
@@ -47,6 +49,9 @@ public class Membership {
                     String answer = keyboard.nextLine();
 
                     if (answer.equalsIgnoreCase("ja")) {
+                        // skal tjekke hvis allerede betalt, skal ind i constructor
+                        // if (member.hasPaid == true) {
+                          // System.out.println("Medlemmet har allerede betalt kontigent");
                         if (member.memberAge < 18) {
                             System.out.println("Medlemmet under 18 har nu betalt sit kontingent på: " + under18 + "kr");
 
@@ -56,6 +61,8 @@ public class Membership {
                         } else if (member.memberAge >= 60) {
                             System.out.println("Senior medlemmet har nu betalt sit kontingent på: " + senior * seniorDiscount + "kr");
                         }
+                        //Status skal ændres til betalt.
+                        //member.setHasPaid(true);
 
                     } else if (answer.equalsIgnoreCase("nej")) {
                         System.out.println("Prøv igen med et nyt ID.");
