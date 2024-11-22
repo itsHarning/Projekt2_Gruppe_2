@@ -26,4 +26,8 @@ public class Member {
         return "Id: "+memberId+" Navn: "+memberName+" alder: "+memberAge+" aktive/ikke aktiv: "+isActiveMember+" Kompetetiv: "+isCompeting;
     }
 
+    int getMemberId() {
+        return memberId;
+    }
+
 }
