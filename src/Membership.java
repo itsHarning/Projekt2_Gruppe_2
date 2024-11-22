@@ -51,8 +51,8 @@ public class Membership {
                             System.out.println("Medlemmet under 18 har nu betalt sit kontingent på: " + under18 + "kr");
                         } else if (member.memberAge >= 18 && member.memberAge <= 59) {
                             System.out.println("Medlemmet over 18 har nu betalt sit kontingent på: " + over18 + "kr");
-                        } else if (member.memberAge <= 60) {
-                            System.out.println("Senior medlemmet har nu betalt sit kontingent på: " + senior + seniorDiscount + "kr");
+                        } else if (member.memberAge >= 60) {
+                            System.out.println("Senior medlemmet har nu betalt sit kontingent på: " + senior * seniorDiscount + "kr");
                         }
 
                     } else if (answer.equalsIgnoreCase("nej")) {
