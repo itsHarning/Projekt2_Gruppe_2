@@ -7,11 +7,11 @@ public class Membership {
     public static void main(String[] args) {
         //Imidlertidig liste
         ArrayList<Member> testlist = new ArrayList<>();
-        Member a1 = new Member(1, "j1" , 16, true, true);
-        Member a2 = new Member(2, "j2" , 20, true, true);
-        Member a3 = new Member(3, "j3" , 61, true, true);
-        Member a4 = new Member(4, "j4" , 18, true, true);
-        Member a5 = new Member(5, "j5" , 18, true, true);
+        Member a1 = new Member(1, "j1" , 16, true, true, true);
+        Member a2 = new Member(2, "j2" , 20, true, true, true);
+        Member a3 = new Member(3, "j3" , 61, true, true, true);
+        Member a4 = new Member(4, "j4" , 18, true, true, true);
+        Member a5 = new Member(5, "j5" , 18, true, true, true);
 
         testlist.add(a1);
         testlist.add(a2);
@@ -40,7 +40,7 @@ public class Membership {
 
             //Tjekker om ID'et matcher overens med arraylisten.
             for (Member member : testlist) {
-                if (member.getMemberId() == memberId) {
+                if (member.memberId == memberId) {
                     memberfound = true;
                     System.out.println("Medlem fundet. Er det, det rigtige medlem?");
                     System.out.println(member);

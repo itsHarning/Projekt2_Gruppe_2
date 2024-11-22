@@ -6,34 +6,38 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 public class Member {
 
-    static ArrayList <Member> members = new ArrayList<>();
     int memberId;
+    static int numOfMembers=0;
     String memberName;
     int memberAge;
-    String memberPhoneNumber;
     boolean isActiveMember;
     boolean isCompeting;
+    boolean hasPaid;
 
-    Member(int Id, String name, int age, boolean active, boolean competing){
-        memberId = Id;
+    // when loading members from the MemberList.txt file, they already have an ID, this constructor helps them keep that ID
+    Member(int id, String name, int age, boolean active, boolean competing, boolean paid){
+        numOfMembers = id;
+        memberId = id;
         memberName = name;
         memberAge = age;
         isActiveMember = active;
         isCompeting = competing;
+        hasPaid = paid;
+    }
+
+    // this is the normal way of creating a Member, with the ID being automatically assigned
+    Member(String name, int age, boolean active, boolean competing, boolean paid){
+        numOfMembers++;
+        memberId = numOfMembers;
+        memberName = name;
+        memberAge = age;
+        isActiveMember = active;
+        isCompeting = competing;
+        hasPaid = paid;
     }
 
     public String toString(){
-        return "Id: "+memberId+" Navn: "+memberName+" alder: "+memberAge+" aktive/ikke aktiv: "+isActiveMember+" Kompetetiv: "+isCompeting;
+        return "ID: "+memberId+", Navn: "+memberName+", alder: "+memberAge+", er medlemskab aktivt: "+isActiveMember+", konkurrence svømmer: "+isCompeting+", har betalt"+hasPaid;
     }
-
-    int getMemberId() {
-        return memberId;
-    }
-
-    // Member skal nok have en boolean med betalt eller ikke betalt - Mads.
-    /*void setHasPaid(boolean hasPaid) {
-        this.hasPaid = hasPaid;
-    }
-     */
 
 }
