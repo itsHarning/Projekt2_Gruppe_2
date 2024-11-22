@@ -1,6 +1,6 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class MemberHandler {
@@ -13,6 +13,10 @@ public class MemberHandler {
 
                 //Ved ikke hvordan jeg ellers kalder textfilogMember. Har også en toSting i Member for at teste
                 MemberHandler test = new MemberHandler();
+                Member.members.add(new Member(1,"Heydu",22,true,false));
+                Member.members.add(new Member(2,"bob",22,true,false));
+
+                test.updateTextfil();
                 test.textfilogMember();
                 System.out.println(Member.members);
 
@@ -44,6 +48,20 @@ public class MemberHandler {
                         }
                         linje = ind.readLine();
                 }
+        }
+        public void updateTextfil() throws IOException{
+                FileWriter fil = new FileWriter("src//Memberlist.txt", false);                        // Her finder den BookingListen
+                PrintWriter ud = new PrintWriter(fil);
+                for (Member m: Member.members){
+                        int id = m.memberId;
+                        String name = m.memberName;
+                        int age = m.memberAge;
+                        boolean active = m.isActiveMember;
+                        boolean competing = m.isCompeting;
 
+                        ud.println(id+","+name+","+age+","+active+","+competing);
+                }
+                ud.close();
+                // Her stopper jeg printeren
         }
 }
