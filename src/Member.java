@@ -13,9 +13,10 @@ public class Member {
     boolean isActiveMember;
     boolean isCompeting;
     boolean hasPaid;
+    boolean automaticPayment;
 
     // when loading members from the MemberList.txt file, they already have an ID, this constructor helps them keep that ID
-    Member(int id, String name, int age, boolean active, boolean competing, boolean paid){
+    Member(int id, String name, int age, boolean active, boolean competing, boolean paid, boolean autoPay){
         numOfMembers = id;
         memberId = id;
         memberName = name;
@@ -23,10 +24,11 @@ public class Member {
         isActiveMember = active;
         isCompeting = competing;
         hasPaid = paid;
+        automaticPayment = autoPay;
     }
 
     // this is the normal way of creating a Member, with the ID being automatically assigned
-    Member(String name, int age, boolean active, boolean competing, boolean paid){
+    Member(String name, int age, boolean active, boolean competing, boolean paid, boolean autoPay){
         numOfMembers++;
         memberId = numOfMembers;
         memberName = name;
@@ -34,6 +36,7 @@ public class Member {
         isActiveMember = active;
         isCompeting = competing;
         hasPaid = paid;
+        automaticPayment = autoPay;
     }
 
     public String toString(){
