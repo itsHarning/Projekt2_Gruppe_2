@@ -17,14 +17,24 @@ public class CreateNewMember {
         boolean isCompeting = false;
         String answer = keyboard.nextLine();
         // TODO: add function for if the answer is not viable (something other than ja/nej is said)
-        if(answer.equals(ja)) {
-            isCompeting = true;
-        } else if (answer.equals(nej)) {
-            isCompeting = false;
+
+        while (true) {
+            if (answer.equalsIgnoreCase(ja)) {
+                isCompeting = true;
+                break;
+            } else if (answer.equalsIgnoreCase(nej)) {
+                isCompeting = false;
+                break;
+            }
+            else {
+                System.out.println("Det er ikke et gyldigt svar, prøv igen (ja/nej)");
+                answer = keyboard.nextLine();
+            }
         }
         boolean hasPaid = false;
-
+        System.out.println("Du har skrevet, navn: "+memberName+" alder: "+memberAge+" hans kompetetiv status er: "+isCompeting);
         return new Member(memberName, memberAge, isActiveMember, isCompeting, hasPaid);
+
 
     }
 
