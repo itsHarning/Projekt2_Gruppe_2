@@ -34,14 +34,8 @@ public class CreateNewMember {
                 }
             }
             boolean hasPaid = false;
+            boolean automatikPaid = false;
             System.out.println("Du har skrevet, navn: " + memberName + ". Alder: " + memberAge + ". Hans kompetetiv status er: " + isCompeting);
-            return new Member(memberName, memberAge, isActiveMember, isCompeting, hasPaid);
-
-    }
-
-    public static void main(String[] args) {
-        createNewMember();
+            return new Member(memberName, memberAge, isActiveMember, isCompeting, hasPaid, automatikPaid);
     }
 }
-
-
