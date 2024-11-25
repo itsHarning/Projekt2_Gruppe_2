@@ -9,7 +9,7 @@ public class MemberHandler {
                 printList(membersList);
                 //membersList.add(CreateNewMember.createNewMember()); // creates a new member and adds it to the list
                 //updateTextFile(membersList); // updates the text file so that it's up to date with the new member
-                //membersList = PaymentHandler.payMembership(membersList);
+                membersList = PaymentHandler.payMembership(membersList);
                 printList(membersList);
                 updateTextFile(membersList);
 
