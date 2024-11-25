@@ -6,12 +6,12 @@ public class MemberHandler {
         public static void main(String[] args){
                 ArrayList<Member> membersList; // creates the main list of members
                 membersList=loadMembersFromTextFile(); // loads the members on the text file onto the list
-                System.out.println(membersList);
+                printList(membersList);
                 membersList.add(CreateNewMember.createNewMember()); // creates a new member and adds it to the list
                 updateTextFile(membersList); // updates the text file so that it's up to date with the new member
                 System.out.println("test print");
                 membersList = Membership.payMembership(membersList);
-                System.out.println(membersList);
+                printList(membersList);
                 updateTextFile(membersList);
 
         }
@@ -68,6 +68,21 @@ public class MemberHandler {
                         out.close(); // Closes so all data gets written to the hard disk
                 } catch (IOException e) {
                         System.out.println("could not write to file");
+                }
+        }
+
+        public static void printList(ArrayList<Member> tempList) {
+                for (Member m:tempList){
+                        System.out.println("ID: "+m.memberId+"\t\tNAVN: "+m.memberName+"\t\tALDER: "+m.memberAge);
+                        if (m.isActiveMember) {
+                                System.out.print("Medlemskabet er aktivt, ");
+                                if (m.isCompeting) System.out.println("og de stiller op i stævner");
+                                else System.out.println("men de er motionister");
+                        }
+                        else System.out.println("Ikke aktivt medlemskab");
+                        if (m.hasPaid) System.out.println("Medlemmet har betalt");
+                        else System.out.println("Medlemmet har ikke betalt, og skylder");
+                        System.out.println();
                 }
         }
 }
