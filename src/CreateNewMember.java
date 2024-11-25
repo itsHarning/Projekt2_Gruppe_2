@@ -2,39 +2,40 @@ import java.util.Scanner;
 
 public class CreateNewMember {
     static Scanner keyboard = new Scanner(System.in);
-    public static Member createNewMember() {
-        //int memberId=1;
-        System.out.println("Hvad er dit navn?");
-        String memberName= keyboard.nextLine();
-        System.out.println("Hvor gammel er du?");
-        int memberAge = keyboard.nextInt();
-        keyboard.nextLine();
+    public static Member createNewMember()
+    {
+            System.out.println("Hvad er dit navn?");
+            String memberName = keyboard.nextLine();
+            if (memberName.equals("0")) System.exit(0);
 
-        boolean isActiveMember = true;
-        System.out.println("Vil du stille op i stævner? ja eller nej");
-        String ja = "ja";
-        String nej = "nej";
-        boolean isCompeting = false;
-        String answer = keyboard.nextLine();
-        // TODO: add function for if the answer is not viable (something other than ja/nej is said)
 
-        while (true) {
-            if (answer.equalsIgnoreCase(ja)) {
-                isCompeting = true;
-                break;
-            } else if (answer.equalsIgnoreCase(nej)) {
-                isCompeting = false;
-                break;
+            System.out.println("Hvor gammel er du?");
+                int memberAge = keyboard.nextInt();
+                if(memberAge == 0) System.exit(0);
+            keyboard.nextLine();
+
+            boolean isActiveMember = true;
+            System.out.println("Vil du stille op i stævner? ja eller nej");
+            boolean isCompeting = false;
+            // todo: tjek for om det er en int
+            String answer = keyboard.nextLine();
+            if(answer.equals("0")) System.exit(0);
+
+            while (true) {
+                if (answer.equalsIgnoreCase("ja")) {
+                    isCompeting = true;
+                    break;
+                } else if (answer.equalsIgnoreCase("nej")) {
+                    isCompeting = false;
+                    break;
+                } else {
+                    System.out.println("Det er ikke et gyldigt svar, prøv igen (ja/nej)");
+                    answer = keyboard.nextLine();
+                }
             }
-            else {
-                System.out.println("Det er ikke et gyldigt svar, prøv igen (ja/nej)");
-                answer = keyboard.nextLine();
-            }
-        }
-        boolean hasPaid = false;
-        System.out.println("Du har skrevet, navn: "+memberName+" alder: "+memberAge+" hans kompetetiv status er: "+isCompeting);
-        return new Member(memberName, memberAge, isActiveMember, isCompeting, hasPaid);
-
+            boolean hasPaid = false;
+            System.out.println("Du har skrevet, navn: " + memberName + ". Alder: " + memberAge + ". Hans kompetetiv status er: " + isCompeting);
+            return new Member(memberName, memberAge, isActiveMember, isCompeting, hasPaid);
 
     }
 
