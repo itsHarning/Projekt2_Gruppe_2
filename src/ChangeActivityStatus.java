@@ -4,7 +4,7 @@ public class ChangeActivityStatus {
     public static void main(String[] args) {
 
 
-        Member member = new Member(1, "Test", 18, true, true, true);
+        Member member = new Member(1, "Test", 18, true, true, true, false);
         System.out.println(member.isActiveMember);
         member=changeActivityStatus(member);
         System.out.println(member.isActiveMember);

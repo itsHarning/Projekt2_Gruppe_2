@@ -19,6 +19,7 @@ public class PaymentHandler {
 
         getPaymentStatus(testlist);
         payMembership(testlist);
+        getPaymentStatus(testlist);
 
     }
 
@@ -65,18 +66,18 @@ public class PaymentHandler {
                                 System.out.println("Senior medlemmet har nu betalt sit kontingent på: " + senior * seniorDiscount + "kr");
                             }
                             member.setHasPaid(true);
-                            break;
                         }
+                        break;
                     }
-                    if (answer.equalsIgnoreCase("nej")) {
+                    else if (answer.equalsIgnoreCase("nej")) {
                         System.out.println("Prøv igen med et nyt ID.");
-                        memberfound = false;
                         break;
                     }
                 }
             }
-        } if (!memberfound) {
-            System.out.println("Medlem findes ikke. Prøv igen");
+            if (!memberfound) {
+                System.out.println("Medlem findes ikke. Prøv igen");
+            }
         }
         return tempList;
     }
