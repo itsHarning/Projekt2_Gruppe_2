@@ -9,9 +9,10 @@ public class MemberHandler {
                 System.out.println(membersList);
                 membersList.add(CreateNewMember.createNewMember()); // creates a new member and adds it to the list
                 updateTextFile(membersList); // updates the text file so that it's up to date with the new member
-                System.out.println(membersList);
+                System.out.println("test print");
                 membersList = Membership.payMembership(membersList);
-
+                System.out.println(membersList);
+                updateTextFile(membersList);
 
         }
         // needs to be used when you first run the program to get the list of members
