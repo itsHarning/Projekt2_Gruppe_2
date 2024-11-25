@@ -37,7 +37,11 @@ public class Member {
     }
 
     public String toString(){
-        return "ID: "+memberId+", Navn: "+memberName+", alder: "+memberAge+", er medlemskab aktivt: "+isActiveMember+", konkurrence svømmer: "+isCompeting+", har betalt"+hasPaid;
+        return "ID: "+memberId+", Navn: "+memberName+", alder: "+memberAge+", er medlemskab aktivt: "+isActiveMember+", konkurrence svømmer: "+isCompeting+", har betalt: "+hasPaid;
+    }
+
+    public void setHasPaid(boolean Haspaid) {
+        this.hasPaid = Haspaid;
     }
 
 }

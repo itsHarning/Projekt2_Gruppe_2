@@ -1,3 +1,4 @@
+import javax.management.StandardEmitterMBean;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -9,6 +10,8 @@ public class MemberHandler {
                 membersList.add(CreateNewMember.createNewMember()); // creates a new member and adds it to the list
                 updateTextFile(membersList); // updates the text file so that it's up to date with the new member
                 System.out.println(membersList);
+                membersList = Membership.payMembership(membersList);
+
 
         }
         // needs to be used when you first run the program to get the list of members
