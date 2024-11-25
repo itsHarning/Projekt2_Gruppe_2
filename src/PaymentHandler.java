@@ -5,11 +5,11 @@ public class PaymentHandler {
     public static void main(String[] args) {
         //Temporary list
         ArrayList<Member> testlist = new ArrayList<>();
-        Member a1 = new Member(1, "j1", 16, true, true, false);
-        Member a2 = new Member(2, "j2", 20, false, true, false);
-        Member a3 = new Member(3, "j3", 61, true, true, false);
-        Member a4 = new Member(4, "j4", 18, true, true, false);
-        Member a5 = new Member(5, "j5", 18, true, true, false);
+        Member a1 = new Member(1, "j1", 16, true, true, false, false);
+        Member a2 = new Member(2, "j2", 20, false, true, false, false);
+        Member a3 = new Member(3, "j3", 61, true, true, false, false);
+        Member a4 = new Member(4, "j4", 18, true, true, false, false);
+        Member a5 = new Member(5, "j5", 18, true, true, false, false);
 
         testlist.add(a1);
         testlist.add(a2);
@@ -49,23 +49,26 @@ public class PaymentHandler {
 
                     if (answer.equalsIgnoreCase("ja")) {
                         if (member.hasPaid == true) {       //
-                            System.out.println("Medlemmet har allerede betalt kontigent");
+                            System.out.println("Medlemmet har allerede betalt kontingent");
                         }
-                        if (!member.isActiveMember) {
-                            System.out.println("Medlemmet er passivt og har nu betalt" + passive + " kr ");
+                        else {
+                            if (!member.isActiveMember) {
+                                System.out.println("Medlemmet er passivt og har nu betalt " + passive + " kr ");
+
+                            } else if (member.memberAge < 18 && !member.hasPaid) {
+                                System.out.println("Medlemmet under 18 har nu betalt sit kontingent på: " + under18 + "kr");
+
+                            } else if (member.memberAge >= 18 && member.memberAge <= 59 && !member.hasPaid) {
+                                System.out.println("Medlemmet over 18 har nu betalt sit kontingent på: " + over18 + "kr");
+
+                            } else if (member.memberAge >= 60 && !member.hasPaid) {
+                                System.out.println("Senior medlemmet har nu betalt sit kontingent på: " + senior * seniorDiscount + "kr");
+                            }
+                            member.setHasPaid(true);
+                            break;
                         }
-                        if (member.memberAge < 18 && member.hasPaid == false) {
-                            System.out.println("Medlemmet under 18 har nu betalt sit kontingent på: " + under18 + "kr");
-
-                        } else if (member.memberAge >= 18 && member.memberAge <= 59 && member.hasPaid == false) {
-                            System.out.println("Medlemmet over 18 har nu betalt sit kontingent på: " + over18 + "kr");
-
-                        } else if (member.memberAge >= 60 && member.hasPaid == false) {
-                            System.out.println("Senior medlemmet har nu betalt sit kontingent på: " + senior * seniorDiscount + "kr");
-                        }
-                        member.setHasPaid(true);
-
-                    } else if (answer.equalsIgnoreCase("nej")) {
+                    }
+                    if (answer.equalsIgnoreCase("nej")) {
                         System.out.println("Prøv igen med et nyt ID.");
                         memberfound = false;
                         break;
@@ -82,7 +85,7 @@ public class PaymentHandler {
         System.out.println("Disse medlemmer har ikke betalt deres kontingent endnu:");
 
         for (Member m : tempList) {
-            if (m.hasPaid == false) {
+            if (!m.hasPaid) {
                 System.out.println("ID: " + m.memberId + " Navn: " + m.memberName + ". Alder: " + m.memberAge + "år." + " Mangler at betale: " + getAmount(m) + "kr:");
             }
         }
