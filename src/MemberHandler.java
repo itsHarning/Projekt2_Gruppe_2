@@ -1,5 +1,7 @@
 import javax.management.StandardEmitterMBean;
 import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class MemberHandler {
@@ -66,7 +68,7 @@ public class MemberHandler {
 
                                 out.println(id+","+name+","+age+","+active+","+competing+","+paid+","+autoPay);
                         }
-                        out.close(); // Closes so all data gets written to the hard disk
+                        out.close(); // Closes so all data gets written to the Textfile
                 } catch (IOException e) {
                         System.out.println("could not write to file");
                 }
@@ -89,4 +91,67 @@ public class MemberHandler {
                         System.out.println();
                 }
         }
+
+
+
+        // Textfile metode for Time class
+        /*
+        //Load from textfile
+        public static ArrayList loadMembersFromTextFileTime() {
+                ArrayList<Time> tempList = new ArrayList<>();
+                try {
+                        FileReader fil = new FileReader("src//MemberList.txt");
+                        BufferedReader ind = new BufferedReader(fil);
+                        DateTimeFormatter Datoformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");            // Her laver jeg en variabel som kan oversætte en String om til en Dato format
+
+
+                        String line = ind.readLine(); // converts the read lines to string
+                        while (line !=null) {
+                                String[]bites = line.split(",");
+
+                                String discipline = bites [0];
+                                String time = bites[1];
+                                String dateSet = bites[2];
+                                String isOfficial = bites[3];
+                                String meetName = bites[4];
+                                boolean cisOfficial = Boolean.parseBoolean(bites[3]);
+
+                                try {
+                                        double ctime = Double.parseDouble(time);
+                                        LocalDate cdateset = LocalDate.parse(dateSet, Datoformatter);
+
+                                        tempList.add(new Time(discipline,ctime,cdateset,isOfficial,meetName,cisOfficial));
+
+                                } catch (NumberFormatException e){
+                                        System.out.println("Not a number");
+                                }
+                                line = ind.readLine();
+                        }
+                } catch (IOException e) {
+                        System.out.println("Could not find file");;
+                }
+                return tempList;
+        }
+
+        //Update textfile
+        public static void updateTextFileTime(ArrayList<Member> tempList) {
+                try {
+                        FileWriter file = new FileWriter("src//TimeList.txt", false);
+                        PrintWriter out = new PrintWriter(file);
+                        for (Time t: tempList){
+                                String discipline = t.discipline;
+                                double time = t.time;
+                                LocalDate dateSet = t.dateSet;
+                                boolean isOfficial = t.isOfficial;
+                                String meetName = t.meetName;
+                                out.println(discipline+","+time+","+dateSet+","+isOfficial+","+meetName);
+                        }
+                        out.close(); // Closes so all data gets written to the Textfile
+                } catch (IOException e) {
+                        System.out.println("could not write to file");
+                }
+        }
+
+         */
+
 }
