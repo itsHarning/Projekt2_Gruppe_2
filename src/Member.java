@@ -14,7 +14,6 @@ public class Member {
     boolean isCompeting;
     boolean hasPaid;
     boolean automaticPayment;
-    CompetitiveSwimmer competitiveSwimmer;
 
     // when loading members from the MemberList.txt file, they already have an ID, this constructor helps them keep that ID
     Member(int id, String name, int age, boolean active, boolean competing, boolean paid, boolean autoPay){
