@@ -5,8 +5,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class MemberHandler {
+        static ArrayList<Member> membersList; // creates the main list of members
+
         public static void main(String[] args){
-                ArrayList<Member> membersList; // creates the main list of members
                 membersList=loadMembersFromTextFile(); // loads the members on the text file onto the list
                 printList(membersList);
                 //membersList.add(CreateNewMember.createNewMember()); // creates a new member and adds it to the list
