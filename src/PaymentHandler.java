@@ -146,7 +146,7 @@ public class PaymentHandler {
     }
 
 
-    public static void subscribtion() {
+    public static void subscription() {
     }
 }
 
