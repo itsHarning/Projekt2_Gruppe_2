@@ -106,7 +106,8 @@ public class PaymentHandler {
         while (!memberfound) {
             System.out.println("Skriv ID på medlemmet.");
 
-            if (!keyboard.hasNextInt()) {
+            if (!keyboard.hasNextInt()
+            ) {
                 System.out.println("Ugyldigt ID. Prøv igen.");
                 keyboard.nextLine();
                 continue;       // Ask for the member ID again
@@ -116,7 +117,7 @@ public class PaymentHandler {
 
             //This loop is looking for matching ID with the arraylist.
             for (Member member : tempList) {
-                if (member.memberId == memberId) {           // If the ID's match.
+                if (member.memberId == memberId) {           // If the ID's match with arraylist.
                     System.out.println("Medlem fundet. Er det, det rigtige medlem?");
                     System.out.println(member);              // Makes sure the program is user-friendly and asks if the user wants to continue.
                     System.out.println("Ja / Nej");
@@ -143,7 +144,9 @@ public class PaymentHandler {
         }
         return tempList;
     }
-}
 
-//Monthly sub
+
+    public static void subscribtion() {
+    }
+}
 
