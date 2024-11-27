@@ -12,7 +12,7 @@ public class CoachHandler {
     public static void createCoaches(){
         ArrayList<Coach>coachlist = new ArrayList<>(); //opretter ny Arrayliste med Coaches
 
-        Coach c1 = new Coach("Torben Enemand",1,Team.competitiveO18);
+     /*   Coach c1 = new Coach("Torben Enemand",1,Team.competitiveO18);
         Coach c2 = new Coach("Sofie Laudrup",2,Team.competitiveU18);
         Coach c3 = new Coach("Mads Jensen",3,Team.exerciseteam);
         Coach c4 = new Coach("Ricky Topsky",4,Team.competitiveO18);
@@ -21,6 +21,8 @@ public class CoachHandler {
         Coach c7 = new Coach("Carla Frankovic",7,Team.competitiveO18);
         Coach c8 = new Coach("Pat Riley",8,Team.competitiveU18);
 
+
+
         coachlist.add(c1); //tilføjer de oprettede Coaches til Arraylisten
         coachlist.add(c2);
         coachlist.add(c3);
@@ -28,7 +30,8 @@ public class CoachHandler {
         coachlist.add(c5);
         coachlist.add(c6);
         coachlist.add(c7);
-        coachlist.add(c8);
+        coachlist.add(c8);*/
+
 
         updateTextFile(coachlist); // kalder update Tekstfil-metoden.
     }
@@ -66,7 +69,7 @@ public class CoachHandler {
                 try{
                     int parseId = Integer.parseInt(id);
 
-                    tempList.add(new Coach(name, parseId,));
+                    tempList.add(new Coach(name, parseId));
 
                 }catch (NumberFormatException e){
                     System.out.println("Not a number");
