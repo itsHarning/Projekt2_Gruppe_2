@@ -106,12 +106,12 @@ public class PaymentHandler {
         while (!memberfound) {
             System.out.println("Skriv ID på medlemmet.");
 
-            if (!keyboard.hasNextInt()
-            ) {
+            if (!keyboard.hasNextInt()) {
                 System.out.println("Ugyldigt ID. Prøv igen.");
                 keyboard.nextLine();
                 continue;       // Ask for the member ID again
             }
+
             memberId = keyboard.nextInt();
             keyboard.nextLine();
 
@@ -140,6 +140,9 @@ public class PaymentHandler {
                         System.out.println("Ugyldigt svar. Prøv igen.");    // Continue while loop
                     }
                 }
+            } if (memberId > tempList.size()) {         // The systems assign a member with id++.
+                System.out.println("Medlemmet kunne ikke findes.");
+                memberfound = false;    // The member is not found and the loop will continue.
             }
         }
         return tempList;
