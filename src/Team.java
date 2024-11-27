@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
 public class Team {
-    ArrayList<Member> competitiveO18 = new ArrayList<Member>();
-    ArrayList<Member> competitiveU18 = new ArrayList<Member>();
-    ArrayList<Member> exerciseteam = new ArrayList<Member>();
+    static ArrayList<Member> competitiveO18 = new ArrayList<>();
+    static ArrayList<Member> competitiveU18 = new ArrayList<>();
+    static ArrayList<Member> exerciseteam = new ArrayList<>();
 
-    void assignTeams(ArrayList<Member> SortedList) {
+    static void assignTeams(ArrayList<Member> SortedList) {
 
         for (Member m : SortedList) {
             if (m.isCompeting == false) {

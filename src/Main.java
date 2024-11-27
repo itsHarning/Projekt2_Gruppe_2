@@ -8,8 +8,11 @@ public class Main {
     static ArrayList<Member> membersList;
     static Scanner keyboard = new Scanner(System.in);
     public static void main(String[] args) {
+        // creates the main list of members
         membersList= MemberHandler.loadMembersFromTextFile();
-         // creates the main list of members
+
+        // Sort members in teams
+        Team.assignTeams(membersList);
 
         // Makes delpine from ascii textfile
         try {
