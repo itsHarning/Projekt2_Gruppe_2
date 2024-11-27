@@ -20,7 +20,7 @@ public class PaymentHandler {
         testlist.add(a5);
         testlist.add(a6);
 
-        viewSubscription(testlist);
+        changeSubscription(testlist);
 
     }
 
@@ -110,15 +110,12 @@ public class PaymentHandler {
         return amount;
     }
 
-
+    //WIP
     public static void viewSubscription(ArrayList<Member> tempList) {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Tast 1: For medlemmer med en aktiv abonnementsaftale");
         System.out.println("Tast 2: For medlemmer uden en aktiv abonnementsaftale");
         int valg = CreateNewMember.getIntFromUser(keyboard);
-
-        while (valg <= 3) {
-            System.out.println("Indtast 1 eller 2");
 
             if (valg == 1) {
                 System.out.println("Disse medlemmer har en aktiv abonnementsaftale:");
@@ -136,10 +133,13 @@ public class PaymentHandler {
                     }
                 }
             }
+            if (valg >= 3){
+                System.out.println("Indtast gyldigt tal");
+            }
         }
-    }
 
 
+    //WIP
     public static void changeSubscription(ArrayList<Member> tempList) {
         Scanner keyboard = new Scanner(System.in);
         int memberId;
