@@ -111,12 +111,13 @@ public class PaymentHandler {
                 keyboard.nextLine();
                 continue;       // Ask for the member ID again
             }
+
             memberId = keyboard.nextInt();
             keyboard.nextLine();
 
             //This loop is looking for matching ID with the arraylist.
             for (Member member : tempList) {
-                if (member.memberId == memberId) {           // If the ID's match.
+                if (member.memberId == memberId) {           // If the ID's match with arraylist.
                     System.out.println("Medlem fundet. Er det, det rigtige medlem?");
                     System.out.println(member);              // Makes sure the program is user-friendly and asks if the user wants to continue.
                     System.out.println("Ja / Nej");
@@ -139,11 +140,16 @@ public class PaymentHandler {
                         System.out.println("Ugyldigt svar. Prøv igen.");    // Continue while loop
                     }
                 }
+            } if (memberId > tempList.size()) {         // The systems assign a member with id++.
+                System.out.println("Medlemmet kunne ikke findes.");
+                memberfound = false;    // The member is not found and the loop will continue.
             }
         }
         return tempList;
     }
-}
 
-//Monthly sub
+
+    public static void subscription() {
+    }
+}
 
