@@ -52,23 +52,6 @@ public class Main {
 
     }
 
-    public static int tjekIntFromUser(Scanner keyboard) {
-        int result = 0;
-        boolean validInput = false;
-
-        // Continue until you get a valid input
-        while (!validInput) {
-            try {
-                result = Integer.parseInt(keyboard.nextLine()); // Read input as an int
-                validInput = true; // If input is invalid, it ends the loop
-            } catch (NumberFormatException e) {
-                System.out.println("Ugyldigt input! Indtast venligst et helt tal.");
-            }
-        }
-
-        return result;
-    }
-
     static void formandmenu(){
         System.out.println("--Formand--");
         while (true) {
@@ -140,5 +123,22 @@ public class Main {
                     System.out.println("");
             }
         }
+    }
+
+    public static int tjekIntFromUser(Scanner keyboard) {
+        int result = 0;
+        boolean validInput = false;
+
+        // Continue until you get a valid input
+        while (!validInput) {
+            try {
+                result = Integer.parseInt(keyboard.nextLine()); // Read input as an int
+                validInput = true; // If input is invalid, it ends the loop
+            } catch (NumberFormatException e) {
+                System.out.println("Ugyldigt input! Indtast venligst et helt tal.");
+            }
+        }
+
+        return result;
     }
 }
