@@ -1,6 +1,4 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 
 
@@ -12,7 +10,7 @@ public class CoachHandler {
     }
 
     public static void createCoaches(){
-        ArrayList<Coach>coachlist = new ArrayList<>();
+        ArrayList<Coach>coachlist = new ArrayList<>(); //opretter ny Arrayliste med Coaches
 
         Coach c1 = new Coach("Torben Enemand",1);
         Coach c2 = new Coach("Sofie Laudrup",2);
@@ -23,7 +21,7 @@ public class CoachHandler {
         Coach c7 = new Coach("Carla Frankovic",7);
         Coach c8 = new Coach("Pat Riley",8);
 
-        coachlist.add(c1);
+        coachlist.add(c1); //tilføjer de oprettede Coaches til Arraylisten
         coachlist.add(c2);
         coachlist.add(c3);
         coachlist.add(c4);
@@ -32,8 +30,10 @@ public class CoachHandler {
         coachlist.add(c7);
         coachlist.add(c8);
 
-        updateTextFile(coachlist);
+        updateTextFile(coachlist); // kalder update Tekstfil-metoden.
     }
+
+
     public static void updateTextFile(ArrayList<Coach> tempList) {
         try {
             FileWriter file = new FileWriter("src//CoachList.txt", false);
@@ -43,11 +43,39 @@ public class CoachHandler {
                 String name = coach.name;
 
 
-                out.println(id+","+name);
+                out.println(name+","+id);
             }
             out.close(); // Closes so all data gets written to the Textfile
         } catch (IOException e) {
             System.out.println("could not write to file");
         }
+    }
+    public static ArrayList loadMembersFromTextFile(){
+        ArrayList<Coach> tempList= new ArrayList<>();
+        try {
+            FileReader fil = new FileReader("src//CoachList.txt");
+            BufferedReader ind = new BufferedReader(fil);
+            String line = ind.readLine();
+            while (line !=null){
+                String[]bites = line.split(",");
+
+                String id = bites [0];
+                String name = bites[1];
+
+                try{
+                    int parseId = Integer.parseInt(id);
+
+                    tempList.add(new Coach(name, parseId));
+
+                }catch (NumberFormatException e){
+                    System.out.println("Not a number");
+                }
+                line = ind.readLine();
+            }
+
+        }catch (IOException e){
+            System.out.println("Could not find file");;
+        }
+        return tempList;
     }
 }
