@@ -73,8 +73,7 @@ public class Main {
                     membersList= MemberHandler.loadMembersFromTextFile();
                     break;
                 case 3:
-                    // TODO: Gør så man kan bruge membersList
-                    // ChangeActivityStatus.changeActivityStatus();
+                     ChangeActivityStatus.changeActivityStatus(membersList);
                     break;
 
                 default:
