@@ -43,113 +43,122 @@ public class CompetitiveSwimmer{
             }
 
             for (Member member: memberList){
-                if (member.memberId == memberId){
-                    System.out.println("Er dette det rigtige medlem?");
-                    System.out.println(member.memberName+"?");
-                    System.out.println("Ja / Nej");
-                    String answer = keyboard.nextLine();
-                    if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q")) System.exit(0);
-                    if (answer.equalsIgnoreCase("ja")){
-                        while (true) {
-                            System.out.println("I hvilken disciplin skal der registreres en ny tid?");
-                            discipline = keyboard.nextLine();
-                            if (discipline.equalsIgnoreCase("0") || discipline.equalsIgnoreCase("q")) System.exit(0);
-                            switch (discipline) {
-                                case ("freestyle"):
-                                    System.out.println("Hvilken distance blev der svømmet freestyle?");
-                                    System.out.println("Gyldige distancer er 50, 100, 200, 400, 800, 1500");
-                                    while (true) {
-                                        distance = checkIntFromUser(keyboard);
-                                        if (distance == 0) System.exit(0);
-                                        switch (distance) {
-                                            case (50):
-                                            case (100):
-                                            case (200):
-                                            case (400):
-                                            case (800):
-                                            case (1500):
-                                                break;
-                                            default:
-                                                System.out.println("Distancen du har indtastet er ikke gyldig");
-                                                System.out.println("Venligst prøv igen og indtast en gyldig distance (50, 100, 200, 400, 800, og 1500)");
-                                                continue;
+                if (member.memberId == memberId) {
+                    while (true) {
+                        System.out.println("Er dette det rigtige medlem?");
+                        System.out.println(member.memberName + "?");
+                        System.out.println("Ja / Nej");
+                        String answer = keyboard.nextLine();
+                        if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q")) System.exit(0);
+                        if (answer.equalsIgnoreCase("ja")) {
+                            while (true) {
+                                System.out.println("I hvilken disciplin skal der registreres en ny tid?");
+                                discipline = keyboard.nextLine();
+                                if (discipline.equalsIgnoreCase("0") || discipline.equalsIgnoreCase("q"))
+                                    System.exit(0);
+                                switch (discipline) {
+                                    case ("freestyle"):
+                                        System.out.println("Hvilken distance blev der svømmet freestyle?");
+                                        System.out.println("Gyldige distancer er 50, 100, 200, 400, 800, 1500");
+                                        while (true) {
+                                            distance = checkIntFromUser(keyboard);
+                                            if (distance == 0) System.exit(0);
+                                            switch (distance) {
+                                                case (50):
+                                                case (100):
+                                                case (200):
+                                                case (400):
+                                                case (800):
+                                                case (1500):
+                                                    break;
+                                                default:
+                                                    System.out.println("Distancen du har indtastet er ikke gyldig");
+                                                    System.out.println("Venligst prøv igen og indtast en gyldig distance (50, 100, 200, 400, 800, og 1500)");
+                                                    continue;
+                                            }
+                                            break;
                                         }
                                         break;
-                                    }
-                                    break;
-                                case ("backstroke"):
-                                case ("breaststroke"):
-                                case ("butterfly"):
-                                    System.out.println("Hvilken distance blev der svømmet "+discipline+"?");
-                                    System.out.println("Gyldige distancer er 100 og 200");
-                                    while (true) {
-                                        distance = checkIntFromUser(keyboard);
-                                        if (distance == 0) System.exit(0);
-                                        switch (distance) {
-                                            case (100):
-                                            case (200):
-                                                break;
-                                            default:
-                                                System.out.println("Distancen du har indtastet er ikke gyldig");
-                                                System.out.println("Venligst prøv igen og indtast en gyldig distance (100 og 200)");
-                                                continue;
+                                    case ("backstroke"):
+                                    case ("breaststroke"):
+                                    case ("butterfly"):
+                                        System.out.println("Hvilken distance blev der svømmet " + discipline + "?");
+                                        System.out.println("Gyldige distancer er 100 og 200");
+                                        while (true) {
+                                            distance = checkIntFromUser(keyboard);
+                                            if (distance == 0) System.exit(0);
+                                            switch (distance) {
+                                                case (100):
+                                                case (200):
+                                                    break;
+                                                default:
+                                                    System.out.println("Distancen du har indtastet er ikke gyldig");
+                                                    System.out.println("Venligst prøv igen og indtast en gyldig distance (100 og 200)");
+                                                    continue;
+                                            }
+                                            break;
                                         }
                                         break;
-                                    }
-                                    break;
-                                case ("medley"):
-                                    System.out.println("Hvilken distance blev der svømmet medley?");
-                                    System.out.println("Gyldige distancer er 100 og 200");
-                                    while (true) {
-                                        distance = checkIntFromUser(keyboard);
-                                        if (distance == 0) System.exit(0);
-                                        switch (distance) {
-                                            case (200):
-                                            case (400):
-                                                break;
-                                            default:
-                                                System.out.println("Distancen du har indtastet er ikke gyldig");
-                                                System.out.println("Venligst prøv igen og indtast en gyldig distance (100 og 200)");
-                                                continue;
+                                    case ("medley"):
+                                        System.out.println("Hvilken distance blev der svømmet medley?");
+                                        System.out.println("Gyldige distancer er 300 og 400");
+                                        while (true) {
+                                            distance = checkIntFromUser(keyboard);
+                                            if (distance == 0) System.exit(0);
+                                            switch (distance) {
+                                                case (200):
+                                                case (400):
+                                                    break;
+                                                default:
+                                                    System.out.println("Distancen du har indtastet er ikke gyldig");
+                                                    System.out.println("Venligst prøv igen og indtast en gyldig distance (200 og 400)");
+                                                    continue;
+                                            }
+                                            break;
                                         }
                                         break;
-                                    }
-                                    break;
-                                case("open water"):
-                                    distance = 10_000;
-                                    break;
-                                default:
-                                    System.out.println("Disciplinen du har indtastet er ikke gyldig");
-                                    System.out.println("Venligst prøv igen, og indtast en gyldig disciplin (freestyle, backstroke, breaststroke, butterfly, medley, og open water)");
-                                    continue;
+                                    case ("open water"):
+                                        distance = 10_000;
+                                        break;
+                                    default:
+                                        System.out.println("Disciplinen du har indtastet er ikke gyldig");
+                                        System.out.println("Venligst prøv igen, og indtast en gyldig disciplin (freestyle, backstroke, breaststroke, butterfly, medley, og open water)");
+                                        continue;
+                                }
+                                break;
                             }
-                            break;
-                        }
-                        System.out.println("Hvad er svømmerens tid?");
-                        swimTime = parseDuration(keyboard);
-                        System.out.println("Blev tiden sat til et stævne? (Ja / Nej)");
-                        String meetAnswer = keyboard.nextLine();
-                        if (meetAnswer.equalsIgnoreCase("0") || meetAnswer.equalsIgnoreCase("q")) System.exit(0);
-                        while (true) {
-                            switch (meetAnswer) {
-                                case ("ja"):
-                                    isOfficial = true;
-                                    System.out.println("Hvilke stævne blev tiden sat til?");
-                                    meetName = keyboard.nextLine();
-                                    break;
-                                case ("nej"):
-                                    break;
-                                default:
-                                    System.out.println("Ugyldigt svar. Prøv igen (Ja / Nej)");
-                                    continue;
+                            System.out.println("Hvad er svømmerens tid?");
+                            swimTime = parseDuration(keyboard);
+                            System.out.println("Blev tiden sat til et stævne? (Ja / Nej)");
+                            String meetAnswer = keyboard.nextLine();
+                            if (meetAnswer.equalsIgnoreCase("0") || meetAnswer.equalsIgnoreCase("q")) System.exit(0);
+                            while (true) {
+                                switch (meetAnswer) {
+                                    case ("ja"):
+                                        isOfficial = true;
+                                        System.out.println("Hvilke stævne blev tiden sat til?");
+                                        meetName = keyboard.nextLine();
+                                        break;
+                                    case ("nej"):
+                                        break;
+                                    default:
+                                        System.out.println("Ugyldigt svar. Prøv igen (Ja / Nej)");
+                                        continue;
+                                }
+                                break;
                             }
-                            break;
+                            System.out.println("Er dette den korrekte information?");
+                            System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName);
+                            System.out.println("Disciplin: " + discipline + "\tDistance: " + distance + "\tTid: " + swimTime + "\tDato: " + dateSet + "\t Sat til stævne:" + isOfficial + "\tStævne navn: " + meetName);
+                            // memberFound=true;
+
+                        } else if (answer.equalsIgnoreCase("nej")) {
+                            System.out.println("Prøv igen med et nyt ID.");
+                            memberId = checkIntFromUser(keyboard);
+                            if (memberId == 0) System.exit(0);
+                        } else {
+                            System.out.println("Ugyldigt svar. Prøv igen (Ja / Nej)");
                         }
-                        // memberFound=true;
-                    } else if (answer.equalsIgnoreCase("nej")){
-                        System.out.println("Prøv igen med et nyt ID.");
-                    } else {
-                        System.out.println("Ugyldigt svar. Prøv igen (Ja / Nej)");
                     }
                 }
             }
