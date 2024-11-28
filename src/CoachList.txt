@@ -1,8 +1,8 @@
-1,Torben Enemand
-2,Sofie Laudrup
-3,Mads Jensen
-4,Ricky Topsky
-5,Amalie Langstrand
-6,Oline Wagner
-7,Carla Frankovic
-8,Pat Riley
+1,Torben Enemand,competitiveO18
+2,Sofie Laudrup,competitiveU18
+3,Mads Jensen,exerciseteam
+4,Ricky Topsky,competitiveO18
+5,Amalie Langstrand,competitiveU18
+6,Oline Wagner,exerciseteam
+7,Carla Frankovic,competitiveO18
+8,Pat Riley,competitiveU18

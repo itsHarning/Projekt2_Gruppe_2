@@ -3,9 +3,8 @@ import java.util.Scanner;
 
 public class CreateNewMember {
     static Scanner keyboard = new Scanner(System.in);
-    static ArrayList<Member> membersList;
-    public static Member createNewMember() {
-        membersList= MemberHandler.loadMembersFromTextFile();
+
+    public static Member createNewMember(ArrayList<Member> membersList) {
 
         System.out.println("Hvad er dit navn?");
         String memberName = keyboard.nextLine();
@@ -55,8 +54,6 @@ public class CreateNewMember {
         membersList.add(new Member(memberName, memberAge, isActiveMember, isCompeting, hasPaid, automatikPaid));
         MemberHandler.updateTextFile(membersList);
         return new Member(memberName, memberAge, isActiveMember, isCompeting, hasPaid, automatikPaid);
-        // TODO: Member kommer ind i member list
-
     }
 
     public static int getIntFromUser(Scanner keyboard) {

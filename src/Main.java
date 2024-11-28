@@ -69,13 +69,15 @@ public class Main {
                     MemberHandler.printList(membersList);
                     break;
                 case 2:
-                    CreateNewMember.createNewMember();
+                    CreateNewMember.createNewMember(membersList);
                     membersList= MemberHandler.loadMembersFromTextFile();
                     break;
                 case 3:
                      ChangeActivityStatus.changeActivityStatus(membersList);
                     break;
-
+                case 4:
+                    Team.updateTeams(membersList);
+                    break;
                 default:
                     System.out.println("Du valgte ikke en af mulighederne præsenteret, prøv igen");
                     System.out.println("");

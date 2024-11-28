@@ -1,15 +1,21 @@
 import java.util.ArrayList;
 
 public class Coach {
-    String name;
     int id;
-    //ArrayList team;
+    String name;
+    String arrayName;
+    ArrayList team;
 
     ArrayList<Team> teams;
-    public Coach(String name, int id /*ArrayList team*/){
-        this.name=name;
+    public Coach(int id,String name,String arrayName ,ArrayList team){
         this.id=id;
-      //  this.team = team;
+        this.name=name;
+        this.arrayName = arrayName;
+        this.team = team;
+    }
+
+    public String toString(){
+        return name+" "+arrayName+" Hold"+team;
     }
 
 }
