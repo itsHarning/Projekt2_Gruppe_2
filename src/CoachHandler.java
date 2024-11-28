@@ -108,5 +108,9 @@ public class CoachHandler {
         }
         return tempList;
     }
+    public static void printTeam (Coach coach){
+        System.out.println(coach.team);
+
+    }
 }
 
