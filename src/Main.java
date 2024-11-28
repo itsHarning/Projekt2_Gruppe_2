@@ -69,7 +69,7 @@ public class Main {
                     MemberHandler.printList(membersList);
                     break;
                 case 2:
-                    CreateNewMember.createNewMember();
+                    CreateNewMember.createNewMember(membersList);
                     membersList= MemberHandler.loadMembersFromTextFile();
                     break;
                 case 3:
