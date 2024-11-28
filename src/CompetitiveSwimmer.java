@@ -1,5 +1,7 @@
 import java.sql.Time;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,7 +24,7 @@ public class CompetitiveSwimmer{
     public static TimeClass createNewTime(ArrayList<Member> memberList){
         String discipline = "";
         int distance = 50;
-        double time = 0.00;
+        Duration swimTime = Duration.parse("pt0s"); // parses duration from string in correct format, such as "1h33m7.69s"
         LocalDate dateSet = LocalDate.now();
         boolean isOfficial = false;
         String meetName = "";
@@ -78,8 +80,7 @@ public class CompetitiveSwimmer{
                                 case ("backstroke"):
                                 case ("breaststroke"):
                                 case ("butterfly"):
-                                case ("medley"):
-                                    System.out.println("Hvilken distance blev der svømmet ?"+discipline);
+                                    System.out.println("Hvilken distance blev der svømmet "+discipline+"?");
                                     System.out.println("Gyldige distancer er 100 og 200");
                                     while (true) {
                                         distance = checkIntFromUser(keyboard);
@@ -96,8 +97,26 @@ public class CompetitiveSwimmer{
                                         break;
                                     }
                                     break;
+                                case ("medley"):
+                                    System.out.println("Hvilken distance blev der svømmet medley?");
+                                    System.out.println("Gyldige distancer er 100 og 200");
+                                    while (true) {
+                                        distance = checkIntFromUser(keyboard);
+                                        if (distance == 0) System.exit(0);
+                                        switch (distance) {
+                                            case (200):
+                                            case (400):
+                                                break;
+                                            default:
+                                                System.out.println("Distancen du har indtastet er ikke gyldig");
+                                                System.out.println("Venligst prøv igen og indtast en gyldig distance (100 og 200)");
+                                                continue;
+                                        }
+                                        break;
+                                    }
+                                    break;
                                 case("open water"):
-                                    distance = 10000;
+                                    distance = 10_000;
                                     break;
                                 default:
                                     System.out.println("Disciplinen du har indtastet er ikke gyldig");
@@ -106,17 +125,37 @@ public class CompetitiveSwimmer{
                             }
                             break;
                         }
+                        System.out.println("Hvad er svømmerens tid?");
+                        swimTime = parseDuration(keyboard);
+                        System.out.println("Blev tiden sat til et stævne? (Ja / Nej)");
+                        String meetAnswer = keyboard.nextLine();
+                        if (meetAnswer.equalsIgnoreCase("0") || meetAnswer.equalsIgnoreCase("q")) System.exit(0);
+                        while (true) {
+                            switch (meetAnswer) {
+                                case ("ja"):
+                                    isOfficial = true;
+                                    System.out.println("Hvilke stævne blev tiden sat til?");
+                                    meetName = keyboard.nextLine();
+                                    break;
+                                case ("nej"):
+                                    break;
+                                default:
+                                    System.out.println("Ugyldigt svar. Prøv igen (Ja / Nej)");
+                                    continue;
+                            }
+                            break;
+                        }
                         // memberFound=true;
                     } else if (answer.equalsIgnoreCase("nej")){
                         System.out.println("Prøv igen med et nyt ID.");
                     } else {
-                        System.out.println("Ugyldigt svar. Prøv igen");
+                        System.out.println("Ugyldigt svar. Prøv igen (Ja / Nej)");
                     }
                 }
             }
             break;
         }
-        return new TimeClass(discipline, distance, time, dateSet, false);
+        return new TimeClass(discipline, distance, swimTime, dateSet, isOfficial);
     }
 
     public ArrayList<Double> updateFastestTime(ArrayList<Double> fastestTimes){
@@ -148,11 +187,39 @@ public class CompetitiveSwimmer{
                 result = Integer.parseInt(keyboard.nextLine()); // Read input as an int
                 validInput = true; // If input is invalid, it ends the loop
             } catch (NumberFormatException e) {
-                System.out.println("Ugyldigt input! Indtast venligst en gyldig ID");
+                System.out.println("Ugyldigt input! Indtast venligst et helt tal.");
             }
         }
 
         return result;
+    }
+
+    public static double checkDoubleFromUser(Scanner keyboard) {
+        double result = 0;
+
+        // Continue until you get a valid input
+        while (true) {
+            try {
+                result = Double.parseDouble(keyboard.nextLine()); // Read input as an int
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Ugyldigt input! Indtast venligst et helt tal.");
+            }
+        }
+        return result;
+    }
+
+    public static Duration parseDuration(Scanner keyboard) {
+        Duration duration = Duration.parse("pt0s");   // parses duration from a string based in the ISO-8601 duration format PnDTnHnMn.nS.
+        while (true) {
+            try {
+                duration = Duration.parse("pt"+keyboard.nextLine());
+                break;
+            } catch (DateTimeParseException e) {
+                System.out.println("Ugyldig tid, prøv igen med korrekt formatering (eksempelvis 4m20.6s)");
+            }
+        }
+        return duration;
     }
 
     public static void main(String[] args) {
