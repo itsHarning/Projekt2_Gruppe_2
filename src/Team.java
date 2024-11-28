@@ -57,38 +57,50 @@ public class Team {
 
                 if (answer.equalsIgnoreCase("ja")){
                     memberfound = true;
-                    String answer2 = keyboard.nextLine();
+
                     if(m.isCompeting == false){
                         System.out.println("Skal personen starte på et svømmehold?");
                         System.out.println("Ja / Nej");
-
-                        if (answer2.equalsIgnoreCase("ja") && m.memberAge < 18){
+                        answer = keyboard.nextLine();
+                        if (answer.equalsIgnoreCase("ja") && m.memberAge < 18){
+                            m.isCompeting = true;
                             exerciseteam.remove(m);
                             competitiveU18.add(m);
+                            System.out.println(m);              // Makes sure the program is user-friendly and asks if the user wants to continue.
                         }
-                        if (answer2.equalsIgnoreCase("ja") && m.memberAge >= 18){
+                        if (answer.equalsIgnoreCase("ja") && m.memberAge >= 18){
+                            m.isCompeting = true;
                             exerciseteam.remove(m);
                             competitiveO18.add(m);
+                            System.out.println(m);              // Makes sure the program is user-friendly and asks if the user wants to continue.
                         }
                     }
                     if (m.isCompeting == true && m.memberAge < 18){
                         System.out.println("Skal personen ud af deres svømmehold?");
                         System.out.println("Ja / Nej");
-                        if (answer2.equalsIgnoreCase("ja")){
+                        answer = keyboard.nextLine();
+
+                        if (answer.equalsIgnoreCase("ja")){
+                            m.isCompeting = false;
                             competitiveU18.remove(m);
                             exerciseteam.add(m);
+                            System.out.println(m);              // Makes sure the program is user-friendly and asks if the user wants to continue.
                         }
 
                     }
                     if (m.isCompeting == true && m.memberAge >= 18){
                         System.out.println("Skal personen ud af deres svømmehold?");
                         System.out.println("Ja / Nej");
-                        if (answer2.equalsIgnoreCase("ja")){
+                        answer = keyboard.nextLine();
+
+                        if (answer.equalsIgnoreCase("ja")){
+                            m.isCompeting = false;
                             competitiveO18.remove(m);
                             exerciseteam.add(m);
+                            System.out.println(m);              // Makes sure the program is user-friendly and asks if the user wants to continue.
                         }
                     }
-                    if (answer2.equalsIgnoreCase("nej")) break;
+                    if (answer.equalsIgnoreCase("nej")) break;
                 }
                 if (answer.equalsIgnoreCase("nej")) break;
             }
