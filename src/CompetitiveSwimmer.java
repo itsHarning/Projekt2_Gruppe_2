@@ -46,17 +46,23 @@ public class CompetitiveSwimmer{
                 for (Member member : memberList) {
                     if (member.memberId == memberId) {
                         while (true) {
+
+                            // double checks that you've gotten the member you intended
                             System.out.println("Er dette det rigtige medlem?");
                             System.out.println(member.memberName + "?");
                             System.out.println("Ja / Nej");
                             String answer = keyboard.nextLine();
                             if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q")) System.exit(0);
                             if (answer.equalsIgnoreCase("ja")) {
+
+                                // loop runs until a valid discipline and distance has been given
                                 while (true) {
                                     System.out.println("I hvilken disciplin skal der registreres en ny tid?");
                                     discipline = keyboard.nextLine();
                                     if (discipline.equalsIgnoreCase("0") || discipline.equalsIgnoreCase("q"))
                                         System.exit(0);
+
+                                    // handles getting valid distance from each discipline
                                     switch (discipline) {
                                         case ("freestyle"):
                                             System.out.println("Hvilken distance blev der svømmet freestyle?");
@@ -128,12 +134,18 @@ public class CompetitiveSwimmer{
                                     }
                                     break;
                                 }
+
+                                // gets the swimmers time
                                 System.out.println("Hvad er svømmerens tid?");
                                 swimTime = parseDuration(keyboard);
+
+                                // gets if the time was set at a meet or not
                                 System.out.println("Blev tiden sat til et stævne? (Ja / Nej)");
                                 String meetAnswer = keyboard.nextLine();
                                 if (meetAnswer.equalsIgnoreCase("0") || meetAnswer.equalsIgnoreCase("q"))
                                     System.exit(0);
+
+                                // gets the name of the meet, if the time was set at one
                                 while (true) {
                                     switch (meetAnswer) {
                                         case ("ja"):
@@ -149,22 +161,25 @@ public class CompetitiveSwimmer{
                                     }
                                     break;
                                 }
+
+                                // double checks if you've gotten all the information correct
                                 System.out.println("Er dette den korrekte information?");
-                                //System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName);
                                 String formattedTime = durationFormatter(swimTime);
                                 if (isOfficial) {
                                     System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName + "\tDisciplin: " + discipline + "\tDistance: " + distance + "\tTid: " + formattedTime + "\tDato: " + dateSet + "\tSat til stævnet " + meetName);
                                 } else {
                                     System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName + "\tDisciplin: " + discipline + "\tDistance: " + distance + "\tTid: " + formattedTime + "\tDato: " + dateSet + "\tTiden blev sat til en træning");
                                 }
-                                // asks if all the info is correct, and either continues if correct, or restarts method if incorrect
                                 System.out.println("Ja / Nej");
                                 String infoAnswer = keyboard.nextLine();
                                 if (infoAnswer.equalsIgnoreCase("0") || infoAnswer.equalsIgnoreCase("q"))
                                     System.exit(0);
+
+                                // either continues if correct, or restarts method if incorrect
                                 while (true) {
                                     switch (infoAnswer) {
                                         case ("ja"):
+                                            // TODO: would be cool if you could go "I want to give another time to the same member" but that would seemingly require a second return which isn't possible?
                                             if (!isOfficial)
                                                 return new TimeClass(discipline, distance, swimTime, dateSet, isOfficial);
                                             else
@@ -181,11 +196,15 @@ public class CompetitiveSwimmer{
                                     break;
                                 }
                                 break;
+
+                            // handles if you wrote the incorrect ID, and need to write a new one
                             } else if (answer.equalsIgnoreCase("nej")) {
                                 System.out.println("Prøv igen med et nyt ID.");
                                 memberId = checkIntFromUser(keyboard);
                                 if (memberId == 0) System.exit(0);
                                 break;
+
+                            // handles if what's written isn't a valid ID
                             } else {
                                 System.out.println("Ugyldigt svar. Prøv igen (Ja / Nej)");
                             }
