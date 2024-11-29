@@ -1,7 +1,7 @@
 import java.time.Duration;
 import java.time.LocalDate;
 
-public class TimeClass {
+public class TimeHolder {
     String discipline;
     int distance;
     Duration time;
@@ -10,7 +10,7 @@ public class TimeClass {
     String meetName;
 
     // constructor for when it's on unofficial time
-    TimeClass(String discipline, int distance, Duration time, LocalDate dateSet, boolean isOfficial){
+    TimeHolder(String discipline, int distance, Duration time, LocalDate dateSet, boolean isOfficial){
         this.discipline=discipline;
         this.distance=distance;
         this.time=time;
@@ -19,7 +19,7 @@ public class TimeClass {
     }
 
     // constructor if the time is official, and therefore also has a meet name
-    TimeClass(String discipline, int distance, Duration time, LocalDate dateSet, boolean isOfficial, String meetName){
+    TimeHolder(String discipline, int distance, Duration time, LocalDate dateSet, boolean isOfficial, String meetName){
         this.discipline=discipline;
         this.distance=distance;
         this.time=time;
@@ -28,4 +28,8 @@ public class TimeClass {
         this.meetName=meetName;
     }
 
+    public String toString() {
+        if (isOfficial) return "Disciplin: "+discipline+"\tTid: "+CompetitiveSwimmer.durationFormatter(time)+"\tDato: "+dateSet+"\tSat til stævnet " + meetName;
+        else return "Disciplin: "+discipline+"\tTid: "+CompetitiveSwimmer.durationFormatter(time)+"\tDato: "+dateSet+"\tTiden blev sat til en træning";
+    }
 }

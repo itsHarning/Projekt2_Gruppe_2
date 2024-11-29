@@ -1,4 +1,3 @@
-import java.sql.Time;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -21,7 +20,7 @@ public class CompetitiveSwimmer{
         medley=new ArrayList<>();
     }
 
-    public static TimeClass createNewTime(ArrayList<Member> memberList){
+    public static TimeHolder createNewTime(ArrayList<Member> memberList){
         String discipline = "";
         int distance = 50;
         Duration swimTime = Duration.parse("pt0s"); // parses duration from string in correct format, such as "1h33m7.69s"
@@ -181,9 +180,9 @@ public class CompetitiveSwimmer{
                                         case ("ja"):
                                             // TODO: would be cool if you could go "I want to give another time to the same member" but that would seemingly require a second return which isn't possible?
                                             if (!isOfficial)
-                                                return new TimeClass(discipline, distance, swimTime, dateSet, isOfficial);
+                                                return new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial);
                                             else
-                                                return new TimeClass(discipline, distance, swimTime, dateSet, isOfficial, meetName);
+                                                return new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial, meetName);
                                         case ("nej"):
                                             System.out.println("Prøv igen med et nyt ID.");
                                             memberId = checkIntFromUser(keyboard);
@@ -215,7 +214,7 @@ public class CompetitiveSwimmer{
             }
             break;
         }
-        return new TimeClass(discipline, distance, swimTime, dateSet, isOfficial);
+        return new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial);
     }
 
     public ArrayList<Double> updateFastestTime(ArrayList<Double> fastestTimes){
