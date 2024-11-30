@@ -46,56 +46,55 @@ public class Team {
 
             memberId = keyboard.nextInt();
             keyboard.nextLine();
-
+            boolean membernotfoundonce = false;
         //This loop is looking for matching ID with the arraylist.
-        for (Member m : UpdateList) {
-            if (m.memberId == memberId) {           // If the ID's match with arraylist.
+            for (Member m : UpdateList) {
+                if (m.memberId == memberId) {           // If the ID's match with arraylist.
                 System.out.println("Medlem fundet. Er det, det rigtige medlem?");
                 System.out.println(m);              // Makes sure the program is user-friendly and asks if the user wants to continue.
                 System.out.println("Ja / Nej");
                 answer = keyboard.nextLine();
 
-                if (answer.equalsIgnoreCase("ja")){
+                    if (answer.equalsIgnoreCase("ja")){
                     memberfound = true;
                     String answer2 = keyboard.nextLine();
-                    if(m.isCompeting == false){
+                        if(m.isCompeting == false){
                         System.out.println("Skal personen starte på et svømmehold?");
                         System.out.println("Ja / Nej");
 
-                        if (answer2.equalsIgnoreCase("ja") && m.memberAge < 18){
+                            if (answer2.equalsIgnoreCase("ja") && m.memberAge < 18){
                             exerciseteam.remove(m);
                             competitiveU18.add(m);
-                        }
-                        if (answer2.equalsIgnoreCase("ja") && m.memberAge >= 18){
+                            }
+                            if (answer2.equalsIgnoreCase("ja") && m.memberAge >= 18){
                             exerciseteam.remove(m);
                             competitiveO18.add(m);
+                            }
                         }
-                    }
-                    if (m.isCompeting == true && m.memberAge < 18){
+                        if (m.isCompeting == true && m.memberAge < 18){
                         System.out.println("Skal personen ud af deres svømmehold?");
                         System.out.println("Ja / Nej");
-                        if (answer2.equalsIgnoreCase("ja")){
+                            if (answer2.equalsIgnoreCase("ja")){
                             competitiveU18.remove(m);
                             exerciseteam.add(m);
-                        }
+                            }
 
-                    }
-                    if (m.isCompeting == true && m.memberAge >= 18){
+                        }
+                        if (m.isCompeting == true && m.memberAge >= 18){
                         System.out.println("Skal personen ud af deres svømmehold?");
                         System.out.println("Ja / Nej");
-                        if (answer2.equalsIgnoreCase("ja")){
+                            if (answer2.equalsIgnoreCase("ja")){
                             competitiveO18.remove(m);
                             exerciseteam.add(m);
+                            }
                         }
+                        if (answer2.equalsIgnoreCase("nej")) break;
                     }
-                    if (answer2.equalsIgnoreCase("nej")) break;
+                        if (answer.equalsIgnoreCase("nej")) break;
+                } else if(m.memberId != memberId && membernotfoundonce == false) {
+                    membernotfoundonce = true;
+                    System.out.println("Medlemmet kunne ikke findes.");
                 }
-                if (answer.equalsIgnoreCase("nej")) break;
-            }
-        }
-            if (memberId > UpdateList.size()) {         // The system assigns a member with id++.
-                System.out.println("Medlemmet kunne ikke findes.");
-                memberfound = false;    // The member is not found and the loop will continue.
             }
         }
     }
