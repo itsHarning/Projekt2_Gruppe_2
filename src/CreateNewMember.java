@@ -6,6 +6,23 @@ public class CreateNewMember {
 
     public static Member createNewMember(ArrayList<Member> membersList) {
 
+        System.out.println("Hvilen køn er medlemmet?");
+        System.out.println("Tast 1: For Mand");
+        System.out.println("Tast 2: For Kvinde");
+        System.out.println("Tast 3: For Andet");
+        int Valg = getIntFromUser(keyboard);
+        Gender gender = Gender.FEMALE;
+
+        if(Valg == 1){
+            gender = Gender.MALE;
+        }
+        if(Valg == 2){
+            gender = Gender.FEMALE;
+        }
+        if(Valg == 3){
+            gender = Gender.OTHER;
+        }
+
         System.out.println("Hvad er dit navn?");
         String memberName = keyboard.nextLine();
         if (memberName.equals("0")) System.exit(0);
@@ -48,12 +65,22 @@ public class CreateNewMember {
                 answerCompeting = keyboard.nextLine();
             }
         }
+        if(isCompeting == true){
+            answerCompeting = keyboard.nextLine();
+            while (true){
+                System.out.println("Hvilken hold skal ");
+            }
+        }
         boolean hasPaid = false;
         boolean automatikPaid = false;
         System.out.println("Du har skrevet, navn: " + memberName + ". Alder: " + memberAge +" . Hans status: "+isActiveMember+ ". Hans kompetetiv status er: " + isCompeting);
-        membersList.add(new Member(memberName, memberAge, isActiveMember, isCompeting, hasPaid, automatikPaid));
+
+            membersList.add(new Member(memberName, gender,  memberAge, isActiveMember, isCompeting, hasPaid, automatikPaid));
+
         MemberHandler.updateTextFile(membersList);
-        return new Member(memberName, memberAge, isActiveMember, isCompeting, hasPaid, automatikPaid);
+
+            return new Member(memberName, gender,  memberAge, isActiveMember, isCompeting, hasPaid, automatikPaid);
+
     }
 
     public static int getIntFromUser(Scanner keyboard) {
