@@ -110,41 +110,34 @@ public class PaymentHandler {
         return amount;
     }
 
-    //WIP
-    public static void viewSubscription(ArrayList<Member> tempList) {
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("Tast 1: For medlemmer med en aktiv abonnementsaftale");
-        System.out.println("Tast 2: For medlemmer uden en aktiv abonnementsaftale");
-        int valg = CreateNewMember.getIntFromUser(keyboard);
+    //WIP 1. se subs, 2.
 
-            if (valg == 1) {
-                System.out.println("Disse medlemmer har en aktiv abonnementsaftale:");
-                for (Member m : tempList) {
-                    if (m.automaticPayment) {
-                        System.out.println("ID: " + m.memberId + " Navn: " + m.memberName + ". Alder: " + m.memberAge + "år.");
-                    }
-                }
-            }
-            if (valg == 2) {
-                System.out.println("Disse medlemmer har ikke en aktiv abonnementsaftale:");
-                for (Member m : tempList) {
-                    if (!m.automaticPayment) {
-                        System.out.println("ID: " + m.memberId + " Navn: " + m.memberName + ". Alder: " + m.memberAge + "år.");
-                    }
-                }
-            }
-            if (valg >= 3){
-                System.out.println("Indtast gyldigt tal");
+
+
+    public static void viewActiveSubscription(ArrayList<Member> tempList) {
+        System.out.println("Disse medlemmer har en aktiv abonnementsaftale:");
+        for (Member m : tempList) {
+            if (m.automaticPayment) {
+                System.out.println("ID: " + m.memberId + " Navn: " + m.memberName + ". Alder: " + m.memberAge + "år.");
             }
         }
+    }
 
+    public static void viewNoSubscription(ArrayList<Member> tempList) {
+        System.out.println("Disse medlemmer har en ikke aktiv abonnementsaftale:");
+        for (Member m : tempList) {
+            if (!m.automaticPayment) {
+                System.out.println("ID: " + m.memberId + " Navn: " + m.memberName + ". Alder: " + m.memberAge + "år.");
+            }
+        }
+    }
 
-    //WIP
     public static void changeSubscription(ArrayList<Member> tempList) {
         Scanner keyboard = new Scanner(System.in);
         int memberId;
 
-        viewSubscription(tempList);
+        viewActiveSubscription(tempList);
+        viewNoSubscription(tempList);
 
         System.out.println("Hvilket medlem skal ændre sit abonnement?");
         System.out.println("Skriv ID på medlemmet");
@@ -153,9 +146,21 @@ public class PaymentHandler {
 
         for (Member m : tempList) {
             if (m.memberId == memberId && !m.automaticPayment) {
-                m.automaticPayment = true;
-                m.hasPaid = true;
+                System.out.println("Dette medlem har ikke en aktiv abonnementsaftale");
+                System.out.println("Vil du gerne oprette et abonnement på medlemmet? Ja/Nej");
+
+
+            }
+
+            if (m.memberId == memberId && m.automaticPayment) {
+                System.out.println("Dette medlem har en aktiv abonnementsaftale");
+                System.out.println("Vil du stoppe hans abonnement?");
+
+
             }
         }
     }
 }
+
+//m.automaticPayment = true;
+//m.hasPaid = true;

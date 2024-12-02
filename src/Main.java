@@ -11,6 +11,8 @@ public class Main {
         // creates the main list of members
         membersList= MemberHandler.loadMembersFromTextFile();
 
+        CoachHandler coachHandler = new CoachHandler();
+
         // Sort members in teams
         Team.assignTeams(membersList);
 
@@ -117,6 +119,11 @@ public class Main {
             if (valg == 0) break;
             switch (valg) {
                 case 1:
+                    /*  Metode is not done
+                    CoachHandler.createCoaches();
+                    System.out.println(CoachHandler.coachlist);
+                    //CoachHandler.printTeam(CoachHandler.coachlist.get(0));
+                     */
                     // TODO: open a method to see who they are Coaching for.
                     break;
                 case 2:
