@@ -11,16 +11,24 @@ public class CreateNewMember {
         System.out.println("Tast 2: For Kvinde");
         System.out.println("Tast 3: For Andet");
         int Valg = getIntFromUser(keyboard);
-        Gender gender = Gender.FEMALE;
+        Gender gender;
 
-        if(Valg == 1){
-            gender = Gender.MALE;
-        }
-        if(Valg == 2){
-            gender = Gender.FEMALE;
-        }
-        if(Valg == 3){
-            gender = Gender.OTHER;
+        while (true) {
+            if (Valg == 1) {
+                gender = Gender.MALE;
+                break;
+            }
+            if (Valg == 2) {
+                gender = Gender.FEMALE;
+                break;
+            }
+            if (Valg == 3) {
+                gender = Gender.OTHER;
+                break;
+            } else {
+                System.out.println("Du skal vælge en af mulighederne");
+                Valg = keyboard.nextInt();
+            }
         }
 
         System.out.println("Hvad er dit navn?");
@@ -65,17 +73,12 @@ public class CreateNewMember {
                 answerCompeting = keyboard.nextLine();
             }
         }
-        if(isCompeting == true){
-            answerCompeting = keyboard.nextLine();
-            while (true){
-                System.out.println("Hvilken hold skal ");
-            }
-        }
         boolean hasPaid = false;
         boolean automatikPaid = false;
         System.out.println("Du har skrevet, navn: " + memberName + ". Alder: " + memberAge +" . Hans status: "+isActiveMember+ ". Hans kompetetiv status er: " + isCompeting);
 
             membersList.add(new Member(memberName, gender,  memberAge, isActiveMember, isCompeting, hasPaid, automatikPaid));
+        Team.assignTeams(membersList);
 
         MemberHandler.updateTextFile(membersList);
 
