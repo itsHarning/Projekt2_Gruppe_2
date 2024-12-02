@@ -9,6 +9,8 @@ public class Member {
     int memberId;
     static int numOfMembers=0;
     String memberName;
+    enum Gender {MALE, FEMALE, OTHER}
+    Gender memberGender;
     int memberAge;
     boolean isActiveMember;
     boolean isCompeting;
@@ -17,7 +19,7 @@ public class Member {
     CompetitiveSwimmer competitiveSwimmer;
 
     // when loading members from the MemberList.txt file, they already have an ID, this constructor helps them keep that ID
-    Member(int id, String name, int age, boolean active, boolean competing, boolean paid, boolean autoPay){
+    Member(int id, String name, Gender gender, int age, boolean active, boolean competing, boolean paid, boolean autoPay){
         numOfMembers = id;
         memberId = id;
         memberName = name;
@@ -29,10 +31,11 @@ public class Member {
     }
 
     // this is the normal way of creating a Member, with the ID being automatically assigned
-    Member(String name, int age, boolean active, boolean competing, boolean paid, boolean autoPay){
+    Member(String name, Gender gender, int age, boolean active, boolean competing, boolean paid, boolean autoPay){
         numOfMembers++;
         memberId = numOfMembers;
         memberName = name;
+        memberGender = gender;
         memberAge = age;
         isActiveMember = active;
         isCompeting = competing;
