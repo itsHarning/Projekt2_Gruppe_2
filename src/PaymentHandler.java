@@ -7,7 +7,7 @@ public class PaymentHandler {
     public static void main(String[] args) {
         // Temporary list
         ArrayList<Member> testlist = new ArrayList<>();
-        Member a1 = new Member(1, "j1", Member.Gender.MALE, 16, true, true, false, false);
+        Member a1 = new Member(1, "j1 under", Member.Gender.MALE, 16, true, true, false, false);
         Member a2 = new Member(2, "j2", Member.Gender.FEMALE, 20, false, true, false, false);
         Member a3 = new Member(3, "j3 senior", Member.Gender.OTHER, 61, true, true, false, false);
         Member a4 = new Member(4, "j4", Member.Gender.OTHER, 18, true, true, false, false);
@@ -153,7 +153,9 @@ public class PaymentHandler {
             if (m.memberId == memberId && !m.automaticPayment) {         // If the member already has an active subscription.
                 System.out.println(m.memberName + " har ikke en aktiv abonnementsaftale");
                 System.out.println("Vil du gerne oprette et abonnement på " + m.memberName + "? Ja/Nej");
+
                 String answer = checkValidInput();      // This method will only allow yes/no answer.
+
                 if (answer.equalsIgnoreCase("ja")) {
                     System.out.println(m.memberName + "'s abonnement er ændret til aktiv");
                     m.automaticPayment = true;      // Give the member an active subscription.
@@ -168,7 +170,9 @@ public class PaymentHandler {
             if (m.memberId == memberId && m.automaticPayment) {         // If the member doesn't have an active subscription.
                 System.out.println(m.memberName + " har en aktiv abonnementsaftale");
                 System.out.println("Vil du stoppe " + m.memberName + "'s abonnement? Ja/Nej");
+
                 String answer = checkValidInput();      // This method will only allow yes/no answer.
+
                 if (answer.equalsIgnoreCase("ja")) {
                     System.out.println(m.memberName + "'s har nu stoppet sit abonnement");
                     m.automaticPayment = false;      // The member doesn't want a subscription.
