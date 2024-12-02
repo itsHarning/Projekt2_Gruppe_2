@@ -29,7 +29,7 @@ public class TimeHolder {
     }
 
     public String toString() {
-        if (isOfficial) return "Disciplin: "+discipline+"\tTid: "+CompetitiveSwimmer.durationFormatter(time)+"\tDato: "+dateSet+"\tSat til stævnet " + meetName;
-        else return "Disciplin: "+discipline+"\tTid: "+CompetitiveSwimmer.durationFormatter(time)+"\tDato: "+dateSet+"\tTiden blev sat til en træning";
+        if (isOfficial) return "Disciplin: "+discipline+"\tTid: "+ CompetitiveMember.durationFormatter(time)+"\tDato: "+dateSet+"\tSat til stævnet " + meetName;
+        else return "Disciplin: "+discipline+"\tTid: "+ CompetitiveMember.durationFormatter(time)+"\tDato: "+dateSet+"\tTiden blev sat til en træning";
     }
 }

@@ -1,13 +1,14 @@
-1,Test Name,22,false,false,true,false
-2,Bob,22,true,false,true,false
-3,Create Testing,28,true,true,true,false
-4,ID Tester,17,true,false,false,false
-5,Second ID Test,99,true,true,false,false
-7,Fourth ID Tester,77,true,true,false,false
-8,Fifth ID Tester,35,true,true,true,false
-9,Hansen,88,true,true,false,false
-9,Payment Tester,66,true,true,false,false
-10,Paymenter Twoster,30,true,false,false,false
-11,Third Payment,55,true,false,false,false
-12,Printer Test,55,true,false,false,false
-13,Ole Okocha,44,true,true,false,false
+1,Test Name,FEMALE,22,false,false,true,false
+2,Bob,MALE,22,true,false,true,false
+3,Create Testing,MALE,28,true,true,true,false
+4,ID Tester,OTHER,17,true,false,false,false
+5,Second ID Test,FEMALE,99,true,true,false,false
+7,Fourth ID Tester,MALE,77,true,true,false,false
+8,Fifth ID Tester,MALE,35,true,true,true,false
+9,Hansen,FEMALE,88,true,true,false,false
+9,Payment Tester,MALE,66,true,true,false,false
+10,Paymenter Twoster,OTHER,30,true,false,false,false
+11,Third Payment,FEMALE,55,true,false,false,false
+12,Printer Test,MALE,55,true,false,false,false
+13,Ole Okocha,FEMALE,44,true,true,false,false
+14,Gender Tester,MALE,11,true,false,false,false

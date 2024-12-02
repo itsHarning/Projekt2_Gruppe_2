@@ -62,13 +62,14 @@ public class MemberHandler {
                         for (Member m: tempList){
                                 int id = m.memberId;
                                 String name = m.memberName;
+                                Gender gender = m.memberGender;
                                 int age = m.memberAge;
                                 boolean active = m.isActiveMember;
                                 boolean competing = m.isCompeting;
                                 boolean paid = m.hasPaid;
                                 boolean autoPay = m.automaticPayment;
 
-                                out.println(id+","+name+","+age+","+active+","+competing+","+paid+","+autoPay);
+                                out.println(id+","+name+","+gender+","+age+","+active+","+competing+","+paid+","+autoPay);
                         }
                         out.close(); // Closes so all data gets written to the Textfile
                 } catch (IOException e) {
@@ -79,7 +80,7 @@ public class MemberHandler {
         // prints the given list in a nicely formatted way
         public static void printList(ArrayList<Member> tempList) {
                 for (Member m:tempList){
-                        System.out.println("ID: "+m.memberId+"\t\tNAVN: "+m.memberName+"\t\tALDER: "+m.memberAge);
+                        System.out.println("ID: "+m.memberId+"\t\tNAVN: "+m.memberName+"\t\tKØN: "+m.memberGender+"\t\tALDER: "+m.memberAge);
                         if (m.isActiveMember) {
                                 System.out.print("Medlemskabet er aktivt, ");
                                 if (m.isCompeting) System.out.println("og de stiller op i stævner");
