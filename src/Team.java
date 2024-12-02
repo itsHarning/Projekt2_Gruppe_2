@@ -9,9 +9,12 @@ public class Team {
     static ArrayList<Member> exerciseteam = new ArrayList<>();
 
     public static void main(String[] args) {
+        /*
         membersList2= MemberHandler.loadMembersFromTextFile();
+        /*
         assignTeams(membersList2);
         updateTeams(membersList2);
+        */
     }
 
     static void assignTeams(ArrayList<Member> SortedList) {
