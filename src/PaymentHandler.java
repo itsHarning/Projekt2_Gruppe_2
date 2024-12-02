@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class PaymentHandler {
     public static void main(String[] args) {
-        //Temporary list
+        // Temporary list
         ArrayList<Member> testlist = new ArrayList<>();
         Member a1 = new Member(1, "j1", Member.Gender.MALE, 16, true, true, false, false);
         Member a2 = new Member(2, "j2", Member.Gender.FEMALE, 20, false, true, false, false);
@@ -24,7 +24,7 @@ public class PaymentHandler {
     }
 
     public static ArrayList<Member> payMembership(ArrayList<Member> tempList) {
-        //This method is going to allow the user to select a member and help them pay their membership.
+        // This method is going to allow the user to select a member and help them pay their membership.
         Scanner keyboard = new Scanner(System.in);
         boolean memberfound = false;
         int memberId;
@@ -73,7 +73,7 @@ public class PaymentHandler {
                 memberfound = false;    // The member is not found and the loop will continue.
             }
         }
-        //Remember to return the list.
+        // Remember to return the list.
         return tempList;
     }
 
@@ -148,16 +148,16 @@ public class PaymentHandler {
         memberId = Main.tjekIntFromUser(keyboard); //This method will allow an integer.
 
         for (Member m : tempList) {
-            //Loop will go through the list.
-            //If statements: if the member-id match with the right member.
+            // Loop will go through the list.
+            // If statements: if the member-id match with the right member.
             if (m.memberId == memberId && !m.automaticPayment) {         // If the member already has an active subscription.
                 System.out.println(m.memberName + " har ikke en aktiv abonnementsaftale");
                 System.out.println("Vil du gerne oprette et abonnement på " + m.memberName + "? Ja/Nej");
-                String answer = checkValidInput();      //This method will only allow yes/no answer.
+                String answer = checkValidInput();      // This method will only allow yes/no answer.
                 if (answer.equalsIgnoreCase("ja")) {
                     System.out.println(m.memberName + "'s abonnement er ændret til aktiv");
                     m.automaticPayment = true;      // Give the member an active subscription.
-                    m.hasPaid = true;         //Makes sure the members pays with the subscription.
+                    m.hasPaid = true;         // Makes sure the members pays with the subscription.
                     // Breaks out of the loop. Makes sure exit the method.
                     break;
                 } else if (answer.equalsIgnoreCase("nej")) {
@@ -168,7 +168,7 @@ public class PaymentHandler {
             if (m.memberId == memberId && m.automaticPayment) {         // If the member doesn't have an active subscription.
                 System.out.println(m.memberName + " har en aktiv abonnementsaftale");
                 System.out.println("Vil du stoppe " + m.memberName + "'s abonnement? Ja/Nej");
-                String answer = checkValidInput();      //This method will only allow yes/no answer.
+                String answer = checkValidInput();      // This method will only allow yes/no answer.
                 if (answer.equalsIgnoreCase("ja")) {
                     System.out.println(m.memberName + "'s har nu stoppet sit abonnement");
                     m.automaticPayment = false;      // The member doesn't want a subscription.
