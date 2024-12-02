@@ -21,11 +21,6 @@ public class PaymentHandler {
         testlist.add(a5);
         testlist.add(a6);
 
-        changeSubscription(testlist);
-        viewNoSubscription(testlist);
-
-        viewActiveSubscription(testlist);
-
     }
 
     public static ArrayList<Member> payMembership(ArrayList<Member> tempList) {
@@ -41,7 +36,7 @@ public class PaymentHandler {
             if (!keyboard.hasNextInt()) {
                 System.out.println("Ugyldigt ID. Prøv igen.");
                 keyboard.nextLine();
-                continue;       // Ask for the member ID again
+                continue;       // Ask for the member ID again.
             }
 
             memberId = keyboard.nextInt();
@@ -54,13 +49,13 @@ public class PaymentHandler {
                     System.out.println(member);              // Makes sure the program is user-friendly and asks if the user wants to continue.
                     System.out.println("Ja / Nej");
 
-                    String answer = checkValidInput();  // This method will only allow yes/no answer
+                    String answer = checkValidInput();  // This method will only allow yes/no answer.
 
                     if (answer.equalsIgnoreCase("ja")) {
                         if (member.hasPaid) {            // Makes sure a member can't pay twice.
                             System.out.println("Medlemmet har allerede betalt kontingent");
                         }
-                        if (member.automaticPayment) {  // Makes sure a member can't pay, if subscription is active
+                        if (member.automaticPayment) {  // Makes sure a member can't pay, if subscription is active.
                             System.out.println("Medlemmet har en aktiv abonnementsaftale. Medlemmet skal ikke betale ekstra.");
                         } else {
                             double missingPayment = PaymentHandler.getAmount(member);        // Re-use the getAmount function from PaymentHandler. Makes it more clean and effective.
@@ -69,7 +64,7 @@ public class PaymentHandler {
                             memberfound = true;                 // The member is found == the loop can end.
                         }
                     } else if (answer.equalsIgnoreCase("nej")) {
-                        System.out.println("Prøv igen med et nyt ID.");     // Continue while loop
+                        System.out.println("Prøv igen med et nyt ID.");     // Continue while loop.
                     }
                 }
             }
@@ -113,6 +108,7 @@ public class PaymentHandler {
         } else if (m.memberAge >= 60) {
             amount = senior * seniorDiscount;
         }
+        // Return the correct amount of money.
         return amount;
     }
 
@@ -137,7 +133,7 @@ public class PaymentHandler {
     }
 
     public static void changeSubscription(ArrayList<Member> tempList) {
-        // This method is going to allow the user to select a member and change their membership to active/inactive
+        // This method is going to allow the user to select a member and change their membership to active/inactive.
         Scanner keyboard = new Scanner(System.in);
         int memberId;
 
@@ -172,7 +168,7 @@ public class PaymentHandler {
             if (m.memberId == memberId && m.automaticPayment) {         // If the member doesn't have an active subscription.
                 System.out.println(m.memberName + " har en aktiv abonnementsaftale");
                 System.out.println("Vil du stoppe " + m.memberName + "'s abonnement? Ja/Nej");
-                String answer = checkValidInput();      //This method will only allow yes/no answer
+                String answer = checkValidInput();      //This method will only allow yes/no answer.
                 if (answer.equalsIgnoreCase("ja")) {
                     System.out.println(m.memberName + "'s har nu stoppet sit abonnement");
                     m.automaticPayment = false;      // The member doesn't want a subscription.
@@ -184,7 +180,7 @@ public class PaymentHandler {
     }
 
     public static String checkValidInput() {
-        //This method will only allow a yes/no answer
+        //This method will only allow a yes/no answer.
         Scanner keyboard = new Scanner(System.in);
         String answer;
         while (true) {
