@@ -6,10 +6,11 @@ import java.util.Scanner;
 
 public class CompetitiveMember {
     static Scanner keyboard = new Scanner(System.in);
+    Coach coach;
     ArrayList<TimeHolder> personalTimes = new ArrayList<>();
 
-    CompetitiveMember(){
-
+    CompetitiveMember(Coach coach){
+        this.coach = coach;
     }
 
     public static void createNewTime(ArrayList<Member> memberList){
