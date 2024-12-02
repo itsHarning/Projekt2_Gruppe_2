@@ -23,6 +23,7 @@ public class Member {
         numOfMembers = id;
         memberId = id;
         memberName = name;
+        memberGender = gender;
         memberAge = age;
         isActiveMember = active;
         isCompeting = competing;
