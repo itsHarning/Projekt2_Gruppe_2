@@ -29,18 +29,19 @@ public class MemberHandler {
 
                                 String id = bites [0];
                                 String name = bites[1];
-                                String age = bites[2];
+                                Gender gender = Gender.valueOf(bites[2]);
+                                String age = bites[3];
 
-                                boolean active = Boolean.parseBoolean(bites[3]);
-                                boolean competitive = Boolean.parseBoolean(bites[4]);
-                                boolean paid = Boolean.parseBoolean(bites[5]);
-                                boolean autoPay = Boolean.parseBoolean(bites[6]);
+                                boolean active = Boolean.parseBoolean(bites[4]);
+                                boolean competitive = Boolean.parseBoolean(bites[5]);
+                                boolean paid = Boolean.parseBoolean(bites[6]);
+                                boolean autoPay = Boolean.parseBoolean(bites[7]);
 
                                 try {
                                         int parsedId = Integer.parseInt(id);
                                         int parsedAge = Integer.parseInt(age);
 
-                                        tempList.add(new Member(parsedId,name,parsedAge,active,competitive,paid,autoPay));
+                                        tempList.add(new Member(parsedId,name,gender,parsedAge,active,competitive,paid,autoPay));
 
                                 } catch (NumberFormatException e){
                                         System.out.println("Not a number");

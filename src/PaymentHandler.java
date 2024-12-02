@@ -5,14 +5,14 @@ import java.util.Scanner;
 
 public class PaymentHandler {
     public static void main(String[] args) {
-        //Temporary list
+        // Temporary list
         ArrayList<Member> testlist = new ArrayList<>();
-        Member a1 = new Member(1, "j1", Member.Gender.MALE, 16, true, true, false, false);
-        Member a2 = new Member(2, "j2", Member.Gender.FEMALE, 20, false, true, false, false);
-        Member a3 = new Member(3, "j3 senior", Member.Gender.OTHER, 61, true, true, false, false);
-        Member a4 = new Member(4, "j4", Member.Gender.OTHER, 18, true, true, false, false);
-        Member a5 = new Member(5, "j5 over", Member.Gender.FEMALE, 18, true, true, true, false);
-        Member a6 = new Member(6, "j6 auto", Member.Gender.MALE, 18, true, true, true, true);
+        Member a1 = new Member(1, "j1 under", Gender.MALE, 16, true, true, false, false);
+        Member a2 = new Member(2, "j2", Gender.FEMALE, 20, false, true, false, false);
+        Member a3 = new Member(3, "j3 senior", Gender.OTHER, 61, true, true, false, false);
+        Member a4 = new Member(4, "j4", Gender.OTHER, 18, true, true, false, false);
+        Member a5 = new Member(5, "j5 over", Gender.FEMALE, 18, true, true, true, false);
+        Member a6 = new Member(6, "j6 auto", Gender.MALE, 18, true, true, true, true);
 
         testlist.add(a1);
         testlist.add(a2);
@@ -21,15 +21,10 @@ public class PaymentHandler {
         testlist.add(a5);
         testlist.add(a6);
 
-        changeSubscription(testlist);
-        viewNoSubscription(testlist);
-
-        viewActiveSubscription(testlist);
-
     }
 
     public static ArrayList<Member> payMembership(ArrayList<Member> tempList) {
-        //This method is going to allow the user to select a member and help them pay their membership.
+        // This method is going to allow the user to select a member and help them pay their membership.
         Scanner keyboard = new Scanner(System.in);
         boolean memberfound = false;
         int memberId;
@@ -41,7 +36,7 @@ public class PaymentHandler {
             if (!keyboard.hasNextInt()) {
                 System.out.println("Ugyldigt ID. Prøv igen.");
                 keyboard.nextLine();
-                continue;       // Ask for the member ID again
+                continue;       // Ask for the member ID again.
             }
 
             memberId = keyboard.nextInt();
@@ -54,13 +49,13 @@ public class PaymentHandler {
                     System.out.println(member);              // Makes sure the program is user-friendly and asks if the user wants to continue.
                     System.out.println("Ja / Nej");
 
-                    String answer = checkValidInput();  // This method will only allow yes/no answer
+                    String answer = checkValidInput();  // This method will only allow yes/no answer.
 
                     if (answer.equalsIgnoreCase("ja")) {
                         if (member.hasPaid) {            // Makes sure a member can't pay twice.
                             System.out.println("Medlemmet har allerede betalt kontingent");
                         }
-                        if (member.automaticPayment) {  // Makes sure a member can't pay, if subscription is active
+                        if (member.automaticPayment) {  // Makes sure a member can't pay, if subscription is active.
                             System.out.println("Medlemmet har en aktiv abonnementsaftale. Medlemmet skal ikke betale ekstra.");
                         } else {
                             double missingPayment = PaymentHandler.getAmount(member);        // Re-use the getAmount function from PaymentHandler. Makes it more clean and effective.
@@ -69,7 +64,7 @@ public class PaymentHandler {
                             memberfound = true;                 // The member is found == the loop can end.
                         }
                     } else if (answer.equalsIgnoreCase("nej")) {
-                        System.out.println("Prøv igen med et nyt ID.");     // Continue while loop
+                        System.out.println("Prøv igen med et nyt ID.");     // Continue while loop.
                     }
                 }
             }
@@ -78,7 +73,7 @@ public class PaymentHandler {
                 memberfound = false;    // The member is not found and the loop will continue.
             }
         }
-        //Remember to return the list.
+        // Remember to return the list.
         return tempList;
     }
 
@@ -113,6 +108,7 @@ public class PaymentHandler {
         } else if (m.memberAge >= 60) {
             amount = senior * seniorDiscount;
         }
+        // Return the correct amount of money.
         return amount;
     }
 
@@ -137,7 +133,7 @@ public class PaymentHandler {
     }
 
     public static void changeSubscription(ArrayList<Member> tempList) {
-        // This method is going to allow the user to select a member and change their membership to active/inactive
+        // This method is going to allow the user to select a member and change their membership to active/inactive.
         Scanner keyboard = new Scanner(System.in);
         int memberId;
 
@@ -152,16 +148,18 @@ public class PaymentHandler {
         memberId = Main.tjekIntFromUser(keyboard); //This method will allow an integer.
 
         for (Member m : tempList) {
-            //Loop will go through the list.
-            //If statements: if the member-id match with the right member.
+            // Loop will go through the list.
+            // If statements: if the member-id match with the right member.
             if (m.memberId == memberId && !m.automaticPayment) {         // If the member already has an active subscription.
                 System.out.println(m.memberName + " har ikke en aktiv abonnementsaftale");
                 System.out.println("Vil du gerne oprette et abonnement på " + m.memberName + "? Ja/Nej");
-                String answer = checkValidInput();      //This method will only allow yes/no answer.
+
+                String answer = checkValidInput();      // This method will only allow yes/no answer.
+
                 if (answer.equalsIgnoreCase("ja")) {
                     System.out.println(m.memberName + "'s abonnement er ændret til aktiv");
                     m.automaticPayment = true;      // Give the member an active subscription.
-                    m.hasPaid = true;         //Makes sure the members pays with the subscription.
+                    m.hasPaid = true;         // Makes sure the members pays with the subscription.
                     // Breaks out of the loop. Makes sure exit the method.
                     break;
                 } else if (answer.equalsIgnoreCase("nej")) {
@@ -172,7 +170,9 @@ public class PaymentHandler {
             if (m.memberId == memberId && m.automaticPayment) {         // If the member doesn't have an active subscription.
                 System.out.println(m.memberName + " har en aktiv abonnementsaftale");
                 System.out.println("Vil du stoppe " + m.memberName + "'s abonnement? Ja/Nej");
-                String answer = checkValidInput();      //This method will only allow yes/no answer
+
+                String answer = checkValidInput();      // This method will only allow yes/no answer.
+
                 if (answer.equalsIgnoreCase("ja")) {
                     System.out.println(m.memberName + "'s har nu stoppet sit abonnement");
                     m.automaticPayment = false;      // The member doesn't want a subscription.
@@ -184,7 +184,7 @@ public class PaymentHandler {
     }
 
     public static String checkValidInput() {
-        //This method will only allow a yes/no answer
+        //This method will only allow a yes/no answer.
         Scanner keyboard = new Scanner(System.in);
         String answer;
         while (true) {

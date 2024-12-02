@@ -9,19 +9,19 @@ public class Member {
     int memberId;
     static int numOfMembers=0;
     String memberName;
-    enum Gender {MALE, FEMALE, OTHER}
     Gender memberGender;
     int memberAge;
     boolean isActiveMember;
     boolean isCompeting;
     boolean hasPaid;
     boolean automaticPayment;
-    CompetitiveSwimmer competitiveSwimmer;
+    CompetitiveSwimmer competitiveSwimmer = new CompetitiveSwimmer();
 
     // when loading members from the MemberList.txt file, they already have an ID, this constructor helps them keep that ID
     Member(int id, String name, Gender gender, int age, boolean active, boolean competing, boolean paid, boolean autoPay){
         numOfMembers = id;
         memberId = id;
+        memberGender = gender;
         memberName = name;
         memberAge = age;
         isActiveMember = active;
