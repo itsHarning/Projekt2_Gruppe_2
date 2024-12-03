@@ -2,20 +2,22 @@ import java.util.ArrayList;
 
 public class Coach {
     int id;
+    static int numOfCoaches = 0;
     String name;
     String arrayName;
     ArrayList team;
 
     ArrayList<Team> teams;
-    public Coach(int id,String name,String arrayName ,ArrayList team){
-        this.id=id;
+    public Coach(String name,String arrayName ,ArrayList team){
+        numOfCoaches ++;
+        this.id=numOfCoaches;
         this.name=name;
         this.arrayName = arrayName;
         this.team = team;
     }
 
     public String toString(){
-        return name+" "+arrayName+" Hold"+team;
+        return  name;
     }
 
 }

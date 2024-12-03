@@ -121,8 +121,16 @@ public class Main {
                 case 1:
                     /*  Metode is not done
                     CoachHandler.createCoaches();
-                    System.out.println(CoachHandler.coachlist);
-                    //CoachHandler.printTeam(CoachHandler.coachlist.get(0));
+                    boolean aktivate=false;
+                    for (Coach c: CoachHandler.coachlist) {
+                        if(c.team == Team.competitiveO18) {
+                            System.out.print("competitiveO18: ");
+                            for(Member t: Team.competitiveO18){
+                                System.out.println(t.memberName);
+                            }
+                        }}
+
+                        //CoachHandler.printTeam(CoachHandler.coachlist.get(0));
                      */
                     // TODO: open a method to see who they are Coaching for.
                     break;

@@ -1,19 +1,24 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class CoachHandler {
-    static ArrayList<Coach>coachlist = new ArrayList<>(); //opretter ny Arrayliste med Coaches
+     //opretter ny Arrayliste med Coaches
     public static void main(String[] args) {
-        createCoaches();
+
+        ArrayList<Coach>coachlist = loadMembersFromTextFile();
+        createCoaches(coachlist);
+        ArrayList<Coach>coahlist = loadMembersFromTextFile();
         for (Coach c: coachlist) {
-            if(c.team == Team.competitiveO18) {
-                System.out.print("competitiveO18: ");
-                System.out.println(c);
-            }
-            if(c.team == Team.exerciseteam){
-                System.out.print("exerciseteam: ");
+        if(c.team == Team.exerciseteam){
+            System.out.print("exerciseteam: ");
+            System.out.println(c);}
+
+
+            if(c.team == Team.competitiveO18){
+                System.out.print("competitive018: ");
                 System.out.println(c);}
             if(c.team == Team.competitiveU18){
                 System.out.print("competitiveU18: ");
@@ -21,32 +26,49 @@ public class CoachHandler {
         }
     }
 
-    public static void createCoaches(){
+    public static void createCoaches(ArrayList<Coach>templist) {
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Hvad er navnet på den nye træner? (skriv fornavn og efternavn)");
+        String newCoachName = keyboard.nextLine();
+
+        System.out.println("Hvilket hold skal den nye træner være på?");
+            while (true){
+            System.out.println("Tast 1: Motionsholdet");
+            System.out.println("Tast 2: Konkurrenceholdet under 18");
+            System.out.println("Tast 3: Konkurrenceholdet over 18");
+
+            int valg = Main.tjekIntFromUser(keyboard);
+            ArrayList team = Team.competitiveO18;
+            String arrayName = "";
+            switch (valg) {
+
+                case 1:
+                    team = Team.exerciseteam;
+                    arrayName = "exerciseteam";
+                    System.out.println(newCoachName + " er nu oprettet som træner på Motionsholdet i svømmeklubben Delfinen");
+                    break;
+                case 2:
+                    team = Team.competitiveU18;
+                    arrayName = "competitiveU18";
+                    System.out.println(newCoachName + " er nu oprettet som træner på Konkurrenceholdet under 18 i svømmeklubben Delfinen");
+                     break;
+                case 3:
+                    team = Team.competitiveO18;
+                    arrayName =  " competitiveO18";
+                    System.out.println(newCoachName + " er nu oprettet som træner på Konkurrenceholdet over 18 i svømmeklubben Delfinen");
+                    break;
+                default:
+                    System.out.println("Ugyldigt svar.");
+                    
+            }
+            templist.add(new Coach(newCoachName,arrayName,team));
 
 
-        Coach c1 = new Coach(1,"Torben Enemand","competitiveO18",Team.competitiveO18);
-        Coach c2 = new Coach(2,"Sofie Laudrup","competitiveU18",Team.competitiveU18);
-        Coach c3 = new Coach(3,"Mads Jensen","exerciseteam",Team.exerciseteam);
-        Coach c4 = new Coach(4,"Ricky Topsky","competitiveO18",Team.competitiveO18);
-        Coach c5 = new Coach(5,"Amalie Langstrand","competitiveU18",Team.competitiveU18);
-        Coach c6 = new Coach(6,"Oline Wagner","exerciseteam",Team.exerciseteam);
-        Coach c7 = new Coach(7,"Carla Frankovic","competitiveO18",Team.competitiveO18);
-        Coach c8 = new Coach(8,"Pat Riley","competitiveU18",Team.competitiveU18);
 
 
+            updateTextFile(templist);
+         }
 
-        coachlist.add(c1); //tilføjer de oprettede Coaches til Arraylisten
-        coachlist.add(c2);
-        coachlist.add(c3);
-        coachlist.add(c4);
-        coachlist.add(c5);
-        coachlist.add(c6);
-        coachlist.add(c7);
-        coachlist.add(c8);
-
-
-        updateTextFile(coachlist); // kalder update Tekstfil-metoden.
-        loadMembersFromTextFile();
     }
 
 
@@ -94,7 +116,7 @@ public class CoachHandler {
                 try {
                     int parseId = Integer.parseInt(id);
 
-                    coachlist.add(new Coach(parseId, name, arrayname,team));
+                    tempList.add(new Coach (name, arrayname,team));
 
                 } catch (NumberFormatException e) {
                     System.out.println("Not a number");
