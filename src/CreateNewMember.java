@@ -6,28 +6,26 @@ public class CreateNewMember {
 
     public static Member createNewMember(ArrayList<Member> membersList) {
 
-        System.out.println("Hvilen køn er medlemmet?");
-        System.out.println("Tast 1: For Mand");
-        System.out.println("Tast 2: For Kvinde");
-        System.out.println("Tast 3: For Andet");
-        int Valg = getIntFromUser(keyboard);
+        System.out.println("Hvilen køn er medlemmet? (Mand/Kvinde/Andet)");
+
+        String Valg = keyboard.nextLine();
         Gender gender;
 
         while (true) {
-            if (Valg == 1) {
+            if (Valg.equalsIgnoreCase("Mand")) {
                 gender = Gender.MALE;
                 break;
             }
-            if (Valg == 2) {
+            if (Valg.equalsIgnoreCase("Kvinde")) {
                 gender = Gender.FEMALE;
                 break;
             }
-            if (Valg == 3) {
+            if (Valg.equalsIgnoreCase("Andet")) {
                 gender = Gender.OTHER;
                 break;
             } else {
                 System.out.println("Du skal vælge en af mulighederne");
-                Valg = keyboard.nextInt();
+                Valg = keyboard.nextLine();
             }
         }
 
