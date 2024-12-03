@@ -1,0 +1,15 @@
+{
+  "Freestyle":  {
+    "200": [
+      {
+        "Id": "2",
+        "Name": "Bob",
+        "Gender": "MALE",
+        "age": "22",
+        "Time": "1m42.96s",
+        "Official": "true",
+        "Meet": "Summer Olympics"
+      }
+    ]
+  }
+}
