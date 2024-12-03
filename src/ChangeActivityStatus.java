@@ -36,11 +36,25 @@ public class ChangeActivityStatus {
                 String answer = keyboard.nextLine();
                 if (answer.equals("aktiv")) {
                     m.isActiveMember = true;
-                    System.out.println(Memberlist + "s" + " aktivitetsstatus er nu ændret til aktiv");
+                    System.out.println(m.memberName + "s" + " aktivitetsstatus er nu ændret til aktiv");
+                    System.out.println("");
+                    System.out.println("Tast 1 - hvis medlemmet skal være motionssvømmer");
+                    System.out.println("Tast 2 - hvis medlemmet skal være konkurrencesvømmer");
+                    int answerint = Main.tjekIntFromUser(keyboard);
+                    if(answerint==1){
+                        System.out.println(m.memberName+"s"+" er nu registreret som motionssvømmer");
+                    }
+                    if (answerint==2){
+                        System.out.println(m.memberName+"s"+" er nu registreret som konkurrencesvømmer");
+                        m.isCompeting = true;
+                        Team.assignTeams(Memberlist);
+                        CreateCompobject.createCompobject();
+
+                    }
                     break;
                 } else if (answer.equals("passiv")) {
                     m.isActiveMember = false;
-                    System.out.println(Memberlist + "s" + " medlemsstatus er nu ændret til passiv");
+                    System.out.println(m.memberName+ "s" + " medlemsstatus er nu ændret til passiv");
                     break;
                 } else {
                     System.out.println("Dette er ikke et gyldigt svar, prøv igen");

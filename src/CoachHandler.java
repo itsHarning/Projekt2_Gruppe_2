@@ -10,7 +10,8 @@ public class CoachHandler {
 
         ArrayList<Coach>coachlist = loadMembersFromTextFile();
         createCoaches(coachlist);
-        ArrayList<Coach>coahlist = loadMembersFromTextFile();
+        
+
         for (Coach c: coachlist) {
         if(c.team == Team.exerciseteam){
             System.out.print("exerciseteam: ");

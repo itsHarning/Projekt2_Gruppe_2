@@ -8,3 +8,5 @@
 8,Thomas Sankara,competitiveU18
 9,Sune Hussein, competitiveO18
 10,Henrik Bønnestage,competitiveU18
+11,Konrad Maldini, competitiveO18
+12,Bruce van Hooijdonk,exerciseteam
