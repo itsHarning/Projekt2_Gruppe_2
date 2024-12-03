@@ -16,6 +16,10 @@ public class Main {
         // Sort members in teams
         Team.assignTeams(membersList);
 
+
+        // Make Comptetiveobject for each member
+        CreateCompobject.createCompobject();
+
         // Makes delpine from ascii textfile
         try {
             FileReader fil = new FileReader("ascii.txt");
@@ -114,6 +118,7 @@ public class Main {
         while (true) {
             System.out.println("Tast 1: Se hvem du er træner for");
             System.out.println("Tast 2: Se top 5 tid inden for hver svømmedisciplin");
+            System.out.println("Tast 3: For at lave en ny tid");
             System.out.println("Tast 0: For at gå tilbage");
             int valg = tjekIntFromUser(keyboard);
             if (valg == 0) break;
@@ -136,6 +141,9 @@ public class Main {
                     break;
                 case 2:
                     // TODO: open a method to se top 5 for each of the swimming discipline.
+                    break;
+
+                case 3: CompetitiveMember.createNewTime(membersList);
                     break;
                 default:
                     System.out.println("Du valgte ikke en af mulighederne præsenteret, prøv igen");
