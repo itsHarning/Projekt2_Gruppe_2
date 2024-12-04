@@ -1,5 +1,6 @@
 import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
 import javax.xml.transform.Source;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,7 +8,7 @@ public class PaymentHandler {
     public static void main(String[] args) {
         // Temporary list
         ArrayList<Member> testlist = new ArrayList<>();
-        Member a1 = new Member(1, "j1 under", Gender.MALE, 16, true, true, false, false);
+        Member a1 = new Member(1, "j1 under", Gender.MALE, 16, true, true, false, true);
         Member a2 = new Member(2, "j2", Gender.FEMALE, 20, false, true, false, false);
         Member a3 = new Member(3, "j3 senior", Gender.OTHER, 61, true, true, false, false);
         Member a4 = new Member(4, "j4", Gender.OTHER, 18, true, true, false, false);
@@ -21,6 +22,8 @@ public class PaymentHandler {
         testlist.add(a5);
         testlist.add(a6);
 
+
+        subscriberPayment(testlist);
     }
 
     public static ArrayList<Member> payMembership(ArrayList<Member> tempList) {
@@ -197,5 +200,42 @@ public class PaymentHandler {
         }
         //Remember to return answer.
         return answer;
+    }
+
+    public static void subscriberPayment(ArrayList<Member> tempList) {
+        LocalDate startDate = LocalDate.of(2024, 1, 1);
+        LocalDate endDate = LocalDate.of(2023, 12, 31);
+        LocalDate currentDate = LocalDate.now();
+
+        if (currentDate.isAfter(endDate)) {
+            for (Member m : tempList) {
+                if (m.automaticPayment) {
+                    m.hasPaid = true;
+                }
+                else {
+                    m.hasPaid = false;
+                }
+            }
+            System.out.println("Medlemmer med et aktivt abonnement har nu betalt deres kontingent.");
+            System.out.println(tempList);
+            startDate = LocalDate.of(2025,1,1);
+            endDate = LocalDate.of(2025,12,31);
+            System.out.println("Den nye abonnements periode er således: " + startDate + " " + endDate);
+
+        } else if (currentDate.isBefore(endDate)) {
+            System.out.println("Medlemmer med abonnement betaler årligt. Medlemmer skal først betale igen " + endDate);
+        }
+
+    }
+
+    public class Subscription {
+        LocalDate startDate;
+        LocalDate endDate;
+
+
+        Subscription(LocalDate startDate, LocalDate endDate) {
+            this.startDate = startDate;
+            this.endDate = endDate;
+        }
     }
 }
