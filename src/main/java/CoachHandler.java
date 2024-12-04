@@ -93,7 +93,7 @@ public class CoachHandler {
     public static ArrayList loadMembersFromTextFile() {
         ArrayList<Coach> tempList = new ArrayList<>();
         try {
-            FileReader fil = new FileReader("src//CoachList.txt");
+            FileReader fil = new FileReader("src/main/resources/CoachList.txt");
             BufferedReader ind = new BufferedReader(fil);
             String line = ind.readLine();
             while (line != null) {

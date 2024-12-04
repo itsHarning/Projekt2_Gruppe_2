@@ -1,14 +1,26 @@
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Member {
 
-    int memberId;
+    @JsonProperty("memberId")
+    public int memberId;
+    @JsonProperty("numOfMembers")
     static int numOfMembers=0;
+    @JsonProperty("memberName")
     String memberName;
+    @JsonProperty("memberGender")
     Gender memberGender;
+    @JsonProperty("memberAge")
     int memberAge;
+    @JsonProperty("isActiveMember")
     boolean isActiveMember;
+    @JsonProperty("isCompeting")
     boolean isCompeting;
+    @JsonProperty("hasPaid")
     boolean hasPaid;
+    @JsonProperty("automaticPayment")
     boolean automaticPayment;
+    @JsonProperty("competitiveSwimmer")
     CompetitiveMember competitiveSwimmer;
 
     // when loading members from the MemberList.txt file, they already have an ID, this constructor helps them keep that ID
@@ -37,7 +49,9 @@ public class Member {
         automaticPayment = autoPay;
     }
 
+    Member(){}
+
     public String toString(){
-        return "ID: "+memberId+", Navn: "+memberName+", alder: "+memberAge+", er medlemskab aktivt: "+isActiveMember+", konkurrence svømmer: "+isCompeting+", har betalt: "+hasPaid+"\n";
+        return "ID: "+memberId+"\tNavn: "+memberName+"\tkøn: "+memberGender+"\talder: "+memberAge+"\ter medlemskab aktivt: "+isActiveMember+", konkurrence svømmer: "+isCompeting+", har betalt: "+hasPaid+"\n";
     }
 }

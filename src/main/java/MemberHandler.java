@@ -21,7 +21,7 @@ public class MemberHandler {
         public static ArrayList loadMembersFromTextFile() {
                 ArrayList<Member> tempList = new ArrayList<>();
                 try {
-                        FileReader fil = new FileReader("src//MemberList.txt");
+                        FileReader fil = new FileReader("src/main/resources/MemberList.txt");
                         BufferedReader ind = new BufferedReader(fil);
                         String line = ind.readLine(); // converts the read lines to string
                         while (line !=null) {
@@ -57,7 +57,7 @@ public class MemberHandler {
         // updates the MemberList.txt to comply with the current status of the membersList
         public static void updateTextFile(ArrayList<Member> tempList) {
                 try {
-                        FileWriter file = new FileWriter("src//MemberList.txt", false);
+                        FileWriter file = new FileWriter("src/main/resources/MemberList.txt", false);
                         PrintWriter out = new PrintWriter(file);
                         for (Member m: tempList){
                                 int id = m.memberId;

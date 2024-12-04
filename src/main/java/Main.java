@@ -18,7 +18,7 @@ public class Main {
 
 
         // Make Comptetiveobject for each member
-        CreateCompobject.createCompobject();
+        CreateCompobject.createCompobject(membersList);
 
         // Makes delpine from ascii textfile
         try {

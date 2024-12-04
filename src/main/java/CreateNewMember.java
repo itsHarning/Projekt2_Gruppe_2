@@ -77,7 +77,7 @@ public class CreateNewMember {
 
             membersList.add(new Member(memberName, gender,  memberAge, isActiveMember, isCompeting, hasPaid, automatikPaid));
         Team.assignTeams(membersList);
-        CreateCompobject.createCompobject();
+        CreateCompobject.createCompobject(membersList);
         MemberHandler.updateTextFile(membersList);
 
             return new Member(memberName, gender,  memberAge, isActiveMember, isCompeting, hasPaid, automatikPaid);

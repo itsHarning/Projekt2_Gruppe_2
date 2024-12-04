@@ -1,17 +1,10 @@
 import java.util.ArrayList;
 
 public class CreateCompobject {
-
-    public static void main(String[] args) {
-        createCompobject();
-
-    }
-
-    static public void createCompobject() {
-        ArrayList<Member> membersList = MemberHandler.loadMembersFromTextFile();
+    static public void createCompobject(ArrayList<Member> memberList) {
         ArrayList<Coach> coachlist = CoachHandler.loadMembersFromTextFile();
         Team team = new Team();
-        team.assignTeams(membersList);
+        team.assignTeams(memberList);
 
         for (Coach c: coachlist) {
             if(c.team == Team.competitiveO18){

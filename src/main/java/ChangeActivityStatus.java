@@ -25,12 +25,12 @@ public class ChangeActivityStatus {
     }
 
 
-    public static void changeActivityStatus (ArrayList<Member>Memberlist){
+    public static void changeActivityStatus (ArrayList<Member> memberlist){
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Skriv ID på medlemmet");
         int memberID = keyboard.nextInt();
         keyboard.nextLine();
-        for (Member m: Memberlist) {
+        for (Member m: memberlist) {
             if (m.memberId == memberID ) {
                 System.out.println("Hvad skal medlemmets status rettet til? (aktiv/passiv)");
                 String answer = keyboard.nextLine();
@@ -38,6 +38,8 @@ public class ChangeActivityStatus {
                     m.isActiveMember = true;
                     System.out.println(m.memberName + "s" + " aktivitetsstatus er nu ændret til aktiv");
                     System.out.println("");
+
+                    // TODO: split this in two seperate functionss
                     System.out.println("Tast 1 - hvis medlemmet skal være motionssvømmer");
                     System.out.println("Tast 2 - hvis medlemmet skal være konkurrencesvømmer");
                     int answerint = Main.tjekIntFromUser(keyboard);
@@ -47,8 +49,8 @@ public class ChangeActivityStatus {
                     if (answerint==2){
                         System.out.println(m.memberName+"s"+" er nu registreret som konkurrencesvømmer");
                         m.isCompeting = true;
-                        Team.assignTeams(Memberlist);
-                        CreateCompobject.createCompobject();
+                        Team.assignTeams(memberlist);
+                        CreateCompobject.createCompobject(memberlist);
 
                     }
                     break;
@@ -62,6 +64,6 @@ public class ChangeActivityStatus {
                 }
             }
         }
-        MemberHandler.updateTextFile((Memberlist));
+        MemberHandler.updateTextFile((memberlist));
     }
 }

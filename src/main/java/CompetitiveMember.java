@@ -1,12 +1,18 @@
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CompetitiveMember {
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+public class CompetitiveMember extends ArrayList<TimeHolder>{
     static Scanner keyboard = new Scanner(System.in);
     Coach coach;
+    @JsonProperty("TimeHolder")
     ArrayList<TimeHolder> personalTimes = new ArrayList<>();
 
     CompetitiveMember(Coach coach){
@@ -14,7 +20,8 @@ public class CompetitiveMember {
     }
 
     public static void createNewTime(ArrayList<Member> memberList){
-        String discipline = "";
+        String stringDiscipline = "";
+        Discipline discipline;
         int distance = 0;
         Duration swimTime = Duration.parse("pt0s"); // parses duration from string in correct format, such as "1h33m7.69s"
         LocalDate dateSet = LocalDate.now();
@@ -29,13 +36,14 @@ public class CompetitiveMember {
             // loop runs until a valid discipline and distance has been given
             while (true) {
                 System.out.println("I hvilken disciplin skal der registreres en ny tid?");
-                discipline = keyboard.nextLine();
-                if (discipline.equalsIgnoreCase("0") || discipline.equalsIgnoreCase("q"))
+                stringDiscipline = keyboard.nextLine();
+                if (stringDiscipline.equalsIgnoreCase("0") || stringDiscipline.equalsIgnoreCase("q"))
                     System.exit(0);
 
                 // handles getting valid distance from each discipline
-                switch (discipline) {
+                switch (stringDiscipline) {
                     case ("freestyle"):
+                        discipline = Discipline.FREESTYLE;
                         System.out.println("Hvilken distance blev der svømmet freestyle?");
                         System.out.println("de mulige distancer er 50, 100, 200, 400, 800, 1500");
                         while (true) {
@@ -60,7 +68,8 @@ public class CompetitiveMember {
                     case ("backstroke"):
                     case ("breaststroke"):
                     case ("butterfly"):
-                        System.out.println("Hvilken distance blev der svømmet " + discipline + "?");
+                        discipline = Discipline.valueOf(stringDiscipline.toUpperCase());
+                        System.out.println("Hvilken distance blev der svømmet " + stringDiscipline + "?");
                         System.out.println("De mulige distancer er 100 og 200");
                         while (true) {
                             distance = checkIntFromUser();
@@ -78,8 +87,9 @@ public class CompetitiveMember {
                         }
                         break;
                     case ("medley"):
+                        discipline = Discipline.MEDLEY;
                         System.out.println("Hvilken distance blev der svømmet medley?");
-                        System.out.println("De myldige distancer er 200 og 400");
+                        System.out.println("De mulige distancer er 200 og 400");
                         while (true) {
                             distance = checkIntFromUser();
                             if (distance == 0) System.exit(0);
@@ -96,6 +106,7 @@ public class CompetitiveMember {
                         }
                         break;
                     case ("open water"):
+                        discipline = Discipline.OPEN_WATER;
                         distance = 10_000;
                         break;
                     default:
@@ -137,9 +148,9 @@ public class CompetitiveMember {
             System.out.println("Er dette den korrekte information?");
             String formattedTime = durationFormatter(swimTime);
             if (isOfficial) {
-                System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName + "\tDisciplin: " + discipline + "\tDistance: " + distance + "\tTid: " + formattedTime + "\tDato: " + dateSet + "\tSat til stævnet " + meetName);
+                System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName + "\tDisciplin: " + stringDiscipline + "\tDistance: " + distance + "\tTid: " + formattedTime + "\tDato: " + dateSet + "\tSat til stævnet " + meetName);
             } else {
-                System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName + "\tDisciplin: " + discipline + "\tDistance: " + distance + "\tTid: " + formattedTime + "\tDato: " + dateSet + "\tTiden blev sat til en træning");
+                System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName + "\tDisciplin: " + stringDiscipline + "\tDistance: " + distance + "\tTid: " + formattedTime + "\tDato: " + dateSet + "\tTiden blev sat til en træning");
             }
             System.out.println("Ja / Nej");
             while (true) {
@@ -166,10 +177,8 @@ public class CompetitiveMember {
                         System.out.println("Ugyldigt svar. Prøv igen (Ja / Nej)");
                         continue;
                 }
-                System.out.println("test 2");
                 break;
             }
-            System.out.println("test 3");
             break;
         }
         // return new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial);
@@ -277,11 +286,12 @@ public class CompetitiveMember {
 
     public static void main(String[] args) {
         ArrayList<Member> membersList = MemberHandler.loadMembersFromTextFile();
+
         // MemberHandler.printList(membersList);
-        createNewTime(membersList);
+        // createNewTime(membersList);
         System.out.println(membersList);
         MemberHandler.printList(membersList);
-
     }
 
 }
+
