@@ -7,9 +7,7 @@
   "isCompeting" : true,
   "hasPaid" : true,
   "automaticPayment" : false,
-  "competitiveSwimmer" : {
-    "TimeHolder" : [ ]
-  }
+  "competitiveSwimmer" : [ ]
 }, {
   "memberId" : 2,
   "memberName" : "Bob",
@@ -19,23 +17,7 @@
   "isCompeting" : true,
   "hasPaid" : true,
   "automaticPayment" : false,
-  "competitiveSwimmer" : {
-    "TimeHolder" : [ {
-      "discipline" : "BUTTERFLY",
-      "distance" : 200,
-      "time" : 260.000000000,
-      "dateSet" : "2024-12-05",
-      "isOfficial" : true,
-      "meetName" : "Test Meet"
-    }, {
-      "discipline" : "FREESTYLE",
-      "distance" : 50,
-      "time" : 45.690000000,
-      "dateSet" : "2024-12-05",
-      "isOfficial" : true,
-      "meetName" : "Meet Test"
-    } ]
-  }
+  "competitiveSwimmer" : [ ]
 }, {
   "memberId" : 3,
   "memberName" : "Create Testing",
@@ -45,9 +27,7 @@
   "isCompeting" : true,
   "hasPaid" : false,
   "automaticPayment" : false,
-  "competitiveSwimmer" : {
-    "TimeHolder" : [ ]
-  }
+  "competitiveSwimmer" : [ ]
 }, {
   "memberId" : 4,
   "memberName" : "ID Tester",
@@ -67,9 +47,7 @@
   "isCompeting" : true,
   "hasPaid" : false,
   "automaticPayment" : false,
-  "competitiveSwimmer" : {
-    "TimeHolder" : [ ]
-  }
+  "competitiveSwimmer" : [ ]
 }, {
   "memberId" : 7,
   "memberName" : "Fourth ID Tester",
@@ -79,9 +57,7 @@
   "isCompeting" : true,
   "hasPaid" : false,
   "automaticPayment" : false,
-  "competitiveSwimmer" : {
-    "TimeHolder" : [ ]
-  }
+  "competitiveSwimmer" : [ ]
 }, {
   "memberId" : 8,
   "memberName" : "Fifth ID Tester",
@@ -91,9 +67,7 @@
   "isCompeting" : true,
   "hasPaid" : true,
   "automaticPayment" : false,
-  "competitiveSwimmer" : {
-    "TimeHolder" : [ ]
-  }
+  "competitiveSwimmer" : [ ]
 }, {
   "memberId" : 9,
   "memberName" : "Hansen",
@@ -103,9 +77,7 @@
   "isCompeting" : true,
   "hasPaid" : false,
   "automaticPayment" : false,
-  "competitiveSwimmer" : {
-    "TimeHolder" : [ ]
-  }
+  "competitiveSwimmer" : [ ]
 }, {
   "memberId" : 9,
   "memberName" : "Payment Tester",
@@ -115,9 +87,7 @@
   "isCompeting" : true,
   "hasPaid" : false,
   "automaticPayment" : false,
-  "competitiveSwimmer" : {
-    "TimeHolder" : [ ]
-  }
+  "competitiveSwimmer" : [ ]
 }, {
   "memberId" : 10,
   "memberName" : "Paymenter Twoster",
@@ -157,9 +127,7 @@
   "isCompeting" : true,
   "hasPaid" : false,
   "automaticPayment" : false,
-  "competitiveSwimmer" : {
-    "TimeHolder" : [ ]
-  }
+  "competitiveSwimmer" : [ ]
 }, {
   "memberId" : 14,
   "memberName" : "Gender Tester",

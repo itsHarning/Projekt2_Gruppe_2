@@ -1,4 +1,3 @@
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -8,7 +7,6 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public class CompetitiveMember extends ArrayList<TimeHolder>{
     static Scanner keyboard = new Scanner(System.in);
     Coach coach;

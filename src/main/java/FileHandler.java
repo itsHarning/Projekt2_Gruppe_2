@@ -34,7 +34,7 @@ public class FileHandler {
 
         try {
             // System.out.println(tempList);
-            String jsonString = objectMapper.writeValueAsString(tempList);
+            // String jsonString = objectMapper.writeValueAsString(tempList);
             // System.out.println(jsonString);
             objectMapper.writeValue(new File("src/main/resources/TimeList.json"), tempList);
         } catch (IOException e) {
