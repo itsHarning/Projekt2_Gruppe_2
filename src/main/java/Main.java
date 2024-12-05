@@ -5,22 +5,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    static ArrayList<Member> membersList;
+    // creates the main list of members
+    static ArrayList<Member> memberList = new ArrayList<>(FileHandler.getListFromJson());
     static Scanner keyboard = new Scanner(System.in);
     public static void main(String[] args) {
-        // creates the main list of members
-        membersList= MemberHandler.loadMembersFromTextFile();
 
         CoachHandler coachHandler = new CoachHandler();
 
         // Sort members in teams
-        Team.assignTeams(membersList);
+        Team.assignTeams(memberList);
 
+        // Make ComptetiveObject for each member
+        CreateCompObject.createCompObject(memberList);
 
-        // Make Comptetiveobject for each member
-        CreateCompobject.createCompobject(membersList);
-
-        // Makes delpine from ascii textfile
+        // Makes dolphin from ascii text file
         try {
             FileReader fil = new FileReader("ascii.txt");
             BufferedReader ind = new BufferedReader(fil);
@@ -41,88 +39,94 @@ public class Main {
         System.out.println("Tast 2: Klubbens kasserer");
         System.out.println("Tast 3: Træner");
         System.out.println("Tast 0: For at luk programmet ned");
-        int valg = tjekIntFromUser(keyboard);
-        if (valg == 0) break;
-        switch (valg) {
+        int choice = checkIntFromUser(keyboard);
+        if (choice == 0) break;
+        switch (choice) {
                 case 1:
-                    formandmenu();
+                    chairmanMenu();
                     break;
                 case 2:
-                    kasserermenu();
+                    cashierMenu();
                     break;
                 case 3:
-                    coachmenu();
+                    coachMenu();
                     break;
                 default:
                     System.out.println("Du valgte ikke en af mulighederne præsenteret, prøv igen");
-                    System.out.println("");
+                    System.out.println();
             }
         }
-
+        FileHandler.writeListToJson(memberList);
     }
 
-    static void formandmenu(){
+    static void chairmanMenu(){
         System.out.println("--Formand--");
         while (true) {
             System.out.println("Tast 1: Se alle medlemmer");
             System.out.println("Tast 2: Lav nyt medlem");
             System.out.println("Tast 3: Ændre om de er aktive eller passive");
+            System.out.println("Tast 4: Ændre om medlemmet stiller op til stævner");
+            System.out.println("Tast 5: Opdater hold");
             System.out.println("Tast 0: For at gå tilbage");
-            int valg = tjekIntFromUser(keyboard);
-            if (valg == 0) break;
-            switch (valg) {
+            int choice = checkIntFromUser(keyboard);
+            if (choice == 0) break;
+            switch (choice) {
                 case 1:
-                    MemberHandler.printList(membersList);
+                    MemberHandler.printList(memberList);
                     break;
                 case 2:
-                    CreateNewMember.createNewMember(membersList);
-                    membersList= MemberHandler.loadMembersFromTextFile();
+                    CreateNewMember.createNewMember(memberList);
+                    memberList.addAll(FileHandler.getListFromJson());
                     break;
                 case 3:
-                     ChangeActivityStatus.changeActivityStatus(membersList);
+                     ChangeActivityStatus.changeActivityStatus(memberList);
                     break;
                 case 4:
-                    Team.updateTeams(membersList);
+                    ChangeActivityStatus.changeCompetitiveStatus(memberList);
+                    break;
+                case 5:
+                    Team.updateTeams(memberList);
                     break;
                 default:
                     System.out.println("Du valgte ikke en af mulighederne præsenteret, prøv igen");
-                    System.out.println("");
+                    System.out.println();
             }
         }
     }
 
-    static  void kasserermenu(){
+    static  void cashierMenu(){
         System.out.println("--Kasser--");
         while (true) {
             System.out.println("Tast 1: Se kontingent");
             System.out.println("Tast 2: Indskriv et medlems betaling");
             System.out.println("Tast 0: For at gå tilbage");
-            int valg = tjekIntFromUser(keyboard);
-            if (valg == 0) break;
-            switch (valg) {
+            int choice = checkIntFromUser(keyboard);
+            if (choice == 0) break;
+            switch (choice) {
                 case 1:
-                    PaymentHandler.getPaymentStatus(membersList);
+                    PaymentHandler.getPaymentStatus(memberList);
                     break;
                 case 2:
-                    PaymentHandler.payMembership(membersList);
+                    PaymentHandler.payMembership(memberList);
                     break;
                 default:
                     System.out.println("Du valgte ikke en af mulighederne præsenteret, prøv igen");
-                    System.out.println("");
+                    System.out.println();
             }
         }
     }
 
-    static void coachmenu() {
+    static void coachMenu() {
         System.out.println("--Træner--");
         while (true) {
             System.out.println("Tast 1: Se hvem du er træner for");
             System.out.println("Tast 2: Se top 5 tid inden for hver svømmedisciplin");
-            System.out.println("Tast 3: For at lave en ny tid");
+            System.out.println("Tast 3: Få information for et givent medlem");
+            System.out.println("Tast 4: Opret ny rekord tid for et medlem");
             System.out.println("Tast 0: For at gå tilbage");
-            int valg = tjekIntFromUser(keyboard);
-            if (valg == 0) break;
-            switch (valg) {
+            int choice = checkIntFromUser(keyboard);
+            if (choice == 0) break;
+            switch (choice) {
                 case 1:
                     /*  Metode is not done
                     CoachHandler.createCoaches();
@@ -143,16 +147,19 @@ public class Main {
                     // TODO: open a method to se top 5 for each of the swimming discipline.
                     break;
 
-                case 3: CompetitiveMember.createNewTime(membersList);
+                case 3:
+                    CompetitiveMember.printMemberTimes(memberList);
+                    break;
+                case 4: CompetitiveMember.createNewTime(memberList);
                     break;
                 default:
                     System.out.println("Du valgte ikke en af mulighederne præsenteret, prøv igen");
-                    System.out.println("");
+                    System.out.println();
             }
         }
     }
 
-    public static int tjekIntFromUser(Scanner keyboard) {
+    public static int checkIntFromUser(Scanner keyboard) {
         int result = 0;
         boolean validInput = false;
 

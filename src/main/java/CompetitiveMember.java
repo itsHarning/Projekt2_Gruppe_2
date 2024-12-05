@@ -3,6 +3,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,6 +17,8 @@ public class CompetitiveMember{
     CompetitiveMember(Coach coach){
         this.coach = coach;
     }
+
+    CompetitiveMember(){}
 
     public String toString(){
         return "Træner: "+coach+"\tTider: "+personalTimes;
@@ -34,13 +37,15 @@ public class CompetitiveMember{
         boolean infoGotten = false;
         while (!infoGotten) {
             Member member = getMemberFromId(memberList);
+            if (member.memberId == 0) return;
 
             // loop runs until a valid discipline and distance has been given
             while (true) {
                 System.out.println("I hvilken disciplin skal der registreres en ny tid?");
+                System.out.println("Freestyle, Backstroke, Breaststroke, Butterfly, Medler, eller Open Water");
                 stringDiscipline = keyboard.nextLine();
                 if (stringDiscipline.equalsIgnoreCase("0") || stringDiscipline.equalsIgnoreCase("q"))
-                    System.exit(0);
+                    return;
 
                 // handles getting valid distance from each discipline
                 switch (stringDiscipline) {
@@ -50,7 +55,7 @@ public class CompetitiveMember{
                         System.out.println("de mulige distancer er 50, 100, 200, 400, 800, 1500");
                         while (true) {
                             distance = checkIntFromUser();
-                            if (distance == 0) System.exit(0);
+                            if (distance == 0) return;
                             switch (distance) {
                                 case (50):
                                 case (100):
@@ -75,7 +80,7 @@ public class CompetitiveMember{
                         System.out.println("De mulige distancer er 100 og 200");
                         while (true) {
                             distance = checkIntFromUser();
-                            if (distance == 0) System.exit(0);
+                            if (distance == 0) return;
                             switch (distance) {
                                 case (100):
                                 case (200):
@@ -94,7 +99,7 @@ public class CompetitiveMember{
                         System.out.println("De mulige distancer er 200 og 400");
                         while (true) {
                             distance = checkIntFromUser();
-                            if (distance == 0) System.exit(0);
+                            if (distance == 0) return;
                             switch (distance) {
                                 case (200):
                                 case (400):
@@ -123,12 +128,15 @@ public class CompetitiveMember{
             System.out.println("Hvad er svømmerens tid?");
             swimTime = parseDuration();
 
+            System.out.println("Hvilken dato blev tiden sat? (yyyy-mm-dd)");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // sets up a formatter for how LocalDateTime should parse strings
+            dateSet = LocalDate.parse(keyboard.nextLine(), formatter);
+
             // gets if the time was set at a meet or not
             System.out.println("Blev tiden sat til et stævne? (Ja / Nej)");
             while (true) {
                 String meetAnswer = keyboard.nextLine();
-                if (meetAnswer.equalsIgnoreCase("0") || meetAnswer.equalsIgnoreCase("q"))
-                    System.exit(0);
+                if (meetAnswer.equalsIgnoreCase("0") || meetAnswer.equalsIgnoreCase("q")) return;
 
                 // gets the name of the meet, if the time was set at one
                 switch (meetAnswer) {
@@ -157,8 +165,7 @@ public class CompetitiveMember{
             System.out.println("Ja / Nej");
             while (true) {
                 String infoAnswer = keyboard.nextLine();
-                if (infoAnswer.equalsIgnoreCase("0") || infoAnswer.equalsIgnoreCase("q"))
-                    System.exit(0);
+                if (infoAnswer.equalsIgnoreCase("0") || infoAnswer.equalsIgnoreCase("q")) return;
 
                 // either continues if correct, or restarts method if incorrect
                 switch (infoAnswer) {
@@ -196,8 +203,9 @@ public class CompetitiveMember{
         return fastestTimes;
     }
 
-    public void printMemberTimes(Member member){
-        System.out.println(member.memberName+" hurtigeste tider");
+    public static void printMemberTimes(ArrayList<Member> memberList){
+        Member member = getMemberFromId(memberList);
+        System.out.println(member.competitiveSwimmer);
     }
 
     public static int checkIntFromUser() {
@@ -222,7 +230,7 @@ public class CompetitiveMember{
         while (true) {
             System.out.println("Indtast IDet på det medlem der skal registrere tider");
             int memberId = checkIntFromUser();
-            if (memberId == 0) System.exit(0);
+            if (memberId == 0) break;
 
             if (memberId > Member.numOfMembers){
                 System.out.println("Dette er ikke et gyldigt medlems nummer\nDer er kun "+Member.numOfMembers+" medlemmer i klubben");
@@ -239,14 +247,14 @@ public class CompetitiveMember{
                             System.out.println(member.memberName + "?");
                             System.out.println("Ja / Nej");
                             String answer = keyboard.nextLine();
-                            if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q")) System.exit(0);
+                            if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q")) break;
                             if (answer.equalsIgnoreCase("ja")) {
                                 return member;
                                 // handles if you wrote the incorrect ID, and need to write a new one
                             } else if (answer.equalsIgnoreCase("nej")) {
                                 System.out.println("Prøv igen med et nyt ID.");
                                 memberId = checkIntFromUser();
-                                if (memberId == 0) System.exit(0);
+                                if (memberId == 0) return member;
                                 break;
 
                                 // handles if what's written isn't a valid ID
@@ -258,6 +266,7 @@ public class CompetitiveMember{
                 }
             }
         }
+        return new Member();
     }
 
     // loops until a valid duration is given
@@ -287,12 +296,13 @@ public class CompetitiveMember{
     }
 
     public static void main(String[] args) {
-        ArrayList<Member> membersList = MemberHandler.loadMembersFromTextFile();
+        ArrayList<Member> memberList = new ArrayList<>(FileHandler.getListFromJson());
 
         // MemberHandler.printList(membersList);
-        // createNewTime(membersList);
-        System.out.println(membersList);
-        MemberHandler.printList(membersList);
+        createNewTime(memberList);
+        System.out.println(memberList);
+        MemberHandler.printList(memberList);
+        FileHandler.writeListToJson(memberList);
     }
 
 }

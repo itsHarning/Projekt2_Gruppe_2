@@ -1,5 +1,3 @@
-import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
-import javax.xml.transform.Source;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -148,7 +146,7 @@ public class PaymentHandler {
 
         System.out.println("Hvilket medlem skal ændre sit abonnement?");
         System.out.println("Skriv ID på medlemmet");
-        memberId = Main.tjekIntFromUser(keyboard); //This method will allow an integer.
+        memberId = Main.checkIntFromUser(keyboard); //This method will allow an integer.
 
         for (Member m : tempList) {
             // Loop will go through the list.

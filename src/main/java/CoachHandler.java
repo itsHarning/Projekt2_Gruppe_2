@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 
@@ -38,7 +37,7 @@ public class CoachHandler {
             System.out.println("Tast 2: Konkurrenceholdet under 18");
             System.out.println("Tast 3: Konkurrenceholdet over 18");
 
-            int valg = Main.tjekIntFromUser(keyboard);
+            int valg = Main.checkIntFromUser(keyboard);
             ArrayList team = Team.competitiveO18;
             String arrayName = "";
             switch (valg) {

@@ -4,7 +4,11 @@ import java.util.Scanner;
 public class CreateNewMember {
     static Scanner keyboard = new Scanner(System.in);
 
-    public static Member createNewMember(ArrayList<Member> membersList) {
+    public static void createNewMember(ArrayList<Member> membersList) {
+
+                System.out.println("Hvad er medlemmets navn?");
+        String Name = keyboard.nextLine();
+        if (Name.equals("0")) System.exit(0);
 
         System.out.println("Hvilen køn er medlemmet? (Mand/Kvinde/Andet)");
 
@@ -29,23 +33,18 @@ public class CreateNewMember {
             }
         }
 
-        System.out.println("Hvad er dit navn?");
-        String memberName = keyboard.nextLine();
-        if (memberName.equals("0")) System.exit(0);
+        System.out.println("Hvor gammel er medlemmet?");
+        int Age = getIntFromUser(keyboard);
+        if (Age == 0) System.exit(0);
 
-
-        System.out.println("Hvor gammel er du?");
-        int memberAge = getIntFromUser(keyboard);
-        if (memberAge == 0) System.exit(0);
-
-        System.out.println("Er medlemmet aktiv eller passiv?");
+        System.out.println("Er medlemskabet aktivt? (Ja / Nej)");
         String answerStatus = keyboard.nextLine();
         boolean isActiveMember;
         while (true) {
-            if (answerStatus.equalsIgnoreCase("aktiv")) {
+            if (answerStatus.equalsIgnoreCase("ja")) {
                 isActiveMember = true;
                 break;
-            } else if (answerStatus.equalsIgnoreCase("passiv")) {
+            } else if (answerStatus.equalsIgnoreCase("nej")) {
                 isActiveMember = false;
                 break;
             } else {
@@ -53,7 +52,7 @@ public class CreateNewMember {
                 answerStatus = keyboard.nextLine();
             }
         }
-        System.out.println("Vil du stille op i stævner? ja eller nej");
+        System.out.println("Vil medlemmet stille op i stævner? (Ja / Nej)");
         boolean isCompeting;
 
         String answerCompeting = keyboard.nextLine();
@@ -67,21 +66,19 @@ public class CreateNewMember {
                 isCompeting = false;
                 break;
             } else {
-                System.out.println("Det er ikke et gyldigt svar, prøv igen (ja/nej)");
+                System.out.println("Det er ikke et gyldigt svar, prøv igen (Ja / Nej)");
                 answerCompeting = keyboard.nextLine();
             }
         }
         boolean hasPaid = false;
-        boolean automatikPaid = false;
-        System.out.println("Du har skrevet, navn: " + memberName + ". Alder: " + memberAge +" . Hans status: "+isActiveMember+ ". Hans kompetetiv status er: " + isCompeting);
+        boolean automaticPayment = false;
+        System.out.println("Du har skrevet, navn: "+Name+", Køn:"+gender+", Alder: "+Age+", Medlemskabs status status: "+isActiveMember+". Kompetetiv status: "+isCompeting);
 
-            membersList.add(new Member(memberName, gender,  memberAge, isActiveMember, isCompeting, hasPaid, automatikPaid));
+        membersList.add(new Member(Name, gender,  Age, isActiveMember, isCompeting, hasPaid, automaticPayment));
         Team.assignTeams(membersList);
-        CreateCompobject.createCompobject(membersList);
-        MemberHandler.updateTextFile(membersList);
-
-            return new Member(memberName, gender,  memberAge, isActiveMember, isCompeting, hasPaid, automatikPaid);
-
+        CreateCompObject.createCompObject(membersList);
+        FileHandler.writeListToJson(membersList);
+        FileHandler.writeListToJson(membersList);
     }
 
     public static int getIntFromUser(Scanner keyboard) {

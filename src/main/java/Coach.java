@@ -16,6 +16,8 @@ public class Coach {
         this.team = team;
     }
 
+    Coach(){}
+
     public String toString(){
         return  name;
     }

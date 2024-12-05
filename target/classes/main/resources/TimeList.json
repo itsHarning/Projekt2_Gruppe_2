@@ -1,6 +1,6 @@
 [ {
   "memberId" : 1,
-  "memberName" : "Test Name",
+  "memberName" : "Katie Ledecky",
   "memberGender" : "FEMALE",
   "memberAge" : 17,
   "isActiveMember" : true,
@@ -9,10 +9,25 @@
   "automaticPayment" : false,
   "competitiveSwimmer" : {
     "coach" : {
+      "id" : 10,
       "name" : "Henrik Bønnestage",
       "arrayName" : "competitiveU18"
     },
-    "TimeHolder" : [ ]
+    "TimeHolder" : [ {
+      "discipline" : "BUTTERFLY",
+      "distance" : 200,
+      "time" : 260.000000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : true,
+      "meetName" : "Danish Champienship"
+    }, {
+      "discipline" : "FREESTYLE",
+      "distance" : 50,
+      "time" : 45.690000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : true,
+      "meetName" : "Olympic Games"
+    } ]
   }
 }, {
   "memberId" : 2,
@@ -25,28 +40,15 @@
   "automaticPayment" : false,
   "competitiveSwimmer" : {
     "coach" : {
+      "id" : 11,
       "name" : "Konrad Maldini",
       "arrayName" : " competitiveO18"
     },
-    "TimeHolder" : [ {
-      "discipline" : "BUTTERFLY",
-      "distance" : 200,
-      "time" : 260.000000000,
-      "dateSet" : "2024-12-05",
-      "isOfficial" : true,
-      "meetName" : "Test Meet"
-    }, {
-      "discipline" : "FREESTYLE",
-      "distance" : 50,
-      "time" : 45.690000000,
-      "dateSet" : "2024-12-05",
-      "isOfficial" : true,
-      "meetName" : "Meet Test"
-    } ]
+    "TimeHolder" : [ ]
   }
 }, {
   "memberId" : 3,
-  "memberName" : "Create Testing",
+  "memberName" : "György Tumpek",
   "memberGender" : "MALE",
   "memberAge" : 28,
   "isActiveMember" : true,
@@ -55,6 +57,7 @@
   "automaticPayment" : false,
   "competitiveSwimmer" : {
     "coach" : {
+      "id" : 11,
       "name" : "Konrad Maldini",
       "arrayName" : " competitiveO18"
     },
@@ -81,6 +84,7 @@
   "automaticPayment" : false,
   "competitiveSwimmer" : {
     "coach" : {
+      "id" : 11,
       "name" : "Konrad Maldini",
       "arrayName" : " competitiveO18"
     },
@@ -97,6 +101,7 @@
   "automaticPayment" : false,
   "competitiveSwimmer" : {
     "coach" : {
+      "id" : 11,
       "name" : "Konrad Maldini",
       "arrayName" : " competitiveO18"
     },
@@ -113,6 +118,7 @@
   "automaticPayment" : false,
   "competitiveSwimmer" : {
     "coach" : {
+      "id" : 11,
       "name" : "Konrad Maldini",
       "arrayName" : " competitiveO18"
     },
@@ -129,22 +135,7 @@
   "automaticPayment" : false,
   "competitiveSwimmer" : {
     "coach" : {
-      "name" : "Konrad Maldini",
-      "arrayName" : " competitiveO18"
-    },
-    "TimeHolder" : [ ]
-  }
-}, {
-  "memberId" : 9,
-  "memberName" : "Payment Tester",
-  "memberGender" : "MALE",
-  "memberAge" : 66,
-  "isActiveMember" : true,
-  "isCompeting" : true,
-  "hasPaid" : false,
-  "automaticPayment" : false,
-  "competitiveSwimmer" : {
-    "coach" : {
+      "id" : 11,
       "name" : "Konrad Maldini",
       "arrayName" : " competitiveO18"
     },
@@ -191,6 +182,7 @@
   "automaticPayment" : false,
   "competitiveSwimmer" : {
     "coach" : {
+      "id" : 11,
       "name" : "Konrad Maldini",
       "arrayName" : " competitiveO18"
     },
@@ -206,4 +198,21 @@
   "hasPaid" : false,
   "automaticPayment" : false,
   "competitiveSwimmer" : null
+}, {
+  "memberId" : 15,
+  "memberName" : "Kira Toussaint",
+  "memberGender" : "FEMALE",
+  "memberAge" : 30,
+  "isActiveMember" : true,
+  "isCompeting" : true,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "competitiveSwimmer" : {
+    "coach" : {
+      "id" : 11,
+      "name" : "Konrad Maldini",
+      "arrayName" : " competitiveO18"
+    },
+    "TimeHolder" : [ ]
+  }
 } ]

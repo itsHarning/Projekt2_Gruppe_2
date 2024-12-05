@@ -49,7 +49,9 @@ public class Member {
         automaticPayment = autoPay;
     }
 
-    Member(){}
+    Member(){
+        numOfMembers++;
+    }
 
     public String toString(){
         return "ID: "+memberId+"\tNavn: "+memberName+"\tkøn: "+memberGender+"\talder: "+memberAge+"\ter medlemskab aktivt: "+isActiveMember+", konkurrence svømmer: "+isCompeting+", har betalt: "+hasPaid+"\n";
