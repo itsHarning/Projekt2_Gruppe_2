@@ -15,6 +15,20 @@
     },
     "TimeHolder" : [ {
       "discipline" : "BUTTERFLY",
+      "distance" : 100,
+      "time" : 420.000000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : false,
+      "meetName" : null
+    }, {
+      "discipline" : "BUTTERFLY",
+      "distance" : 100,
+      "time" : 500.000000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : false,
+      "meetName" : null
+    }, {
+      "discipline" : "BUTTERFLY",
       "distance" : 200,
       "time" : 260.000000000,
       "dateSet" : "2024-12-05",
@@ -200,7 +214,14 @@
       "name" : "Konrad Maldini",
       "arrayName" : " competitiveO18"
     },
-    "TimeHolder" : [ ]
+    "TimeHolder" : [ {
+      "discipline" : "BUTTERFLY",
+      "distance" : 100,
+      "time" : 300.000000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : true,
+      "meetName" : "Christmas Meet"
+    } ]
   }
 }, {
   "memberId" : 14,
@@ -227,7 +248,14 @@
       "name" : "Konrad Maldini",
       "arrayName" : " competitiveO18"
     },
-    "TimeHolder" : [ ]
+    "TimeHolder" : [ {
+      "discipline" : "BUTTERFLY",
+      "distance" : 100,
+      "time" : 666.000000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : true,
+      "meetName" : "Christmas Meet"
+    } ]
   }
 }, {
   "memberId" : 16,

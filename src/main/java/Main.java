@@ -143,7 +143,7 @@ public class Main {
                     // TODO: open a method to see who they are Coaching for.
                     break;
                 case 2:
-                    // TODO: open a method to se top 5 for each of the swimming discipline.
+                    CompetitiveMember.getTopFiveSwimmers(memberList);
                     break;
 
                 case 3:

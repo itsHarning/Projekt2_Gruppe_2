@@ -236,14 +236,37 @@ public class CompetitiveMember{
     public static ArrayList<TimeHolder> autoUpdateFastestTime(ArrayList<TimeHolder> listOfTimes, Discipline discipline, int distance){
         ArrayList<TimeHolder> filteredTimeList = new ArrayList<>();
         ArrayList<TimeHolder> dumpList = new ArrayList<>();
-        for (TimeHolder time : listOfTimes){
-            if (time.discipline == discipline || time.distance == distance) filteredTimeList.add(time);
+        for (TimeHolder time: listOfTimes){
+            if (time.discipline == discipline && time.distance == distance) filteredTimeList.add(time);
             else dumpList.add(time);
         }
         filteredTimeList.sort(Comparator.comparing(TimeHolder::getDuration));
         if (filteredTimeList.size() > 5) filteredTimeList.subList(5, filteredTimeList.size()).clear();
         filteredTimeList.addAll(dumpList);
         return filteredTimeList;
+    }
+
+    public static void getTopFiveSwimmers(ArrayList<Member> memberList){
+        ArrayList<TimeHolder> filteredTimeList = new ArrayList<>();
+        System.out.println("Vælg disciplin");
+        String stringDiscipline = keyboard.nextLine();
+        Discipline discipline = Discipline.valueOf(stringDiscipline.toUpperCase());
+        System.out.println("Vælg distance");
+        int distance = keyboard.nextInt();
+        keyboard.nextLine();
+        for (Member member: memberList){
+            if (member.competitiveSwimmer != null){
+                for (TimeHolder time: member.competitiveSwimmer.personalTimes){
+                    if (time.discipline == discipline && time.distance == distance)filteredTimeList.add(time);
+                }
+                if (!member.competitiveSwimmer.personalTimes.isEmpty()){
+                    filteredTimeList.sort(Comparator.comparing(TimeHolder::getDuration));
+                    System.out.println(member.memberName + "s hurtigeste tid i " + distance + "m " + discipline);
+                    System.out.println(filteredTimeList.getFirst());
+                    filteredTimeList.clear();
+                }
+            }
+        }
     }
 
     public static void printMemberTimes(ArrayList<Member> memberList){
