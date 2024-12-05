@@ -72,12 +72,11 @@ public class CreateNewMember {
         }
         boolean hasPaid = false;
         boolean automaticPayment = false;
-        System.out.println("Du har skrevet, navn: "+Name+", Køn:"+gender+", Alder: "+Age+", Medlemskabs status status: "+isActiveMember+". Kompetetiv status: "+isCompeting);
+        System.out.println("Du har skrevet, navn: "+Name+", Køn: "+gender+", Alder: "+Age+", Medlemskabs status status: "+isActiveMember+". Kompetetiv status: "+isCompeting);
 
         membersList.add(new Member(Name, gender,  Age, isActiveMember, isCompeting, hasPaid, automaticPayment));
-        Team.assignTeams(membersList);
+        // Team.assignTeams(membersList);
         CreateCompObject.createCompObject(membersList);
-        FileHandler.writeListToJson(membersList);
         FileHandler.writeListToJson(membersList);
     }
 

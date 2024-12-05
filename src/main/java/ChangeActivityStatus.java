@@ -60,24 +60,27 @@ public class ChangeActivityStatus {
         keyboard.nextLine();
         for (Member m : memberList) {
             if (m.memberId == memberId) {
-                System.out.println("Tast 1 - hvis medlemmet skal være motionssvømmer");
-                System.out.println("Tast 2 - hvis medlemmet skal være konkurrencesvømmer");
+                while (true) {
+                    System.out.println("Skal " + m.memberName + " stille op til stævner? (Ja / Nej)");
 
-                int answerInt = Main.checkIntFromUser(keyboard);
-                if (answerInt == 1) {
-                    System.out.println(m.memberName + " er nu registreret som motionssvømmer");
+                    String answer = keyboard.nextLine();
+                    if (answer.equalsIgnoreCase("nej")) {
+                        m.isCompeting = false;
+                        System.out.println(m.memberName + " er nu registreret som motionssvømmer");
+                        break;
+                    } else if (answer.equalsIgnoreCase("ja")) {
+                        System.out.println(m.memberName + " er nu registreret som konkurrencesvømmer");
+                        m.isCompeting = true;
+                        Team.assignTeams(memberList);
+                        CreateCompObject.createCompObject(memberList);
+                        break;
+                    } else {
+                        System.out.println("Dette er ikke et gyldigt svar, prøv igen");
+                        System.out.println();
+                    }
                 }
-                if (answerInt == 2) {
-                    System.out.println(m.memberName + " er nu registreret som konkurrencesvømmer");
-                    m.isCompeting = true;
-                    Team.assignTeams(memberList);
-                    CreateCompObject.createCompObject(memberList);
-                } else {
-                    System.out.println("Dette er ikke et gyldigt svar, prøv igen");
-                    System.out.println();
-                }
-                break;
             }
+
         }
         FileHandler.writeListToJson(memberList);
     }

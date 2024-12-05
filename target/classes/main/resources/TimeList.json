@@ -61,7 +61,14 @@
       "name" : "Konrad Maldini",
       "arrayName" : " competitiveO18"
     },
-    "TimeHolder" : [ ]
+    "TimeHolder" : [ {
+      "discipline" : "BUTTERFLY",
+      "distance" : 100,
+      "time" : 63.400000000,
+      "dateSet" : "1957-05-26",
+      "isOfficial" : false,
+      "meetName" : null
+    } ]
   }
 }, {
   "memberId" : 4,
@@ -211,6 +218,57 @@
     "coach" : {
       "id" : 11,
       "name" : "Konrad Maldini",
+      "arrayName" : " competitiveO18"
+    },
+    "TimeHolder" : [ ]
+  }
+}, {
+  "memberId" : 16,
+  "memberName" : "Jeanette Ottesen",
+  "memberGender" : "FEMALE",
+  "memberAge" : 36,
+  "isActiveMember" : true,
+  "isCompeting" : true,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "competitiveSwimmer" : {
+    "coach" : {
+      "id" : 15,
+      "name" : "Lena Baldersbæk",
+      "arrayName" : " competitiveO18"
+    },
+    "TimeHolder" : [ ]
+  }
+}, {
+  "memberId" : 17,
+  "memberName" : "Rikako Ikee",
+  "memberGender" : "FEMALE",
+  "memberAge" : 24,
+  "isActiveMember" : true,
+  "isCompeting" : true,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "competitiveSwimmer" : {
+    "coach" : {
+      "id" : 15,
+      "name" : "Lena Baldersbæk",
+      "arrayName" : " competitiveO18"
+    },
+    "TimeHolder" : [ ]
+  }
+}, {
+  "memberId" : 18,
+  "memberName" : "Inge de Bruijn",
+  "memberGender" : "FEMALE",
+  "memberAge" : 51,
+  "isActiveMember" : true,
+  "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "competitiveSwimmer" : {
+    "coach" : {
+      "id" : 15,
+      "name" : "Lena Baldersbæk",
       "arrayName" : " competitiveO18"
     },
     "TimeHolder" : [ ]

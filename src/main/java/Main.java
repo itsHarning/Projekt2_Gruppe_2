@@ -38,7 +38,7 @@ public class Main {
         System.out.println("Tast 1: Klubbens formand");
         System.out.println("Tast 2: Klubbens kasserer");
         System.out.println("Tast 3: Træner");
-        System.out.println("Tast 0: For at luk programmet ned");
+        System.out.println("Tast 0: Luk programmet");
         int choice = checkIntFromUser(keyboard);
         if (choice == 0) break;
         switch (choice) {
@@ -63,11 +63,11 @@ public class Main {
         System.out.println("--Formand--");
         while (true) {
             System.out.println("Tast 1: Se alle medlemmer");
-            System.out.println("Tast 2: Lav nyt medlem");
-            System.out.println("Tast 3: Ændre om de er aktive eller passive");
+            System.out.println("Tast 2: Opret nyt medlem");
+            System.out.println("Tast 3: Ændre om medlemmet er aktive eller passive");
             System.out.println("Tast 4: Ændre om medlemmet stiller op til stævner");
             System.out.println("Tast 5: Opdater hold");
-            System.out.println("Tast 0: For at gå tilbage");
+            System.out.println("Tast 0: Tilbage til start");
             int choice = checkIntFromUser(keyboard);
             if (choice == 0) break;
             switch (choice) {
@@ -76,7 +76,6 @@ public class Main {
                     break;
                 case 2:
                     CreateNewMember.createNewMember(memberList);
-                    memberList.addAll(FileHandler.getListFromJson());
                     break;
                 case 3:
                      ChangeActivityStatus.changeActivityStatus(memberList);
