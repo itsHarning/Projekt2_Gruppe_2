@@ -21,17 +21,16 @@ public class FileHandler {
         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         objectMapper.setVisibility(VisibilityChecker.Std.defaultInstance().withFieldVisibility(JsonAutoDetect.Visibility.ANY));
         try {
-            List<Member> memberList = objectMapper.readValue(
+            //memberList.forEach(x -> System.out.println(x.toString()));
+            return objectMapper.readValue(
                     new File("src/main/resources/TimeList.json"),
                     new TypeReference<List<Member>>() {});
-            //memberList.forEach(x -> System.out.println(x.toString()));
-            return memberList;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void writeListToJson(ArrayList tempList){
+    public static void writeListToJson(ArrayList<Member> tempList){
         ObjectMapper objectMapper = JsonMapper.builder().findAndAddModules().build();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables standard indentation ("pretty printing")
         objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS); // to allow serialization of "empty" POJOs (no properties to serialize, without this setting, an exception is thrown in those cases)

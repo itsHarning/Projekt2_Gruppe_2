@@ -5,7 +5,7 @@ public class Member {
     @JsonProperty("memberId")
     public int memberId;
     @JsonProperty("numOfMembers")
-    static int numOfMembers=0;
+    static int numOfMembers=1;
     @JsonProperty("memberName")
     String memberName;
     @JsonProperty("memberGender")

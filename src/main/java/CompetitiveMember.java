@@ -1,4 +1,3 @@
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.Duration;
@@ -6,6 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class CompetitiveMember{
@@ -32,17 +32,38 @@ public class CompetitiveMember{
         LocalDate dateSet = LocalDate.now();
         boolean isOfficial = false;
         String meetName = "";
+        Member member = new Member();
+        boolean newMember = true;
 
-        // This loop will run as long as a member is not found.
-        boolean infoGotten = false;
-        while (!infoGotten) {
-            Member member = getMemberFromId(memberList);
-            if (member.memberId == 0) return;
+        // This loop will run until method is finished
+        while (true) {
+            if (newMember) {
+                member = getMemberFromId(memberList);
+                if (member.memberId == 0) return;
+            }
+
+            while (true) {
+                if (member.competitiveSwimmer == null) {
+                    System.out.println(member.memberName + " er ikke oprettet som konkurrence svømmer");
+                    System.out.println("Vil du oprette dem, og registrere deres tid?");
+                    String answer = keyboard.nextLine();
+                    if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q")) return;
+                    if (answer.equalsIgnoreCase("ja")) {
+                        System.out.println(member.memberName + " er nu registreret som konkurrencesvømmer");
+                        member.isCompeting = true;
+                        CreateCompObject.createCompObject(memberList);
+                        break;
+                    } else if (answer.equalsIgnoreCase("nej")) {
+                        System.out.println("Medlemmet skal være, eller tidligere have været konkurrence svømmer for at få registreret tider");
+                        return;
+                    } else System.out.println("Ikke et gyldigt svar, prøv igen! (Ja / Nej)");
+                } else break;
+            }
 
             // loop runs until a valid discipline and distance has been given
             while (true) {
                 System.out.println("I hvilken disciplin skal der registreres en ny tid?");
-                System.out.println("Freestyle, Backstroke, Breaststroke, Butterfly, Medler, eller Open Water");
+                System.out.println("Freestyle, Backstroke, Breaststroke, Butterfly, Medley, eller Open Water");
                 stringDiscipline = keyboard.nextLine();
                 if (stringDiscipline.equalsIgnoreCase("0") || stringDiscipline.equalsIgnoreCase("q"))
                     return;
@@ -130,7 +151,10 @@ public class CompetitiveMember{
 
             System.out.println("Hvilken dato blev tiden sat? (yyyy-mm-dd)");
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // sets up a formatter for how LocalDateTime should parse strings
-            dateSet = LocalDate.parse(keyboard.nextLine(), formatter);
+            String givenDate = keyboard.nextLine();
+            if (givenDate.equalsIgnoreCase("0") || givenDate.equalsIgnoreCase("q")) return;
+            else if (givenDate.equalsIgnoreCase("i dag")) dateSet = LocalDate.now();
+            else dateSet = LocalDate.parse(givenDate, formatter);
 
             // gets if the time was set at a meet or not
             System.out.println("Blev tiden sat til et stævne? (Ja / Nej)");
@@ -170,14 +194,11 @@ public class CompetitiveMember{
                 // either continues if correct, or restarts method if incorrect
                 switch (infoAnswer) {
                     case ("ja"):
-                        // TODO: would be cool if you could go "I want to give another time to the same member" but that would seemingly require a second return which isn't possible?
                         if (!isOfficial) {
                             member.competitiveSwimmer.personalTimes.add(new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial));
-                            return;
                             // return new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial);
                         } else {
                             member.competitiveSwimmer.personalTimes.add(new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial, meetName));
-                            return;
                             // return new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial, meetName);
                         }
                     case ("nej"):
@@ -188,19 +209,41 @@ public class CompetitiveMember{
                 }
                 break;
             }
-            break;
+            member.competitiveSwimmer.personalTimes = autoUpdateFastestTime(member.competitiveSwimmer.personalTimes, discipline, distance);
+            while (true) {
+                System.out.println("Vil du gerne oprette endnu en tid? (Ja / Nej)");
+                String answer = keyboard.nextLine();
+                if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q")) return;
+                if (answer.equalsIgnoreCase("ja")) {
+                    while (true) {
+                        System.out.println("Samme medlem? (Ja / Nej)");
+                        String secondAnswer = keyboard.nextLine();
+                        if (secondAnswer.equalsIgnoreCase("0") || secondAnswer.equalsIgnoreCase("q")) return;
+                        if (secondAnswer.equalsIgnoreCase("ja")) {
+                            newMember = false;
+                            break;
+                        } else if (secondAnswer.equalsIgnoreCase("nej")) break;
+                        else System.out.println("Ikke et gyldigt svar, prøv igen! (Ja / Nej)");
+                    }
+                    break;
+                } else if (answer.equalsIgnoreCase("nej")) return;
+                else System.out.println("Ikke et gyldigt svar, prøv igen! (Ja / Nej)");
+            }
+            FileHandler.writeListToJson(memberList);
         }
-        // return new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial);
     }
 
-    public ArrayList<Double> updateFastestTime(ArrayList<Double> fastestTimes){
-        fastestTimes.sort(null);
-        System.out.println(fastestTimes);
-        int listSize = fastestTimes.size();
-        System.out.println(listSize);
-        if (listSize > 5) fastestTimes.subList(5,listSize).clear();
-        System.out.println(fastestTimes);
-        return fastestTimes;
+    public static ArrayList<TimeHolder> autoUpdateFastestTime(ArrayList<TimeHolder> listOfTimes, Discipline discipline, int distance){
+        ArrayList<TimeHolder> filteredTimeList = new ArrayList<>();
+        ArrayList<TimeHolder> dumpList = new ArrayList<>();
+        for (TimeHolder time : listOfTimes){
+            if (time.discipline == discipline || time.distance == distance) filteredTimeList.add(time);
+            else dumpList.add(time);
+        }
+        filteredTimeList.sort(Comparator.comparing(TimeHolder::getDuration));
+        if (filteredTimeList.size() > 5) filteredTimeList.subList(5, filteredTimeList.size()).clear();
+        filteredTimeList.addAll(dumpList);
+        return filteredTimeList;
     }
 
     public static void printMemberTimes(ArrayList<Member> memberList){
@@ -228,7 +271,7 @@ public class CompetitiveMember{
     public static Member getMemberFromId(ArrayList<Member> memberList) {
         // This loop will run as long as a member is not found.
         while (true) {
-            System.out.println("Indtast IDet på det medlem der skal registrere tider");
+            System.out.println("Indtast IDet på medlemmet");
             int memberId = checkIntFromUser();
             if (memberId == 0) break;
 

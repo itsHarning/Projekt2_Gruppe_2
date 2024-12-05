@@ -25,12 +25,12 @@ public class ChangeActivityStatus {
     }
 
 
-    public static void changeActivityStatus(ArrayList<Member> memberlist) {
+    public static void changeActivityStatus(ArrayList<Member> memberList) {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Skriv ID på medlemmet");
         int memberID = keyboard.nextInt();
         keyboard.nextLine();
-        for (Member m : memberlist) {
+        for (Member m : memberList) {
             if (m.memberId == memberID) {
                 System.out.println("Hvad skal medlemmets status rettet til? (aktiv/passiv)");
                 String answer = keyboard.nextLine();
@@ -49,8 +49,7 @@ public class ChangeActivityStatus {
                 }
             }
         }
-        MemberHandler.updateTextFile((memberlist));
-
+        FileHandler.writeListToJson(memberList);
     }
 
     public static void changeCompetitiveStatus(ArrayList<Member> memberList) {

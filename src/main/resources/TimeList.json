@@ -68,6 +68,13 @@
       "dateSet" : "1957-05-26",
       "isOfficial" : false,
       "meetName" : null
+    }, {
+      "discipline" : "MEDLEY",
+      "distance" : 200,
+      "time" : 344.000000000,
+      "dateSet" : "2024-09-09",
+      "isOfficial" : false,
+      "meetName" : null
     } ]
   }
 }, {
@@ -272,5 +279,109 @@
       "arrayName" : " competitiveO18"
     },
     "TimeHolder" : [ ]
+  }
+}, {
+  "memberId" : 19,
+  "memberName" : "Keralis",
+  "memberGender" : "MALE",
+  "memberAge" : 69,
+  "isActiveMember" : true,
+  "isCompeting" : true,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "competitiveSwimmer" : {
+    "coach" : {
+      "id" : 15,
+      "name" : "Lena Baldersbæk",
+      "arrayName" : " competitiveO18"
+    },
+    "TimeHolder" : [ ]
+  }
+}, {
+  "memberId" : 20,
+  "memberName" : "Mike Sheets",
+  "memberGender" : "MALE",
+  "memberAge" : 18,
+  "isActiveMember" : true,
+  "isCompeting" : true,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "competitiveSwimmer" : {
+    "coach" : {
+      "id" : 15,
+      "name" : "Lena Baldersbæk",
+      "arrayName" : " competitiveO18"
+    },
+    "TimeHolder" : [ {
+      "discipline" : "BUTTERFLY",
+      "distance" : 100,
+      "time" : 240.000000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : false,
+      "meetName" : null
+    }, {
+      "discipline" : "BUTTERFLY",
+      "distance" : 100,
+      "time" : 300.000000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : false,
+      "meetName" : null
+    }, {
+      "discipline" : "BUTTERFLY",
+      "distance" : 100,
+      "time" : 360.000000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : false,
+      "meetName" : null
+    }, {
+      "discipline" : "BUTTERFLY",
+      "distance" : 100,
+      "time" : 500.000000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : false,
+      "meetName" : null
+    }, {
+      "discipline" : "BUTTERFLY",
+      "distance" : 100,
+      "time" : 666.000000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : false,
+      "meetName" : null
+    }, {
+      "discipline" : "OPEN_WATER",
+      "distance" : 10000,
+      "time" : 1337.000000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : false,
+      "meetName" : null
+    }, {
+      "discipline" : "OPEN_WATER",
+      "distance" : 10000,
+      "time" : 3661.100000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : false,
+      "meetName" : null
+    }, {
+      "discipline" : "OPEN_WATER",
+      "distance" : 10000,
+      "time" : 5587.000000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : false,
+      "meetName" : null
+    }, {
+      "discipline" : "OPEN_WATER",
+      "distance" : 10000,
+      "time" : 7322.200000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : false,
+      "meetName" : null
+    }, {
+      "discipline" : "OPEN_WATER",
+      "distance" : 10000,
+      "time" : 8000.000000000,
+      "dateSet" : "2024-12-05",
+      "isOfficial" : false,
+      "meetName" : null
+    } ]
   }
 } ]
