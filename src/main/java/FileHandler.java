@@ -53,9 +53,9 @@ public class FileHandler {
         System.out.println("Member Printed");
         System.out.println(testMember.competitiveSwimmer);
         ArrayList<TimeHolder> testList = testMember.competitiveSwimmer.personalTimes;
-        System.out.println(memberList);
         testList.add(new TimeHolder(Discipline.BUTTERFLY,200, Duration.parse("pt4m20s"), LocalDate.now(),true,"Test Meet"));
         testList.add(new TimeHolder(Discipline.FREESTYLE,50,Duration.parse("pt45.69s"),LocalDate.now(),true,"Meet Test"));
+        System.out.println(testMember.competitiveSwimmer);
         System.out.println(testList);
         System.out.println("testList printed");
         writeMemberTimeToJson(memberList);

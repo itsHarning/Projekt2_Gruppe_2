@@ -7,14 +7,18 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CompetitiveMember extends ArrayList<TimeHolder>{
+public class CompetitiveMember{
     static Scanner keyboard = new Scanner(System.in);
-    Coach coach;
+    public Coach coach;
     @JsonProperty("TimeHolder")
     ArrayList<TimeHolder> personalTimes = new ArrayList<>();
 
     CompetitiveMember(Coach coach){
         this.coach = coach;
+    }
+
+    public String toString(){
+        return "Træner: "+coach+"\tTider: "+personalTimes;
     }
 
     public static void createNewTime(ArrayList<Member> memberList){

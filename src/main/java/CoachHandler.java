@@ -60,22 +60,16 @@ public class CoachHandler {
                     break;
                 default:
                     System.out.println("Ugyldigt svar.");
-                    
             }
             templist.add(new Coach(newCoachName,arrayName,team));
-
-
-
-
             updateTextFile(templist);
          }
-
     }
 
 
     public static void updateTextFile(ArrayList<Coach> tempList) {
         try {
-            FileWriter file = new FileWriter("src//CoachList.txt", false);
+            FileWriter file = new FileWriter("src/main/resources/CoachList.txt", false);
             PrintWriter out = new PrintWriter(file);
             for (Coach coach: tempList){
                 int id = coach.id;
@@ -127,13 +121,11 @@ public class CoachHandler {
 
         } catch (IOException e) {
             System.out.println("Could not find file");
-
         }
         return tempList;
     }
     public static void printTeam (Coach coach){
         System.out.println(coach.team);
-
     }
 }
 
