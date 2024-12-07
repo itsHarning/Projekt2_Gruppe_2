@@ -272,7 +272,14 @@
       "name" : "Lena Baldersbæk",
       "arrayName" : " competitiveO18"
     },
-    "TimeHolder" : [ ]
+    "TimeHolder" : [ {
+      "discipline" : "BUTTERFLY",
+      "distance" : 200,
+      "time" : 300.000000000,
+      "dateSet" : "2024-12-07",
+      "isOfficial" : true,
+      "meetName" : "Weekends Testing"
+    } ]
   }
 }, {
   "memberId" : 17,
@@ -289,7 +296,14 @@
       "name" : "Lena Baldersbæk",
       "arrayName" : " competitiveO18"
     },
-    "TimeHolder" : [ ]
+    "TimeHolder" : [ {
+      "discipline" : "BREASTSTROKE",
+      "distance" : 100,
+      "time" : 666.000000000,
+      "dateSet" : "2024-12-07",
+      "isOfficial" : true,
+      "meetName" : "Weekends Testing"
+    } ]
   }
 }, {
   "memberId" : 18,

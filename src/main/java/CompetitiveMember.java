@@ -4,9 +4,8 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class CompetitiveMember{
     static Scanner keyboard = new Scanner(System.in);
@@ -34,6 +33,8 @@ public class CompetitiveMember{
         String meetName = "";
         Member member = new Member();
         boolean newMember = true;
+
+        System.out.println("Du har valgt at oprette en ny tid.");
 
         // This loop will run until method is finished
         while (true) {
@@ -248,25 +249,39 @@ public class CompetitiveMember{
 
     public static void getTopFiveSwimmers(ArrayList<Member> memberList){
         ArrayList<TimeHolder> filteredTimeList = new ArrayList<>();
+        List<TimeHolder> testTimeList = new ArrayList<>();
         System.out.println("Vælg disciplin");
-        String stringDiscipline = keyboard.nextLine();
+        String stringDiscipline = "butterfly";
         Discipline discipline = Discipline.valueOf(stringDiscipline.toUpperCase());
         System.out.println("Vælg distance");
-        int distance = keyboard.nextInt();
-        keyboard.nextLine();
-        for (Member member: memberList){
-            if (member.competitiveSwimmer != null){
-                for (TimeHolder time: member.competitiveSwimmer.personalTimes){
-                    if (time.discipline == discipline && time.distance == distance)filteredTimeList.add(time);
-                }
-                if (!member.competitiveSwimmer.personalTimes.isEmpty()){
-                    filteredTimeList.sort(Comparator.comparing(TimeHolder::getDuration));
-                    System.out.println(member.memberName + "s hurtigeste tid i " + distance + "m " + discipline);
-                    System.out.println(filteredTimeList.getFirst());
-                    filteredTimeList.clear();
-                }
-            }
+        int distance = 100;
+        // keyboard.nextLine();
+        List<Member> filteredMemberList = memberList.stream().filter(compSwim -> compSwim.competitiveSwimmer != null
+                && !compSwim.competitiveSwimmer.personalTimes.isEmpty()).toList();
+        for (Member member: filteredMemberList){
+            testTimeList = member.competitiveSwimmer.personalTimes.stream().filter(time -> time.discipline == discipline
+                    && time.distance == distance).toList();
         }
+        ArrayList<TimeHolder> testArray = new ArrayList<>(testTimeList);
+        testArray.sort(Comparator.comparing(TimeHolder::getDuration));
+        // for (Member member: memberList){
+        //     if (member.competitiveSwimmer != null){
+        //         for (TimeHolder time: member.competitiveSwimmer.personalTimes){
+        //             if (time.discipline == discipline && time.distance == distance)filteredTimeList.add(time);
+        //         }
+        //         if (!member.competitiveSwimmer.personalTimes.isEmpty()){
+        //             filteredTimeList.sort(Comparator.comparing(TimeHolder::getDuration));
+        //             System.out.println(member.memberName + "s hurtigeste tid i " + distance + "m " + discipline);
+        //             System.out.println(filteredTimeList.getFirst());
+        //             filteredTimeList.clear();
+        //         }
+        //     }
+        // }
+        System.out.println(testTimeList);
+    }
+
+    public void getDisciplineAndDistance(Discipline discipline, int distance){
+        Optional<TimeHolder> test = this.personalTimes.stream().filter(time -> time.discipline == discipline && time.distance == distance).findFirst();
     }
 
     public static void printMemberTimes(ArrayList<Member> memberList){
