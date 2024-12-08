@@ -24,9 +24,8 @@ public class CompetitiveMember{
     }
 
     public static void createNewTime(ArrayList<Member> memberList){
-        String stringDiscipline = "";
         Discipline discipline;
-        int distance = 0;
+        int distance;
         Duration swimTime = Duration.parse("pt0s"); // parses duration from string in correct format, such as "1h33m7.69s"
         LocalDate dateSet = LocalDate.now();
         boolean isOfficial = false;
@@ -61,89 +60,12 @@ public class CompetitiveMember{
                 } else break;
             }
 
-            // loop runs until a valid discipline and distance has been given
-            while (true) {
-                System.out.println("I hvilken disciplin skal der registreres en ny tid?");
-                System.out.println("Freestyle, Backstroke, Breaststroke, Butterfly, Medley, eller Open Water");
-                stringDiscipline = keyboard.nextLine();
-                if (stringDiscipline.equalsIgnoreCase("0") || stringDiscipline.equalsIgnoreCase("q"))
-                    return;
-
-                // handles getting valid distance from each discipline
-                switch (stringDiscipline) {
-                    case ("freestyle"):
-                        discipline = Discipline.FREESTYLE;
-                        System.out.println("Hvilken distance blev der svømmet freestyle?");
-                        System.out.println("de mulige distancer er 50, 100, 200, 400, 800, 1500");
-                        while (true) {
-                            distance = checkIntFromUser();
-                            if (distance == 0) return;
-                            switch (distance) {
-                                case (50):
-                                case (100):
-                                case (200):
-                                case (400):
-                                case (800):
-                                case (1500):
-                                    break;
-                                default:
-                                    System.out.println("Distancen du har indtastet er ikke gyldig");
-                                    System.out.println("Venligst prøv igen og indtast en gyldig distance (50, 100, 200, 400, 800, og 1500)");
-                                    continue;
-                            }
-                            break;
-                        }
-                        break;
-                    case ("backstroke"):
-                    case ("breaststroke"):
-                    case ("butterfly"):
-                        discipline = Discipline.valueOf(stringDiscipline.toUpperCase());
-                        System.out.println("Hvilken distance blev der svømmet " + stringDiscipline + "?");
-                        System.out.println("De mulige distancer er 100 og 200");
-                        while (true) {
-                            distance = checkIntFromUser();
-                            if (distance == 0) return;
-                            switch (distance) {
-                                case (100):
-                                case (200):
-                                    break;
-                                default:
-                                    System.out.println("Distancen du har indtastet er ikke gyldig");
-                                    System.out.println("Venligst prøv igen og indtast en gyldig distance (100 og 200)");
-                                    continue;
-                            }
-                            break;
-                        }
-                        break;
-                    case ("medley"):
-                        discipline = Discipline.MEDLEY;
-                        System.out.println("Hvilken distance blev der svømmet medley?");
-                        System.out.println("De mulige distancer er 200 og 400");
-                        while (true) {
-                            distance = checkIntFromUser();
-                            if (distance == 0) return;
-                            switch (distance) {
-                                case (200):
-                                case (400):
-                                    break;
-                                default:
-                                    System.out.println("Distancen du har indtastet er ikke gyldig");
-                                    System.out.println("Venligst prøv igen og indtast en gyldig distance (200 og 400)");
-                                    continue;
-                            }
-                            break;
-                        }
-                        break;
-                    case ("open water"):
-                        discipline = Discipline.OPEN_WATER;
-                        distance = 10_000;
-                        break;
-                    default:
-                        System.out.println("Disciplinen du har indtastet er ikke gyldig");
-                        System.out.println("Venligst prøv igen, og indtast en gyldig disciplin (freestyle, backstroke, breaststroke, butterfly, medley, og open water)");
-                        continue;
-                }
-                break;
+            // gets the discipline and distance with the method getDisciplineAndDistance
+            TimeHolder disciplineAndDistance = getDisciplineAndDistance();
+            if (disciplineAndDistance == null) return;
+            else {
+                discipline = disciplineAndDistance.discipline;
+                distance = disciplineAndDistance.distance;
             }
 
             // gets the swimmers time
@@ -183,9 +105,9 @@ public class CompetitiveMember{
             System.out.println("Er dette den korrekte information?");
             String formattedTime = durationFormatter(swimTime);
             if (isOfficial) {
-                System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName + "\tDisciplin: " + stringDiscipline + "\tDistance: " + distance + "\tTid: " + formattedTime + "\tDato: " + dateSet + "\tSat til stævnet " + meetName);
+                System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName + "\tDisciplin: " + discipline + "\tDistance: " + distance + "\tTid: " + formattedTime + "\tDato: " + dateSet + "\tSat til stævnet " + meetName);
             } else {
-                System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName + "\tDisciplin: " + stringDiscipline + "\tDistance: " + distance + "\tTid: " + formattedTime + "\tDato: " + dateSet + "\tTiden blev sat til en træning");
+                System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName + "\tDisciplin: " + discipline + "\tDistance: " + distance + "\tTid: " + formattedTime + "\tDato: " + dateSet + "\tTiden blev sat til en træning");
             }
             System.out.println("Ja / Nej");
             while (true) {
@@ -197,10 +119,8 @@ public class CompetitiveMember{
                     case ("ja"):
                         if (!isOfficial) {
                             member.competitiveSwimmer.personalTimes.add(new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial));
-                            // return new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial);
                         } else {
                             member.competitiveSwimmer.personalTimes.add(new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial, meetName));
-                            // return new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial, meetName);
                         }
                     case ("nej"):
                         break;
@@ -210,7 +130,11 @@ public class CompetitiveMember{
                 }
                 break;
             }
+
+            // sorts the personalTimes list, and cuts it if it has more than five items
             member.competitiveSwimmer.personalTimes = autoUpdateFastestTime(member.competitiveSwimmer.personalTimes, discipline, distance);
+
+            // checks if you want to create another time, and reruns the program if you do. Either with the same member, or a new one
             while (true) {
                 System.out.println("Vil du gerne oprette endnu en tid? (Ja / Nej)");
                 String answer = keyboard.nextLine();
@@ -234,6 +158,99 @@ public class CompetitiveMember{
         }
     }
 
+    public static TimeHolder getDisciplineAndDistance(){
+        Discipline discipline;
+        TimeHolder returnObject;
+        int distance;
+        // loop runs until a valid discipline and distance has been given
+        while (true) {
+            System.out.println("I hvilken disciplin vil du bruge");
+            System.out.println("Freestyle, Backstroke, Breaststroke, Butterfly, Medley, eller Open Water");
+            String stringDiscipline = keyboard.nextLine().toUpperCase();
+            if (stringDiscipline.equalsIgnoreCase("0") || stringDiscipline.equalsIgnoreCase("q"))
+                return null;
+
+            // handles getting valid distance from each discipline
+            switch (stringDiscipline) {
+                case ("FREESTYLE"):
+                    discipline = Discipline.FREESTYLE;
+                    System.out.println("Hvilken distance blev der svømmet freestyle?");
+                    System.out.println("de mulige distancer er 50, 100, 200, 400, 800, 1500");
+                    while (true) {
+                        distance = checkIntFromUser();
+                        if (distance == 0) return null;
+                        switch (distance) {
+                            case (50):
+                            case (100):
+                            case (200):
+                            case (400):
+                            case (800):
+                            case (1500):
+                                break;
+                            default:
+                                System.out.println("Distancen du har indtastet er ikke gyldig");
+                                System.out.println("Venligst prøv igen og indtast en gyldig distance (50, 100, 200, 400, 800, og 1500)");
+                                continue;
+                        }
+                        break;
+                    }
+                    break;
+                case ("BACKSTROKE"):
+                case ("BREASTSTROKE"):
+                case ("BUTTERFLY"):
+                    discipline = Discipline.valueOf(stringDiscipline);
+                    System.out.println("Hvilken distance blev der svømmet " + stringDiscipline + "?");
+                    System.out.println("De mulige distancer er 100 og 200");
+                    while (true) {
+                        distance = checkIntFromUser();
+                        if (distance == 0) return null;
+                        switch (distance) {
+                            case (100):
+                            case (200):
+                                break;
+                            default:
+                                System.out.println("Distancen du har indtastet er ikke gyldig");
+                                System.out.println("Venligst prøv igen og indtast en gyldig distance (100 og 200)");
+                                continue;
+                        }
+                        break;
+                    }
+                    break;
+                case ("MEDLEY"):
+                    discipline = Discipline.MEDLEY;
+                    System.out.println("Hvilken distance blev der svømmet medley?");
+                    System.out.println("De mulige distancer er 200 og 400");
+                    while (true) {
+                        distance = checkIntFromUser();
+                        if (distance == 0) return null;
+                        switch (distance) {
+                            case (200):
+                            case (400):
+                                break;
+                            default:
+                                System.out.println("Distancen du har indtastet er ikke gyldig");
+                                System.out.println("Venligst prøv igen og indtast en gyldig distance (200 og 400)");
+                                continue;
+                        }
+                        break;
+                    }
+                    break;
+                case ("OPENWATER"):
+                case ("OPEN WATER"):
+                case ("OPEN_WATER"):
+                    discipline = Discipline.OPEN_WATER;
+                    distance = 10_000;
+                    break;
+                default:
+                    System.out.println("Disciplinen du har indtastet er ikke gyldig");
+                    System.out.println("Venligst prøv igen, og indtast en gyldig disciplin (freestyle, backstroke, breaststroke, butterfly, medley, og open water)");
+                    continue;
+            }
+            returnObject = new TimeHolder(discipline,distance);
+            return returnObject;
+        }
+    }
+
     public static ArrayList<TimeHolder> autoUpdateFastestTime(ArrayList<TimeHolder> listOfTimes, Discipline discipline, int distance){
         ArrayList<TimeHolder> filteredTimeList = new ArrayList<>();
         ArrayList<TimeHolder> dumpList = new ArrayList<>();
@@ -248,44 +265,27 @@ public class CompetitiveMember{
     }
 
     public static void getTopFiveSwimmers(ArrayList<Member> memberList){
-        ArrayList<TimeHolder> filteredTimeList = new ArrayList<>();
-        List<TimeHolder> testTimeList = new ArrayList<>();
-        System.out.println("Vælg disciplin");
-        String stringDiscipline = "butterfly";
-        Discipline discipline = Discipline.valueOf(stringDiscipline.toUpperCase());
-        System.out.println("Vælg distance");
-        int distance = 100;
-        // keyboard.nextLine();
-        List<Member> filteredMemberList = memberList.stream().filter(compSwim -> compSwim.competitiveSwimmer != null
-                && !compSwim.competitiveSwimmer.personalTimes.isEmpty()).toList();
-        filteredMemberList = filteredMemberList.stream().filter
-                (member -> member.competitiveSwimmer.personalTimes.stream().allMatch
-                        (time -> time.discipline == discipline && time.distance == distance)).toList();
+        Discipline discipline;
+        int distance;
+
+        // gets the discipline and distance with the method getDisciplineAndDistance
+        TimeHolder disciplineAndDistance = getDisciplineAndDistance();
+        if (disciplineAndDistance == null) return;
+        else {
+            discipline = disciplineAndDistance.discipline;
+            distance = disciplineAndDistance.distance;
+        }
+        List<Member> filteredMemberList = memberList.stream().filter(member -> member.competitiveSwimmer != null
+                && member.competitiveSwimmer.personalTimes.stream()
+                .anyMatch(time -> time.discipline == discipline
+                        && time.distance == distance)).toList();
         for (Member member: filteredMemberList) autoUpdateFastestTime(member.competitiveSwimmer.personalTimes, discipline, distance);
-        List<Member> result = filteredMemberList.stream().sorted
+        filteredMemberList = filteredMemberList.stream().sorted
                 (Comparator.comparing(o -> o.competitiveSwimmer.personalTimes.getFirst().duration)).toList();
-        for (Member member: result){
+        if (filteredMemberList.size() > 5) filteredMemberList.subList(5, filteredMemberList.size()).clear();
+        for (Member member: filteredMemberList){
             System.out.println("Navn: "+member.memberName+"\tTid: "+member.competitiveSwimmer.personalTimes.getFirst());
         }
-
-        // for (Member member: memberList){
-        //     if (member.competitiveSwimmer != null){
-        //         for (TimeHolder time: member.competitiveSwimmer.personalTimes){
-        //             if (time.discipline == discipline && time.distance == distance)filteredTimeList.add(time);
-        //         }
-        //         if (!member.competitiveSwimmer.personalTimes.isEmpty()){
-        //             filteredTimeList.sort(Comparator.comparing(TimeHolder::getDuration));
-        //             System.out.println(member.memberName + "s hurtigeste tid i " + distance + "m " + discipline);
-        //             System.out.println(filteredTimeList.getFirst());
-        //             filteredTimeList.clear();
-        //         }
-        //     }
-        // }
-        // System.out.println(result);
-    }
-
-    public void getDisciplineAndDistance(Discipline discipline, int distance){
-        Optional<TimeHolder> test = this.personalTimes.stream().filter(time -> time.discipline == discipline && time.distance == distance).findFirst();
     }
 
     public static void printMemberTimes(ArrayList<Member> memberList){

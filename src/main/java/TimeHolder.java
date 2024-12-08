@@ -36,6 +36,12 @@ public class TimeHolder {
         this.meetName=meetName;
     }
 
+    TimeHolder(Discipline discipline, int distance){
+        this.discipline=discipline;
+        this.distance=distance;
+    }
+
+    // used when loading everything from .jsaon
     TimeHolder(){
     }
 
