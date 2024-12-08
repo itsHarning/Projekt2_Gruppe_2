@@ -147,7 +147,7 @@ public class CompetitiveMember{
             }
 
             // gets the swimmers time
-            System.out.println("Hvad er svømmerens tid?");
+            System.out.println("Hvad er svømmerens tid? (eksemeplvis 1h4m18.669s)");
             swimTime = parseDuration();
 
             System.out.println("Hvilken dato blev tiden sat? (yyyy-mm-dd)");
@@ -258,12 +258,16 @@ public class CompetitiveMember{
         // keyboard.nextLine();
         List<Member> filteredMemberList = memberList.stream().filter(compSwim -> compSwim.competitiveSwimmer != null
                 && !compSwim.competitiveSwimmer.personalTimes.isEmpty()).toList();
-        for (Member member: filteredMemberList){
-            testTimeList = member.competitiveSwimmer.personalTimes.stream().filter(time -> time.discipline == discipline
-                    && time.distance == distance).toList();
+        filteredMemberList = filteredMemberList.stream().filter
+                (member -> member.competitiveSwimmer.personalTimes.stream().allMatch
+                        (time -> time.discipline == discipline && time.distance == distance)).toList();
+        for (Member member: filteredMemberList) autoUpdateFastestTime(member.competitiveSwimmer.personalTimes, discipline, distance);
+        List<Member> result = filteredMemberList.stream().sorted
+                (Comparator.comparing(o -> o.competitiveSwimmer.personalTimes.getFirst().duration)).toList();
+        for (Member member: result){
+            System.out.println("Navn: "+member.memberName+"\tTid: "+member.competitiveSwimmer.personalTimes.getFirst());
         }
-        ArrayList<TimeHolder> testArray = new ArrayList<>(testTimeList);
-        testArray.sort(Comparator.comparing(TimeHolder::getDuration));
+
         // for (Member member: memberList){
         //     if (member.competitiveSwimmer != null){
         //         for (TimeHolder time: member.competitiveSwimmer.personalTimes){
@@ -277,7 +281,7 @@ public class CompetitiveMember{
         //         }
         //     }
         // }
-        System.out.println(testTimeList);
+        // System.out.println(result);
     }
 
     public void getDisciplineAndDistance(Discipline discipline, int distance){

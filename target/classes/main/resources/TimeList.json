@@ -320,7 +320,14 @@
       "name" : "Lena Baldersbæk",
       "arrayName" : " competitiveO18"
     },
-    "TimeHolder" : [ ]
+    "TimeHolder" : [ {
+      "discipline" : "BACKSTROKE",
+      "distance" : 100,
+      "time" : 111.111000000,
+      "dateSet" : "2024-12-08",
+      "isOfficial" : true,
+      "meetName" : "Streamer Awards"
+    } ]
   }
 }, {
   "memberId" : 19,
@@ -337,7 +344,14 @@
       "name" : "Lena Baldersbæk",
       "arrayName" : " competitiveO18"
     },
-    "TimeHolder" : [ ]
+    "TimeHolder" : [ {
+      "discipline" : "MEDLEY",
+      "distance" : 400,
+      "time" : 150.000000000,
+      "dateSet" : "2024-12-08",
+      "isOfficial" : true,
+      "meetName" : "Streamer Awards"
+    } ]
   }
 }, {
   "memberId" : 20,
