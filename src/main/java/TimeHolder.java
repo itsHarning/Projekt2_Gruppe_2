@@ -41,7 +41,7 @@ public class TimeHolder {
         this.distance=distance;
     }
 
-    // used when loading everything from .jsaon
+    // used when loading everything from .json
     TimeHolder(){
     }
 

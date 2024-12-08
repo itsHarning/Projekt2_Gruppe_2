@@ -48,7 +48,8 @@ public class Member {
         hasPaid = paid;
         automaticPayment = autoPay;
     }
-
+    
+    // used when loading everything from .json
     Member(){
         numOfMembers++;
     }

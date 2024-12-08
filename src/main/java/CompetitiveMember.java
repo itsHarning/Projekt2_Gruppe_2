@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class CompetitiveMember{
     static Scanner keyboard = new Scanner(System.in);
@@ -17,6 +16,7 @@ public class CompetitiveMember{
         this.coach = coach;
     }
 
+    // used when loading everything from .json
     CompetitiveMember(){}
 
     public String toString(){
@@ -69,7 +69,7 @@ public class CompetitiveMember{
             }
 
             // gets the swimmers time
-            System.out.println("Hvad er svømmerens tid? (eksemeplvis 1h4m18.669s)");
+            System.out.println("Hvad er svømmerens tid? (0h0m0.0s)");
             swimTime = parseDuration();
 
             System.out.println("Hvilken dato blev tiden sat? (yyyy-mm-dd)");
@@ -174,7 +174,7 @@ public class CompetitiveMember{
             switch (stringDiscipline) {
                 case ("FREESTYLE"):
                     discipline = Discipline.FREESTYLE;
-                    System.out.println("Hvilken distance blev der svømmet freestyle?");
+                    System.out.println("Hvilken distance freestyle?");
                     System.out.println("de mulige distancer er 50, 100, 200, 400, 800, 1500");
                     while (true) {
                         distance = checkIntFromUser();
@@ -199,7 +199,7 @@ public class CompetitiveMember{
                 case ("BREASTSTROKE"):
                 case ("BUTTERFLY"):
                     discipline = Discipline.valueOf(stringDiscipline);
-                    System.out.println("Hvilken distance blev der svømmet " + stringDiscipline + "?");
+                    System.out.println("Hvilken distance " + stringDiscipline + "?");
                     System.out.println("De mulige distancer er 100 og 200");
                     while (true) {
                         distance = checkIntFromUser();
@@ -218,7 +218,7 @@ public class CompetitiveMember{
                     break;
                 case ("MEDLEY"):
                     discipline = Discipline.MEDLEY;
-                    System.out.println("Hvilken distance blev der svømmet medley?");
+                    System.out.println("Hvilken distance medley?");
                     System.out.println("De mulige distancer er 200 og 400");
                     while (true) {
                         distance = checkIntFromUser();
@@ -251,17 +251,23 @@ public class CompetitiveMember{
         }
     }
 
-    public static ArrayList<TimeHolder> autoUpdateFastestTime(ArrayList<TimeHolder> listOfTimes, Discipline discipline, int distance){
-        ArrayList<TimeHolder> filteredTimeList = new ArrayList<>();
-        ArrayList<TimeHolder> dumpList = new ArrayList<>();
-        for (TimeHolder time: listOfTimes){
+    public static ArrayList<TimeHolder> autoUpdateFastestTime(ArrayList<TimeHolder> timeList, Discipline discipline, int distance){
+        ArrayList<TimeHolder> filteredTimeList = new ArrayList<>();     // a list for the recorded times that match the filter parameters
+        ArrayList<TimeHolder> dumpList = new ArrayList<>();             // a list for the rest of the times
+
+        // goes through the timeList and sorts each TimeHolder object into the correct ArrayList
+        for (TimeHolder time: timeList){
             if (time.discipline == discipline && time.distance == distance) filteredTimeList.add(time);
             else dumpList.add(time);
         }
+
+        // sorts the TimeHolder objects in filteredTimeList after the duration
         filteredTimeList.sort(Comparator.comparing(TimeHolder::getDuration));
+
+        // trims the filteredTimeList to at most show the top five swimmers
         if (filteredTimeList.size() > 5) filteredTimeList.subList(5, filteredTimeList.size()).clear();
-        filteredTimeList.addAll(dumpList);
-        return filteredTimeList;
+        filteredTimeList.addAll(dumpList);  // the times that didn't match the parameters are added back into the list
+        return filteredTimeList;            // the list with all the times are returned
     }
 
     public static void getTopFiveSwimmers(ArrayList<Member> memberList){
@@ -275,14 +281,37 @@ public class CompetitiveMember{
             discipline = disciplineAndDistance.discipline;
             distance = disciplineAndDistance.distance;
         }
-        List<Member> filteredMemberList = memberList.stream().filter(member -> member.competitiveSwimmer != null
-                && member.competitiveSwimmer.personalTimes.stream()
-                .anyMatch(time -> time.discipline == discipline
-                        && time.distance == distance)).toList();
-        for (Member member: filteredMemberList) autoUpdateFastestTime(member.competitiveSwimmer.personalTimes, discipline, distance);
-        filteredMemberList = filteredMemberList.stream().sorted
-                (Comparator.comparing(o -> o.competitiveSwimmer.personalTimes.getFirst().duration)).toList();
+
+        // stream through the memberList, filters through based on the given parameters, and adds the members that match to filteredMemberList
+        List<Member> filteredMemberList = memberList
+                .stream()
+                .filter(
+                        member -> member.competitiveSwimmer != null     // makes sure member has competitiveSwimmer initialised to avoid errors
+                                && member.competitiveSwimmer.personalTimes
+                                .stream()                                       // streams through the personalTimes list of each member
+                                .anyMatch(
+                                        time -> time.discipline == discipline   // makes sure it has given discipline
+                                                && time.distance == distance))  // and distance
+                .toList();
+
+        // goes through all the filtered members, and makes sure their personal time list is sorted so the fastest relevant time appears first
+        for (Member member: filteredMemberList) {
+            autoUpdateFastestTime(member.competitiveSwimmer.personalTimes, discipline, distance);
+        }
+
+        // sorts filteredMemberList based off of the first item in each members personalTimes list
+        filteredMemberList = filteredMemberList
+                .stream()
+                .sorted(
+                        Comparator.comparing(
+                                member -> member.competitiveSwimmer.personalTimes
+                                        .getFirst()
+                                        .duration))
+                .toList();
+
+        // trims the filteredMemberList to at most show the top five swimmers
         if (filteredMemberList.size() > 5) filteredMemberList.subList(5, filteredMemberList.size()).clear();
+
         for (Member member: filteredMemberList){
             System.out.println("Navn: "+member.memberName+"\tTid: "+member.competitiveSwimmer.personalTimes.getFirst());
         }
@@ -311,7 +340,7 @@ public class CompetitiveMember{
     }
 
     public static Member getMemberFromId(ArrayList<Member> memberList) {
-        // This loop will run as long as a member is not found.
+        // this loop will run as long as a member is not found.
         while (true) {
             System.out.println("Indtast IDet på medlemmet");
             int memberId = checkIntFromUser();
@@ -322,6 +351,7 @@ public class CompetitiveMember{
                 continue;
             }
 
+            // loops through the member list to find the member with a matching ID given
             while (true) {
                 for (Member member : memberList) {
                     if (member.memberId == memberId) {
@@ -354,7 +384,7 @@ public class CompetitiveMember{
         return new Member();
     }
 
-    // loops until a valid duration is given
+    // method to make sure a valid duration input is given as it needs to follow a specific format
     public static Duration parseDuration() {
         Duration duration = Duration.parse("pt0s");   // parses duration from a string based in the ISO-8601 duration format PnDTnHnMn.nS.
         while (true) {
@@ -362,7 +392,7 @@ public class CompetitiveMember{
                 duration = Duration.parse("pt"+keyboard.nextLine());
                 break;
             } catch (DateTimeParseException e) {
-                System.out.println("Ugyldig tid, prøv igen med korrekt formatering (eksempelvis 4m20.6s)");
+                System.out.println("Ugyldig tid, prøv igen med korrekt formatering (0h0m0.0s)");
             }
         }
         return duration;
@@ -380,15 +410,4 @@ public class CompetitiveMember{
         else return seconds;
     }
 
-    public static void main(String[] args) {
-        ArrayList<Member> memberList = new ArrayList<>(FileHandler.getListFromJson());
-
-        // MemberHandler.printList(membersList);
-        createNewTime(memberList);
-        System.out.println(memberList);
-        MemberHandler.printList(memberList);
-        FileHandler.writeListToJson(memberList);
-    }
-
 }
-
