@@ -46,8 +46,8 @@ public class TimeHolder {
     }
 
     public String toString() {
-        if (isOfficial) return "Disciplin: "+discipline+"\tTid: "+ CompetitiveMember.durationFormatter(duration)+"\tDato: "+dateSet+"\tSat til stævnet " + meetName+"\n";
-        else return "Disciplin: "+discipline+"\tTid: "+ CompetitiveMember.durationFormatter(duration)+"\tDato: "+dateSet+"\tTiden blev sat til en træning\n";
+        if (isOfficial) return "Disciplin: "+discipline+"\tTid: "+ CompetitiveMember.durationFormatter(duration)+"\tDato: "+dateSet+"\tSat til stævnet \"" + meetName+"\"";
+        else return "Disciplin: "+discipline+"\tTid: "+ CompetitiveMember.durationFormatter(duration)+"\tDato: "+dateSet+"\tTiden blev sat til en træning";
     }
 
     public Duration getDuration() {

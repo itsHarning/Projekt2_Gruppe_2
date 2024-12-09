@@ -93,7 +93,7 @@
   }
 }, {
   "memberId" : 4,
-  "memberName" : "ID Tester",
+  "memberName" : "Vladimir Salnikov",
   "memberGender" : "OTHER",
   "memberAge" : 17,
   "isActiveMember" : true,
@@ -134,7 +134,7 @@
   }
 }, {
   "memberId" : 7,
-  "memberName" : "Fourth ID Tester",
+  "memberName" : "Don Schollander",
   "memberGender" : "MALE",
   "memberAge" : 77,
   "isActiveMember" : true,
@@ -151,7 +151,7 @@
   }
 }, {
   "memberId" : 8,
-  "memberName" : "Fifth ID Tester",
+  "memberName" : "Duke Kahanamoku",
   "memberGender" : "MALE",
   "memberAge" : 35,
   "isActiveMember" : true,
@@ -185,7 +185,7 @@
   }
 }, {
   "memberId" : 10,
-  "memberName" : "Paymenter Twoster",
+  "memberName" : "Mark Spitz",
   "memberGender" : "OTHER",
   "memberAge" : 30,
   "isActiveMember" : true,
@@ -195,7 +195,7 @@
   "competitiveSwimmer" : null
 }, {
   "memberId" : 11,
-  "memberName" : "Third Payment",
+  "memberName" : "Kirstin Otto",
   "memberGender" : "FEMALE",
   "memberAge" : 55,
   "isActiveMember" : true,
@@ -205,7 +205,7 @@
   "competitiveSwimmer" : null
 }, {
   "memberId" : 12,
-  "memberName" : "Printer Test",
+  "memberName" : "Benny Nielsen",
   "memberGender" : "MALE",
   "memberAge" : 55,
   "isActiveMember" : true,
@@ -215,7 +215,7 @@
   "competitiveSwimmer" : null
 }, {
   "memberId" : 13,
-  "memberName" : "Ole Okocha",
+  "memberName" : "Pernille Blume ",
   "memberGender" : "FEMALE",
   "memberAge" : 44,
   "isActiveMember" : true,
@@ -239,7 +239,7 @@
   }
 }, {
   "memberId" : 14,
-  "memberName" : "Gender Tester",
+  "memberName" : "Ole Okocha",
   "memberGender" : "MALE",
   "memberAge" : 11,
   "isActiveMember" : true,
@@ -454,4 +454,14 @@
       "meetName" : null
     } ]
   }
+}, {
+  "memberId" : 21,
+  "memberName" : "Lotte Friis",
+  "memberGender" : "FEMALE",
+  "memberAge" : 36,
+  "isActiveMember" : false,
+  "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "competitiveSwimmer" : null
 } ]

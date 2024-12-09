@@ -284,15 +284,15 @@ public class CompetitiveMember{
 
         // stream through the memberList, filters through based on the given parameters, and adds the members that match to filteredMemberList
         List<Member> filteredMemberList = memberList
-                .stream()
-                .filter(
-                        member -> member.competitiveSwimmer != null     // makes sure member has competitiveSwimmer initialised to avoid errors
-                                && member.competitiveSwimmer.personalTimes
-                                .stream()                                       // streams through the personalTimes list of each member
-                                .anyMatch(
-                                        time -> time.discipline == discipline   // makes sure it has given discipline
-                                                && time.distance == distance))  // and distance
-                .toList();
+            .stream()
+            .filter(
+                member -> member.competitiveSwimmer != null     // makes sure member has competitiveSwimmer initialised to avoid errors
+                    && member.competitiveSwimmer.personalTimes
+                    .stream()                                       // streams through the personalTimes list of each member
+                    .anyMatch(
+                        time -> time.discipline == discipline   // makes sure it has given discipline
+                            && time.distance == distance))  // and distance
+            .toList();
 
         // goes through all the filtered members, and makes sure their personal time list is sorted so the fastest relevant time appears first
         for (Member member: filteredMemberList) {
@@ -301,20 +301,22 @@ public class CompetitiveMember{
 
         // sorts filteredMemberList based off of the first item in each members personalTimes list
         filteredMemberList = filteredMemberList
-                .stream()
-                .sorted(
-                        Comparator.comparing(
-                                member -> member.competitiveSwimmer.personalTimes
-                                        .getFirst()
-                                        .duration))
-                .toList();
+            .stream()
+            .sorted(
+                Comparator.comparing(
+                    member -> member.competitiveSwimmer.personalTimes
+                        .getFirst()
+                        .duration))
+            .toList();
 
         // trims the filteredMemberList to at most show the top five swimmers
         if (filteredMemberList.size() > 5) filteredMemberList.subList(5, filteredMemberList.size()).clear();
 
+        // TODO: make prettier print
         for (Member member: filteredMemberList){
-            System.out.println("Navn: "+member.memberName+"\tTid: "+member.competitiveSwimmer.personalTimes.getFirst());
+            System.out.println("Navn: "+member.memberName+"\t"+member.competitiveSwimmer.personalTimes.getFirst());
         }
+        System.out.println();
     }
 
     public static void printMemberTimes(ArrayList<Member> memberList){

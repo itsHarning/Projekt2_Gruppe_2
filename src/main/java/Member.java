@@ -48,13 +48,15 @@ public class Member {
         hasPaid = paid;
         automaticPayment = autoPay;
     }
-    
+
     // used when loading everything from .json
     Member(){
         numOfMembers++;
     }
 
     public String toString(){
-        return "ID: "+memberId+"\tNavn: "+memberName+"\tkøn: "+memberGender+"\talder: "+memberAge+"\ter medlemskab aktivt: "+isActiveMember+", konkurrence svømmer: "+isCompeting+", har betalt: "+hasPaid+"\n";
+        return "ID: "+memberId+"\tNavn: "+memberName+"\tKøn: "+memberGender+"\tAlder: "+memberAge
+                +"\tEr medlemskab aktivt: "+isActiveMember+", Er medlemmet konkurrence svømmer: "
+                +isCompeting+", Har medlemmet betalt: "+hasPaid;
     }
 }
