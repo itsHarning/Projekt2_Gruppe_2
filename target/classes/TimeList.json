@@ -459,9 +459,26 @@
   "memberName" : "Lotte Friis",
   "memberGender" : "FEMALE",
   "memberAge" : 36,
-  "isActiveMember" : false,
+  "isActiveMember" : true,
   "isCompeting" : false,
   "hasPaid" : false,
   "automaticPayment" : false,
   "competitiveSwimmer" : null
+}, {
+  "memberId" : 22,
+  "memberName" : "Hanni Pham",
+  "memberGender" : "FEMALE",
+  "memberAge" : 20,
+  "isActiveMember" : true,
+  "isCompeting" : true,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "competitiveSwimmer" : {
+    "coach" : {
+      "id" : 27,
+      "name" : "Lena Baldersbæk",
+      "arrayName" : " competitiveO18"
+    },
+    "TimeHolder" : [ ]
+  }
 } ]

@@ -38,7 +38,7 @@ public class CompetitiveMember{
         // This loop will run until method is finished
         while (true) {
             if (newMember) {
-                member = getMemberFromId(memberList);
+                member = MemberHandler.getMemberFromId(memberList);
                 if (member.memberId == 0) return;
             }
 
@@ -320,7 +320,7 @@ public class CompetitiveMember{
     }
 
     public static void printMemberTimes(ArrayList<Member> memberList){
-        Member member = getMemberFromId(memberList);
+        Member member = MemberHandler.getMemberFromId(memberList);
         System.out.println(member.competitiveSwimmer);
     }
 
@@ -339,51 +339,6 @@ public class CompetitiveMember{
         }
 
         return result;
-    }
-
-    public static Member getMemberFromId(ArrayList<Member> memberList) {
-        // this loop will run as long as a member is not found.
-        while (true) {
-            System.out.println("Indtast IDet på medlemmet");
-            int memberId = checkIntFromUser();
-            if (memberId == 0) break;
-
-            if (memberId > Member.numOfMembers){
-                System.out.println("Dette er ikke et gyldigt medlems nummer\nDer er kun "+Member.numOfMembers+" medlemmer i klubben");
-                continue;
-            }
-
-            // loops through the member list to find the member with a matching ID given
-            while (true) {
-                for (Member member : memberList) {
-                    if (member.memberId == memberId) {
-                        while (true) {
-
-                            // double checks that you've gotten the member you intended
-                            System.out.println("Er dette det rigtige medlem?");
-                            System.out.println(member.memberName + "?");
-                            System.out.println("Ja / Nej");
-                            String answer = keyboard.nextLine();
-                            if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q")) break;
-                            if (answer.equalsIgnoreCase("ja")) {
-                                return member;
-                                // handles if you wrote the incorrect ID, and need to write a new one
-                            } else if (answer.equalsIgnoreCase("nej")) {
-                                System.out.println("Prøv igen med et nyt ID.");
-                                memberId = checkIntFromUser();
-                                if (memberId == 0) return member;
-                                break;
-
-                                // handles if what's written isn't a valid ID
-                            } else {
-                                System.out.println("Ugyldigt svar. Prøv igen (Ja / Nej)");
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return new Member();
     }
 
     // method to make sure a valid duration input is given as it needs to follow a specific format

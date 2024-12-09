@@ -3,9 +3,11 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MemberHandler {
         static ArrayList<Member> membersList; // creates the main list of members
+        static Scanner keyboard = new Scanner(System.in);
 
         public static void main(String[] args){
                 membersList=loadMembersFromTextFile(); // loads the members on the text file onto the list
@@ -95,66 +97,48 @@ public class MemberHandler {
                 }
         }
 
+        public static Member getMemberFromId(ArrayList<Member> memberList) {
+                // this loop will run as long as a member is not found.
+                while (true) {
+                        System.out.println("Indtast IDet på medlemmet");
+                        int memberId = CompetitiveMember.checkIntFromUser();
+                        if (memberId == 0) break;
 
+                        if (memberId > Member.numOfMembers){
+                                System.out.println("Dette er ikke et gyldigt medlems nummer\nDer er kun "+Member.numOfMembers+" medlemmer i klubben");
+                                continue;
+                        }
 
-        // Textfile metode for Time class
-        /*
-        //Load from textfile
-        public static ArrayList loadMembersFromTextFileTime() {
-                ArrayList<Time> tempList = new ArrayList<>();
-                try {
-                        FileReader fil = new FileReader("src//MemberList.txt");
-                        BufferedReader ind = new BufferedReader(fil);
-                        DateTimeFormatter Datoformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");            // Her laver jeg en variabel som kan oversætte en String om til en Dato format
+                        // loops through the member list to find the member with a matching ID given
+                        while (true) {
+                                for (Member member : memberList) {
+                                        if (member.memberId == memberId) {
+                                                while (true) {
 
+                                                        // double checks that you've gotten the member you intended
+                                                        System.out.println("Er dette det rigtige medlem?");
+                                                        System.out.println(member.memberName + "?");
+                                                        System.out.println("Ja / Nej");
+                                                        String answer = keyboard.nextLine();
+                                                        if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q")) break;
+                                                        if (answer.equalsIgnoreCase("ja")) {
+                                                                return member;
+                                                                // handles if you wrote the incorrect ID, and need to write a new one
+                                                        } else if (answer.equalsIgnoreCase("nej")) {
+                                                                System.out.println("Prøv igen med et nyt ID.");
+                                                                memberId = CompetitiveMember.checkIntFromUser();
+                                                                if (memberId == 0) return member;
+                                                                break;
 
-                        String line = ind.readLine(); // converts the read lines to string
-                        while (line !=null) {
-                                String[]bites = line.split(",");
-
-                                String discipline = bites [0];
-                                String time = bites[1];
-                                String dateSet = bites[2];
-                                String isOfficial = bites[3];
-                                String meetName = bites[4];
-                                boolean cisOfficial = Boolean.parseBoolean(bites[3]);
-
-                                try {
-                                        double ctime = Double.parseDouble(time);
-                                        LocalDate cdateset = LocalDate.parse(dateSet, Datoformatter);
-
-                                        tempList.add(new Time(discipline,ctime,cdateset,isOfficial,meetName,cisOfficial));
-
-                                } catch (NumberFormatException e){
-                                        System.out.println("Not a number");
+                                                                // handles if what's written isn't a valid ID
+                                                        } else {
+                                                                System.out.println("Ugyldigt svar. Prøv igen (Ja / Nej)");
+                                                        }
+                                                }
+                                        }
                                 }
-                                line = ind.readLine();
                         }
-                } catch (IOException e) {
-                        System.out.println("Could not find file");;
                 }
-                return tempList;
+                return new Member();
         }
-
-        //Update textfile
-        public static void updateTextFileTime(ArrayList<Member> tempList) {
-                try {
-                        FileWriter file = new FileWriter("src//TimeList.txt", false);
-                        PrintWriter out = new PrintWriter(file);
-                        for (Time t: tempList){
-                                String discipline = t.discipline;
-                                double time = t.time;
-                                LocalDate dateSet = t.dateSet;
-                                boolean isOfficial = t.isOfficial;
-                                String meetName = t.meetName;
-                                out.println(discipline+","+time+","+dateSet+","+isOfficial+","+meetName);
-                        }
-                        out.close(); // Closes so all data gets written to the Textfile
-                } catch (IOException e) {
-                        System.out.println("could not write to file");
-                }
-        }
-
-         */
-
 }
