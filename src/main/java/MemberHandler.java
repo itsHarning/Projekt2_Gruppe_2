@@ -9,16 +9,7 @@ public class MemberHandler {
         static ArrayList<Member> membersList; // creates the main list of members
         static Scanner keyboard = new Scanner(System.in);
 
-        public static void main(String[] args){
-                membersList=loadMembersFromTextFile(); // loads the members on the text file onto the list
-                printList(membersList);
-                //membersList.add(CreateNewMember.createNewMember()); // creates a new member and adds it to the list
-                //updateTextFile(membersList); // updates the text file so that it's up to date with the new member
-                membersList = PaymentHandler.payMembership(membersList);
-                printList(membersList);
-                updateTextFile(membersList);
-
-        }
+        /*
         // needs to be used when you first run the program to get the list of members
         public static ArrayList loadMembersFromTextFile() {
                 ArrayList<Member> tempList = new ArrayList<>();
@@ -78,6 +69,7 @@ public class MemberHandler {
                         System.out.println("could not write to file");
                 }
         }
+         */
 
         // prints the given list in a nicely formatted way
         public static void printList(ArrayList<Member> tempList) {
@@ -101,7 +93,7 @@ public class MemberHandler {
                 // this loop will run as long as a member is not found.
                 while (true) {
                         System.out.println("Indtast IDet på medlemmet");
-                        int memberId = CompetitiveMember.checkIntFromUser();
+                        int memberId = CompMemberHandler.checkIntFromUser();
                         if (memberId == 0) break;
 
                         if (memberId > Member.numOfMembers){
@@ -126,7 +118,7 @@ public class MemberHandler {
                                                                 // handles if you wrote the incorrect ID, and need to write a new one
                                                         } else if (answer.equalsIgnoreCase("nej")) {
                                                                 System.out.println("Prøv igen med et nyt ID.");
-                                                                memberId = CompetitiveMember.checkIntFromUser();
+                                                                memberId = CompMemberHandler.checkIntFromUser();
                                                                 if (memberId == 0) return member;
                                                                 break;
 
