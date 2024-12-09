@@ -15,9 +15,6 @@ public class Main {
         // Sort members in teams
         Team.assignTeams(memberList);
 
-        // Make ComptetiveObject for each member
-        CreateCompObject.createCompObject(memberList);
-
         // Makes dolphin from ascii text file
         try {
             FileReader fil = new FileReader("ascii.txt");
@@ -141,7 +138,6 @@ public class Main {
                 case 2:
                     CompMemberHandler.getTopFiveSwimmers(memberList);
                     break;
-
                 case 3:
                     CompMemberHandler.printMemberTimes(memberList);
                     break;

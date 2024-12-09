@@ -71,7 +71,6 @@ public class ChangeActivityStatus {
                         System.out.println(m.memberName + " er nu registreret som konkurrencesvømmer");
                         m.isCompeting = true;
                         Team.assignTeams(memberList);
-                        CreateCompObject.createCompObject(memberList);
                         break;
                     } else {
                         System.out.println("Dette er ikke et gyldigt svar, prøv igen");

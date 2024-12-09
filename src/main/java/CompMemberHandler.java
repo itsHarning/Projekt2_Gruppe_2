@@ -30,7 +30,7 @@ public class CompMemberHandler {
             }
 
             while (true) {
-                if (member.competitiveSwimmer == null) {
+                if (member.personalTimes.isEmpty()) {
                     System.out.println(member.memberName + " er ikke oprettet som konkurrence svømmer");
                     System.out.println("Vil du oprette dem, og registrere deres tid?");
                     String answer = keyboard.nextLine();
@@ -38,7 +38,6 @@ public class CompMemberHandler {
                     if (answer.equalsIgnoreCase("ja")) {
                         System.out.println(member.memberName + " er nu registreret som konkurrencesvømmer");
                         member.isCompeting = true;
-                        CreateCompObject.createCompObject(memberList);
                         break;
                     } else if (answer.equalsIgnoreCase("nej")) {
                         System.out.println("Medlemmet skal være, eller tidligere have været konkurrence svømmer for at få registreret tider");
@@ -105,9 +104,9 @@ public class CompMemberHandler {
                 switch (infoAnswer) {
                     case ("ja"):
                         if (!isOfficial) {
-                            member.competitiveSwimmer.personalTimes.add(new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial));
+                            member.personalTimes.add(new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial));
                         } else {
-                            member.competitiveSwimmer.personalTimes.add(new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial, meetName));
+                            member.personalTimes.add(new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial, meetName));
                         }
                     case ("nej"):
                         break;
@@ -119,7 +118,7 @@ public class CompMemberHandler {
             }
 
             // sorts the personalTimes list, and cuts it if it has more than five items
-            member.competitiveSwimmer.personalTimes = autoUpdateFastestTime(member.competitiveSwimmer.personalTimes, discipline, distance);
+            member.personalTimes = autoUpdateFastestTime(member.personalTimes, discipline, distance);
 
             // checks if you want to create another time, and reruns the program if you do. Either with the same member, or a new one
             while (true) {
@@ -186,7 +185,7 @@ public class CompMemberHandler {
                 case ("BREASTSTROKE"):
                 case ("BUTTERFLY"):
                     discipline = Discipline.valueOf(stringDiscipline);
-                    System.out.println("Hvilken distance " + stringDiscipline + "?");
+                    System.out.println("Hvilken distance " + discipline + "?");
                     System.out.println("De mulige distancer er 100 og 200");
                     while (true) {
                         distance = checkIntFromUser();
@@ -273,8 +272,7 @@ public class CompMemberHandler {
         List<Member> filteredMemberList = memberList
                 .stream()
                 .filter(
-                        member -> member.competitiveSwimmer != null     // makes sure member has competitiveSwimmer initialised to avoid errors
-                                && member.competitiveSwimmer.personalTimes
+                        member -> member.personalTimes
                                 .stream()                                       // streams through the personalTimes list of each member
                                 .anyMatch(
                                         time -> time.discipline == discipline   // makes sure it has given discipline
@@ -283,7 +281,7 @@ public class CompMemberHandler {
 
         // goes through all the filtered members, and makes sure their personal time list is sorted so the fastest relevant time appears first
         for (Member member: filteredMemberList) {
-            autoUpdateFastestTime(member.competitiveSwimmer.personalTimes, discipline, distance);
+            autoUpdateFastestTime(member.personalTimes, discipline, distance);
         }
 
         // sorts filteredMemberList based off of the first item in each members personalTimes list
@@ -291,7 +289,7 @@ public class CompMemberHandler {
                 .stream()
                 .sorted(
                         Comparator.comparing(
-                                member -> member.competitiveSwimmer.personalTimes
+                                member -> member.personalTimes
                                         .getFirst()
                                         .duration))
                 .toList();
@@ -301,14 +299,14 @@ public class CompMemberHandler {
 
         // TODO: make prettier print
         for (Member member: filteredMemberList){
-            System.out.println("Navn: "+member.memberName+"\t"+member.competitiveSwimmer.personalTimes.getFirst());
+            System.out.println("Navn: "+member.memberName+"\t"+member.personalTimes.getFirst());
         }
         System.out.println();
     }
 
     public static void printMemberTimes(ArrayList<Member> memberList){
         Member member = MemberHandler.getMemberFromId(memberList);
-        System.out.println(member.competitiveSwimmer);
+        System.out.println(member.personalTimes);
     }
 
     public static int checkIntFromUser() {

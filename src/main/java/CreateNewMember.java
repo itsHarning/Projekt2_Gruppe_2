@@ -97,7 +97,6 @@ public class CreateNewMember {
         // here it adds the information to memberList, jsonfile and creates a new object
         membersList.add(new Member(Name, gender,  Age, isActiveMember, isCompeting, hasPaid, automaticPayment));
         // Team.assignTeams(membersList);
-        CreateCompObject.createCompObject(membersList);
         FileHandler.writeListToJson(membersList);
     }
 

@@ -71,8 +71,8 @@ public class FileHandler {
         System.out.println(test);
         Member newTestMember = test.getFirst();
         System.out.println(newTestMember);
-        System.out.println(newTestMember.competitiveSwimmer);
-        ArrayList<TimeHolder> testTimeList = newTestMember.competitiveSwimmer.personalTimes;
+        System.out.println(newTestMember.personalTimes);
+        ArrayList<TimeHolder> testTimeList = newTestMember.personalTimes;
         System.out.println(testTimeList);
         ArrayList<Member> listToArrayListTest = new ArrayList<>(test);
         System.out.println(listToArrayListTest);
