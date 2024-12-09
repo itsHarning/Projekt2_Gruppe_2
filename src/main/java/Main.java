@@ -77,7 +77,7 @@ public class Main {
                      ChangeActivityStatus.changeActivityStatus(memberList);
                     break;
                 case 4:
-                    ChangeActivityStatus.changeCompetitiveStatus(memberList);
+                    Team.updateTeams(memberList);
                     break;
                 default:
                     System.out.println("Du valgte ikke en af mulighederne præsenteret, prøv igen");

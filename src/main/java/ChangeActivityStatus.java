@@ -52,6 +52,7 @@ public class ChangeActivityStatus {
         FileHandler.writeListToJson(memberList);
     }
 
+    // TODO: needs to be deleted when Team.updateTeams() has been updated and made fully functional
     public static void changeCompetitiveStatus(ArrayList<Member> memberList) {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Skriv ID på medlemmet");
