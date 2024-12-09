@@ -143,13 +143,13 @@ public class Main {
                     // TODO: open a method to see who they are Coaching for.
                     break;
                 case 2:
-                    CompetitiveMember.getTopFiveSwimmers(memberList);
+                    CompMemberHandler.getTopFiveSwimmers(memberList);
                     break;
 
                 case 3:
-                    CompetitiveMember.printMemberTimes(memberList);
+                    CompMemberHandler.printMemberTimes(memberList);
                     break;
-                case 4: CompetitiveMember.createNewTime(memberList);
+                case 4: CompMemberHandler.createNewTime(memberList);
                     break;
                 default:
                     System.out.println("Du valgte ikke en af mulighederne præsenteret, prøv igen");
