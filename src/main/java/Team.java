@@ -59,10 +59,12 @@ public class Team {
                             if (answer2.equalsIgnoreCase("ja") && m.memberAge < 18){
                                 exerciseteam.remove(m);
                                 competitiveU18.add(m);
+                                m.isCompeting = true;
                             }
                             if (answer2.equalsIgnoreCase("ja") && m.memberAge >= 18){
                                 exerciseteam.remove(m);
                                 competitiveO18.add(m);
+                                m.isCompeting = true;
                             }
                         }
                         if (m.isCompeting == true && m.memberAge < 18){
@@ -92,5 +94,4 @@ public class Team {
             }
         }
     }
-
 }
