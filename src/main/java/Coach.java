@@ -6,14 +6,23 @@ public class Coach {
     public String name;
     public String arrayName;
     ArrayList<Member> team;
+    ArrayList<Member> assaginedMembers;
 
-    ArrayList<Team> teams;
     public Coach(String name, String arrayName, ArrayList<Member> team){
         numOfCoaches ++;
         this.id=numOfCoaches;
         this.name=name;
         this.arrayName = arrayName;
         this.team = team;
+    }
+
+    public Coach(String name, String arrayName, ArrayList<Member> team, ArrayList<Member> assaginedMembers){
+        numOfCoaches ++;
+        this.id=numOfCoaches;
+        this.name=name;
+        this.arrayName = arrayName;
+        this.team = team;
+        this.assaginedMembers = assaginedMembers;
     }
 
     Coach(){}

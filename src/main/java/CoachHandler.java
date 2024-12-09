@@ -4,23 +4,38 @@ import java.util.Scanner;
 
 
 public class CoachHandler {
-     //opretter ny Arrayliste med Coaches
     public static void main(String[] args) {
-
+        //opretter ny Arrayliste med Coaches
         ArrayList<Coach>coachlist = loadMembersFromTextFile();
-        createCoaches(coachlist);
-        
+        assignmembers(coachlist);
+
+
+
+
+        for(Coach c: coachlist){
+            System.out.println(c.name);
+            for (Member m: c.team){
+                System.out.println(m);
+            }
+
+        }
+
+
+        // createCoaches(coachlist);
+
+
+
+
 
         for (Coach c: coachlist) {
         if(c.team == Team.exerciseteam){
             System.out.print("exerciseteam: ");
-            System.out.println(c);}
-
-
-            if(c.team == Team.competitiveO18){
+            System.out.println(c);
+        }
+        if(c.team == Team.competitiveO18){
                 System.out.print("competitive018: ");
                 System.out.println(c);}
-            if(c.team == Team.competitiveU18){
+        if(c.team == Team.competitiveU18){
                 System.out.print("competitiveU18: ");
                 System.out.println(c);}
         }
@@ -125,6 +140,41 @@ public class CoachHandler {
     }
     public static void printTeam (Coach coach){
         System.out.println(coach.team);
+    }
+
+    public static void assignmembers(ArrayList<Coach> coachList){
+        ArrayList<Member> team = new ArrayList<>(FileHandler.getListFromJson());
+
+        int numCoaches = coachList.size();  // Number of coaches available
+        int totalMembers = team.size();     // Total members in the team
+        int membersPerCoach = totalMembers / numCoaches;  // Basic number of members per coach
+        int remainder = totalMembers % numCoaches;  // Remainder members to be distributed
+
+        // Distribute members equally among the coaches
+        int currentCoachIndex = 0;
+        int assignedMembersCount = 0;
+
+            // Iterate over the team and assign members to coaches
+            for (int i = 0; i < totalMembers; i++) {
+                // Get the current coach
+                Coach currentCoach = coachList.get(currentCoachIndex);
+
+                // Add the current member to the coach's assignedMembers list
+                Member currentMember = team.get(i);
+
+                // Add member to the coach's assignedMembers
+                currentCoach.team.add(currentMember);
+
+
+                assignedMembersCount++;
+
+                // If the current coach has enough members, move to the next coach
+                if (assignedMembersCount >= membersPerCoach + (currentCoachIndex < remainder ? 1 : 0)) {
+                    assignedMembersCount = 0;
+                    currentCoachIndex++;
+                }
+            }
+
     }
 }
 
