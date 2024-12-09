@@ -8,8 +8,6 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,7 +70,7 @@ public class FileHandler {
         Member newTestMember = test.getFirst();
         System.out.println(newTestMember);
         System.out.println(newTestMember.personalTimes);
-        ArrayList<TimeHolder> testTimeList = newTestMember.personalTimes;
+        ArrayList<RecordedTime> testTimeList = newTestMember.personalTimes;
         System.out.println(testTimeList);
         ArrayList<Member> listToArrayListTest = new ArrayList<>(test);
         System.out.println(listToArrayListTest);

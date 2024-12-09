@@ -47,7 +47,7 @@ public class CompMemberHandler {
             }
 
             // gets the discipline and distance with the method getDisciplineAndDistance
-            TimeHolder disciplineAndDistance = getDisciplineAndDistance();
+            RecordedTime disciplineAndDistance = getDisciplineAndDistance();
             if (disciplineAndDistance == null) return;
             else {
                 discipline = disciplineAndDistance.discipline;
@@ -89,7 +89,7 @@ public class CompMemberHandler {
 
             // double checks if you've gotten all the information correct
             System.out.println("Er dette den korrekte information?");
-            String formattedTime = durationFormatter(swimTime);
+            String formattedTime = durationToStringFormatter(swimTime);
             if (isOfficial) {
                 System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName + "\tDisciplin: " + discipline + "\tDistance: " + distance + "\tTid: " + formattedTime + "\tDato: " + dateSet + "\tSat til stævnet " + meetName);
             } else {
@@ -104,9 +104,9 @@ public class CompMemberHandler {
                 switch (infoAnswer) {
                     case ("ja"):
                         if (!isOfficial) {
-                            member.personalTimes.add(new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial));
+                            member.personalTimes.add(new RecordedTime(discipline, distance, swimTime, dateSet, isOfficial));
                         } else {
-                            member.personalTimes.add(new TimeHolder(discipline, distance, swimTime, dateSet, isOfficial, meetName));
+                            member.personalTimes.add(new RecordedTime(discipline, distance, swimTime, dateSet, isOfficial, meetName));
                         }
                     case ("nej"):
                         break;
@@ -144,14 +144,15 @@ public class CompMemberHandler {
         }
     }
 
-    public static TimeHolder getDisciplineAndDistance(){
+    public static RecordedTime getDisciplineAndDistance(){
         Discipline discipline;
-        TimeHolder returnObject;
+        RecordedTime returnObject;
         int distance;
+        System.out.println("I hvilken disciplin vil du bruge");
+        System.out.println("Freestyle, Backstroke, Breaststroke, Butterfly, Medley, eller Open Water");
+
         // loop runs until a valid discipline and distance has been given
         while (true) {
-            System.out.println("I hvilken disciplin vil du bruge");
-            System.out.println("Freestyle, Backstroke, Breaststroke, Butterfly, Medley, eller Open Water");
             String stringDiscipline = keyboard.nextLine().toUpperCase();
             if (stringDiscipline.equalsIgnoreCase("0") || stringDiscipline.equalsIgnoreCase("q"))
                 return null;
@@ -232,23 +233,23 @@ public class CompMemberHandler {
                     System.out.println("Venligst prøv igen, og indtast en gyldig disciplin (freestyle, backstroke, breaststroke, butterfly, medley, og open water)");
                     continue;
             }
-            returnObject = new TimeHolder(discipline,distance);
+            returnObject = new RecordedTime(discipline,distance);
             return returnObject;
         }
     }
 
-    public static ArrayList<TimeHolder> autoUpdateFastestTime(ArrayList<TimeHolder> timeList, Discipline discipline, int distance){
-        ArrayList<TimeHolder> filteredTimeList = new ArrayList<>();     // a list for the recorded times that match the filter parameters
-        ArrayList<TimeHolder> dumpList = new ArrayList<>();             // a list for the rest of the times
+    public static ArrayList<RecordedTime> autoUpdateFastestTime(ArrayList<RecordedTime> timeList, Discipline discipline, int distance){
+        ArrayList<RecordedTime> filteredTimeList = new ArrayList<>();     // a list for the recorded times that match the filter parameters
+        ArrayList<RecordedTime> dumpList = new ArrayList<>();             // a list for the rest of the times
 
         // goes through the timeList and sorts each TimeHolder object into the correct ArrayList
-        for (TimeHolder time: timeList){
+        for (RecordedTime time: timeList){
             if (time.discipline == discipline && time.distance == distance) filteredTimeList.add(time);
             else dumpList.add(time);
         }
 
         // sorts the TimeHolder objects in filteredTimeList after the duration
-        filteredTimeList.sort(Comparator.comparing(TimeHolder::getDuration));
+        filteredTimeList.sort(Comparator.comparing(RecordedTime::getDuration));
 
         // trims the filteredTimeList to at most show the top five swimmers
         if (filteredTimeList.size() > 5) filteredTimeList.subList(5, filteredTimeList.size()).clear();
@@ -261,7 +262,7 @@ public class CompMemberHandler {
         int distance;
 
         // gets the discipline and distance with the method getDisciplineAndDistance
-        TimeHolder disciplineAndDistance = getDisciplineAndDistance();
+        RecordedTime disciplineAndDistance = getDisciplineAndDistance();
         if (disciplineAndDistance == null) return;
         else {
             discipline = disciplineAndDistance.discipline;
@@ -297,9 +298,15 @@ public class CompMemberHandler {
         // trims the filteredMemberList to at most show the top five swimmers
         if (filteredMemberList.size() > 5) filteredMemberList.subList(5, filteredMemberList.size()).clear();
 
-        // TODO: make prettier print
+        int num = 0;
+                System.out.println("#\tTid\t\t\tNavn"+" ".repeat(16)+"\tDato\t\t\tStævne");
         for (Member member: filteredMemberList){
-            System.out.println("Navn: "+member.memberName+"\t"+member.personalTimes.getFirst());
+            num++;
+            System.out.println(num+"\t"+
+                    CompMemberHandler.durationToStringFormatter(member.personalTimes.getFirst().duration)+"\t"+
+                    member.memberName+" ".repeat(20-member.memberName.length())+"\t"+
+                    member.personalTimes.getFirst().dateSet+"\t\t"+
+                    member.personalTimes.getFirst().meetName);
         }
         System.out.println();
     }
@@ -341,7 +348,7 @@ public class CompMemberHandler {
     }
 
     // gets the duration, and returns a nicely formatted string that's easier to read than the original formatting
-    public static String durationFormatter(Duration duration) {
+    public static String durationToStringFormatter(Duration duration) {
         String minutes = String.format("%02d", duration.toMinutesPart());
         String seconds = String.format("%02d.%02d", duration.toSecondsPart(), duration.toMillisPart());
         if (duration.getSeconds() >= 3600) {

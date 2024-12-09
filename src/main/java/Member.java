@@ -23,7 +23,7 @@ public class Member {
     @JsonProperty("automaticPayment")
     boolean automaticPayment;
     @JsonProperty("TimeHolder")
-    ArrayList<TimeHolder> personalTimes = new ArrayList<>();
+    ArrayList<RecordedTime> personalTimes = new ArrayList<>();
 
     // when loading members from the MemberList.txt file, they already have an ID, this constructor helps them keep that ID
     Member(int id, String name, Gender gender, int age, boolean active, boolean competing, boolean paid, boolean autoPay){
@@ -57,7 +57,7 @@ public class Member {
     }
 
     public String toString(){
-        return "ID: "+memberId+"\tNavn: "+memberName+"\tKøn: "+memberGender+"\tAlder: "+memberAge
+        return "\nID: "+memberId+"\tNavn: "+memberName+"\tKøn: "+memberGender+"\tAlder: "+memberAge
                 +"\tEr medlemskab aktivt: "+isActiveMember+", Er medlemmet konkurrence svømmer: "
                 +isCompeting+", Har medlemmet betalt: "+hasPaid;
     }
