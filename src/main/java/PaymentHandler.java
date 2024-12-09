@@ -21,7 +21,7 @@ public class PaymentHandler {
         testlist.add(a6);
 
 
-        subscriberPayment(testlist);
+        changeSubscription(testlist);
     }
 
     public static ArrayList<Member> payMembership(ArrayList<Member> tempList) {
@@ -42,14 +42,18 @@ public class PaymentHandler {
 
             memberId = keyboard.nextInt();
             keyboard.nextLine();
+            boolean existingMemberFound = false;
+            //boolean memberFound will make sure the right member is found.
+            //boolean existingMemberFound will make sure a real existing member is found.
+
 
             //This loop is looking for matching ID with the arraylist.
             for (Member member : tempList) {
                 if (member.memberId == memberId) {           // If the ID's match with arraylist.
                     System.out.println("Medlem fundet. Er det, det rigtige medlem?");
                     System.out.println(member);              // Makes sure the program is user-friendly and asks if the user wants to continue.
-                    System.out.println("Ja / Nej");
 
+                    System.out.println("Ja / Nej");
                     String answer = checkValidInput();  // This method will only allow yes/no answer.
 
                     if (answer.equalsIgnoreCase("ja")) {
@@ -60,16 +64,20 @@ public class PaymentHandler {
                             System.out.println("Medlemmet har en aktiv abonnementsaftale. Medlemmet skal ikke betale ekstra.");
                         } else {
                             double missingPayment = PaymentHandler.getAmount(member);        // Re-use the getAmount function from PaymentHandler. Makes it more clean and effective.
-                            System.out.println(member.memberName + " på " + member.memberAge + " har nu betalt det manglende kontigent på: " + missingPayment + "kr.");
-                            member.hasPaid = true;            // Updates the member's payment status.
+                            System.out.println(member.memberName + " på " + member.memberAge + " har nu betalt det manglende kontigent på: " + missingPayment + " DKK.");
+                            member.hasPaid = true;              // Updates the member's payment status.
                             memberfound = true;                 // The member is found == the loop can end.
                         }
+                        existingMemberFound = true;             // an existing member is found, but not the one the user is looking for.
+                        break;
                     } else if (answer.equalsIgnoreCase("nej")) {
                         System.out.println("Prøv igen med et nyt ID.");     // Continue while loop.
+                        existingMemberFound = true;
+                        break;
                     }
                 }
             }
-            if (memberId > tempList.size()) {         // The system assigns a member with id++.
+            if (!existingMemberFound) {         //MemberId doesn't match with the arraylist and an existing member is not found.
                 System.out.println("Medlemmet kunne ikke findes.");
                 memberfound = false;    // The member is not found and the loop will continue.
             }
@@ -83,7 +91,7 @@ public class PaymentHandler {
         // The purpose of this method is to print out a list of members who hasn't paid the subscription.
         for (Member m : tempList) {
             if (!m.hasPaid) {   // Members who hasn't paid.
-                System.out.println("ID: " + m.memberId + " Navn: " + m.memberName + ". Alder: " + m.memberAge + "år." + " Mangler at betale: " + getAmount(m) + "kr:");
+                System.out.println("ID: " + m.memberId + " Navn: " + m.memberName + ". Alder: " + m.memberAge + "år." + " Mangler at betale: " + getAmount(m) + " DKK");
             }
         }
     }
@@ -91,10 +99,10 @@ public class PaymentHandler {
     public static double getAmount(Member m) {
         // We need this method to get the right amount of money.
         // This is necessary because the method will secure the correct payment.
-        int under18 = 1000;
-        int over18 = 1600;
-        int senior = 1600;
-        int passive = 500;
+        double under18 = 1000.00;
+        double over18 = 1600.00;
+        double senior = 1600.00;
+        double passive = 500.00;
         double seniorDiscount = 0.75;
         double amount = 0;
 

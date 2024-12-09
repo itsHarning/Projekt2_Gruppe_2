@@ -481,4 +481,14 @@
     },
     "TimeHolder" : [ ]
   }
+}, {
+  "memberId" : 23,
+  "memberName" : "k",
+  "memberGender" : "MALE",
+  "memberAge" : 1,
+  "isActiveMember" : false,
+  "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "competitiveSwimmer" : null
 } ]
