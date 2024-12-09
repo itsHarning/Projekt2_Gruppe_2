@@ -313,14 +313,16 @@ public class CompMemberHandler {
         if (filteredMemberList.size() > 5) filteredMemberList.subList(5, filteredMemberList.size()).clear();
 
         int num = 0;
-                System.out.println("#\tTid\t\t\tNavn"+" ".repeat(16)+"\tDato\t\t\tStævne");
+                System.out.println("#\tTid\t\t\tID\tNavn"+" ".repeat(16)+"\tDato\t\t\tStævne");
         for (Member member: filteredMemberList){
             num++;
             System.out.println(num+"\t"+
-                    CompMemberHandler.durationToStringFormatter(member.personalTimes.getFirst().duration)+"\t"+
-                    member.memberName+" ".repeat(20-member.memberName.length())+"\t"+
-                    member.personalTimes.getFirst().dateSet+"\t\t"+
-                    member.personalTimes.getFirst().meetName);
+                    CompMemberHandler.durationToStringFormatter(
+                            member.personalTimes.getFirst().duration)+"\t"+
+                            member.memberId+"\t"+
+                            member.memberName+" ".repeat(20-member.memberName.length())+"\t"+
+                            member.personalTimes.getFirst().dateSet+"\t\t"+
+                            member.personalTimes.getFirst().meetName);
         }
         System.out.println();
     }
