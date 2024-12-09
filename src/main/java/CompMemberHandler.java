@@ -260,6 +260,19 @@ public class CompMemberHandler {
     public static void getTopFiveSwimmers(ArrayList<Member> memberList){
         Discipline discipline;
         int distance;
+        Gender gender;
+
+        System.out.println("Hvilket køn (Mand / Kvinde/ Andet)");
+        while (true) {
+            String genderString = keyboard.nextLine().toUpperCase();
+            if (Gender.fromString(genderString) == null){
+                System.out.println("Ikke et gyldigt køn, prøv igen (Mand / Kvinde / Andet)");
+            }
+            else {
+                gender = Gender.fromString(genderString);
+                break;
+            }
+        }
 
         // gets the discipline and distance with the method getDisciplineAndDistance
         RecordedTime disciplineAndDistance = getDisciplineAndDistance();
@@ -273,7 +286,8 @@ public class CompMemberHandler {
         List<Member> filteredMemberList = memberList
                 .stream()
                 .filter(
-                        member -> member.personalTimes
+                        member -> member.memberGender == gender
+                                && member.personalTimes
                                 .stream()                                       // streams through the personalTimes list of each member
                                 .anyMatch(
                                         time -> time.discipline == discipline   // makes sure it has given discipline
