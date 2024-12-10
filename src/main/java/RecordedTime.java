@@ -3,7 +3,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.Duration;
 import java.time.LocalDate;
 
-public class TimeHolder {
+public class RecordedTime {
     @JsonProperty("discipline")
     public Discipline discipline;
     @JsonProperty("distance")
@@ -18,7 +18,7 @@ public class TimeHolder {
     public String meetName;
 
     // constructor for when it's on unofficial time
-    TimeHolder(Discipline discipline, int distance, Duration duration, LocalDate dateSet, boolean isOfficial){
+    RecordedTime(Discipline discipline, int distance, Duration duration, LocalDate dateSet, boolean isOfficial){
         this.discipline=discipline;
         this.distance=distance;
         this.duration = duration;
@@ -27,7 +27,7 @@ public class TimeHolder {
     }
 
     // constructor if the time is official, and therefore also has a meet name
-    TimeHolder(Discipline discipline, int distance, Duration duration, LocalDate dateSet, boolean isOfficial, String meetName){
+    RecordedTime(Discipline discipline, int distance, Duration duration, LocalDate dateSet, boolean isOfficial, String meetName){
         this.discipline=discipline;
         this.distance=distance;
         this.duration = duration;
@@ -36,18 +36,18 @@ public class TimeHolder {
         this.meetName=meetName;
     }
 
-    TimeHolder(Discipline discipline, int distance){
+    RecordedTime(Discipline discipline, int distance){
         this.discipline=discipline;
         this.distance=distance;
     }
 
     // used when loading everything from .json
-    TimeHolder(){
+    RecordedTime(){
     }
 
     public String toString() {
-        if (isOfficial) return "Disciplin: "+discipline+"\tTid: "+ CompMemberHandler.durationFormatter(duration)+"\tDato: "+dateSet+"\tSat til stævnet \"" + meetName+"\"";
-        else return "Disciplin: "+discipline+"\tTid: "+ CompMemberHandler.durationFormatter(duration)+"\tDato: "+dateSet+"\tTiden blev sat til en træning";
+        if (isOfficial) return "\nDisciplin: "+discipline+"\tTid: "+ CompMemberHandler.durationToStringFormatter(duration)+"\tDato: "+dateSet+"\tSat til stævnet \"" + meetName+"\"";
+        else return "\nDisciplin: "+discipline+"\tTid: "+ CompMemberHandler.durationToStringFormatter(duration)+"\tDato: "+dateSet+"\tTiden blev sat til en træning";
     }
 
     public Duration getDuration() {
