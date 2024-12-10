@@ -1,12 +1,15 @@
-1,Tinka Fistelsovs,exerciseteam
+1,Tinka Fistelsovs,competitiveU18
 2,Leo Beenhakker,competitiveU18
-3,Lena Baldersbæk, competitiveO18
-4,Rikke Olsen,exerciseteam
+3,Lena Baldersbæk,competitiveO18
+4,Rikke Olsen,competitiveU18
 5,Jay Houseman,competitiveU18
-6,Luca Modric, competitiveO18
-7,Anne Rosenbæk,exerciseteam
+6,Luca Modric,competitiveO18
+7,Anne Rosenbæk,competitiveO18
 8,Thomas Sankara,competitiveU18
-9,Sune Hussein, competitiveO18
+9,Sune Hussein,competitiveO18
 10,Henrik Bønnestage,competitiveU18
-11,Konrad Maldini, competitiveO18
-12,Bruce van Hooijdonk,exerciseteam
+11,Konrad Maldini,competitiveO18
+12,Bruce van Hooijdonk,competitiveO18
+13,Ole,competitiveO18
+14,Grete,competitiveO18
+15,Ole hansenbansen,competitiveU18

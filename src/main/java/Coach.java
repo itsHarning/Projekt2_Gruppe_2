@@ -6,29 +6,20 @@ public class Coach {
     public String name;
     public String arrayName;
     ArrayList<Member> team;
-    ArrayList<Member> assaginedMembers;
 
-    public Coach(String name, String arrayName, ArrayList<Member> team){
+    public Coach(String name, String arrayName){
         numOfCoaches ++;
         this.id=numOfCoaches;
         this.name=name;
         this.arrayName = arrayName;
-        this.team = team;
+        team = new ArrayList<>();
     }
-
-    public Coach(String name, String arrayName, ArrayList<Member> team, ArrayList<Member> assaginedMembers){
-        numOfCoaches ++;
-        this.id=numOfCoaches;
-        this.name=name;
-        this.arrayName = arrayName;
-        this.team = team;
-        this.assaginedMembers = assaginedMembers;
-    }
-
-    Coach(){}
 
     public String toString(){
         return  name;
+    }
+    public ArrayList<Member> getTeam() {
+        return team;
     }
 
 }

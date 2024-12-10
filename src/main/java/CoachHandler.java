@@ -1,82 +1,61 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 
 public class CoachHandler {
     public static void main(String[] args) {
         //opretter ny Arrayliste med Coaches
-        ArrayList<Coach>coachlist = loadMembersFromTextFile();
-        assignmembers(coachlist);
 
+        ArrayList<Coach>coachList = loadMembersFromTextFile();
+        ArrayList<Member> memberList = new ArrayList<>(FileHandler.getListFromJson());
+        CoachHandler coachHandler = new CoachHandler();
 
+        Team.assignTeams(memberList);
 
-
-        for(Coach c: coachlist){
-            System.out.println(c.name);
-            for (Member m: c.team){
-                System.out.println(m);
-            }
-
-        }
-
+        createCoaches(coachList);
+        coachHandler.assignmembersContainer(coachList);
+        printCoachTeam(coachList);
 
         // createCoaches(coachlist);
-
-
-
-
-
-        for (Coach c: coachlist) {
-        if(c.team == Team.exerciseteam){
-            System.out.print("exerciseteam: ");
-            System.out.println(c);
-        }
-        if(c.team == Team.competitiveO18){
-                System.out.print("competitive018: ");
-                System.out.println(c);}
-        if(c.team == Team.competitiveU18){
-                System.out.print("competitiveU18: ");
-                System.out.println(c);}
-        }
     }
 
-    public static void createCoaches(ArrayList<Coach>templist) {
+
+        public static void createCoaches(ArrayList<Coach>templist) {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Hvad er navnet på den nye træner? (skriv fornavn og efternavn)");
         String newCoachName = keyboard.nextLine();
 
         System.out.println("Hvilket hold skal den nye træner være på?");
             while (true){
-            System.out.println("Tast 1: Motionsholdet");
-            System.out.println("Tast 2: Konkurrenceholdet under 18");
-            System.out.println("Tast 3: Konkurrenceholdet over 18");
+            System.out.println("Tast 1: Konkurrenceholdet under 18");
+            System.out.println("Tast 2: Konkurrenceholdet over 18");
 
             int valg = Main.checkIntFromUser(keyboard);
             ArrayList team = Team.competitiveO18;
             String arrayName = "";
+            if (valg==0) break;
             switch (valg) {
-
                 case 1:
-                    team = Team.exerciseteam;
-                    arrayName = "exerciseteam";
-                    System.out.println(newCoachName + " er nu oprettet som træner på Motionsholdet i svømmeklubben Delfinen");
-                    break;
-                case 2:
                     team = Team.competitiveU18;
                     arrayName = "competitiveU18";
                     System.out.println(newCoachName + " er nu oprettet som træner på Konkurrenceholdet under 18 i svømmeklubben Delfinen");
+                    templist.add(new Coach(newCoachName,arrayName));
+                    updateTextFile(templist);
                      break;
-                case 3:
+                case 2:
                     team = Team.competitiveO18;
-                    arrayName =  " competitiveO18";
+                    arrayName =  "competitiveO18";
                     System.out.println(newCoachName + " er nu oprettet som træner på Konkurrenceholdet over 18 i svømmeklubben Delfinen");
+                    templist.add(new Coach(newCoachName,arrayName));
+                    updateTextFile(templist);
                     break;
                 default:
                     System.out.println("Ugyldigt svar.");
             }
-            templist.add(new Coach(newCoachName,arrayName,team));
-            updateTextFile(templist);
+
          }
     }
 
@@ -125,7 +104,7 @@ public class CoachHandler {
                 try {
                     int parseId = Integer.parseInt(id);
 
-                    tempList.add(new Coach (name, arrayname,team));
+                    tempList.add(new Coach (name, arrayname));
 
                 } catch (NumberFormatException e) {
                     System.out.println("Not a number");
@@ -141,14 +120,54 @@ public class CoachHandler {
     public static void printTeam (Coach coach){
         System.out.println(coach.team);
     }
+    public static void printCoachTeam(ArrayList<Coach> coachList){
+        Collections.sort(coachList, new Comparator<Coach>() {
+            @Override
+            public int compare(Coach c1, Coach c2) {
+                return Integer.compare(c1.getTeam().size(), c2.getTeam().size());
+            }
+        });
 
-    public static void assignmembers(ArrayList<Coach> coachList){
-        ArrayList<Member> team = new ArrayList<>(FileHandler.getListFromJson());
+        for(Coach c: coachList){
+            System.out.println(c.arrayName +" Lære("+ c.team.size()+"): "+c.name);
+            if(!c.team.isEmpty()) {
+                System.out.println("Elever:");
+                for (Member m : c.team) {
+                    System.out.println(m.getProfile());
+                }
+
+                System.out.println("");
+            }
+        }
+    }
+
+    public void assignmembersContainer(ArrayList<Coach> coachList) {
+        ArrayList<Coach> TeamCoach = new ArrayList<>();
+        for (Coach c: coachList)
+        {
+            if(c.arrayName.contains("competitiveO18")){
+                TeamCoach.add(c);
+            }
+        }
+        assignmembers(Team.competitiveO18, TeamCoach);
+        TeamCoach.clear();
+        for (Coach c: coachList)
+        {
+            if(c.arrayName.contains("competitiveU18")){
+                TeamCoach.add(c);
+            }
+        }
+        assignmembers(Team.competitiveU18, TeamCoach);
+    }
+
+    public static void assignmembers(ArrayList<Member> memberList, ArrayList<Coach> coachList){
+
 
         int numCoaches = coachList.size();  // Number of coaches available
-        int totalMembers = team.size();     // Total members in the team
+        int totalMembers = memberList.size();     // Total members in the team
         int membersPerCoach = totalMembers / numCoaches;  // Basic number of members per coach
         int remainder = totalMembers % numCoaches;  // Remainder members to be distributed
+
 
         // Distribute members equally among the coaches
         int currentCoachIndex = 0;
@@ -160,10 +179,10 @@ public class CoachHandler {
                 Coach currentCoach = coachList.get(currentCoachIndex);
 
                 // Add the current member to the coach's assignedMembers list
-                Member currentMember = team.get(i);
+                Member currentMember = memberList.get(i);
 
                 // Add member to the coach's assignedMembers
-                currentCoach.team.add(currentMember);
+                currentCoach.getTeam().add(currentMember);
 
 
                 assignedMembersCount++;

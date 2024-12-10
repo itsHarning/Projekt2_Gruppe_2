@@ -56,6 +56,10 @@ public class Member {
         numOfMembers++;
     }
 
+    public String getProfile(){
+        return memberName + " " + memberGender + " " + memberAge;
+    }
+
     public String toString(){
         return "\nID: "+memberId+"\tNavn: "+memberName+"\tKøn: "+memberGender+"\tAlder: "+memberAge
                 +"\tEr medlemskab aktivt: "+isActiveMember+", Er medlemmet konkurrence svømmer: "

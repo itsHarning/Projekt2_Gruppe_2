@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Main {
     // creates the main list of members
     static ArrayList<Member> memberList = new ArrayList<>(FileHandler.getListFromJson());
+    static ArrayList<Coach> coachList = CoachHandler.loadMembersFromTextFile();
     static Scanner keyboard = new Scanner(System.in);
     public static void main(String[] args) {
 
@@ -14,7 +15,7 @@ public class Main {
 
         // Sort members in teams
         Team.assignTeams(memberList);
-
+        coachHandler.assignmembersContainer(coachList);
         // Makes dolphin from ascii text file
         try {
             FileReader fil = new FileReader("ascii.txt");
@@ -61,9 +62,11 @@ public class Main {
         while (true) {
             System.out.println("Tast 1: Se alle medlemmer");
             System.out.println("Tast 2: Opret nyt medlem");
-            System.out.println("Tast 3: Ændre om medlemmet er aktive eller passive");
-            System.out.println("Tast 4: Ændre om medlemmet stiller op til stævner");
-            System.out.println("Tast 5: For at se alle hold");
+            System.out.println("Tast 3: Opret ny lære");
+            System.out.println("Tast 4: Ændre om medlemmet er aktive eller passive");
+            System.out.println("Tast 5: Ændre om medlemmet stiller op til stævner");
+            System.out.println("Tast 6: For at se alle hold");
+
             System.out.println("Tast 0: Tilbage til start");
             int choice = checkIntFromUser(keyboard);
             if (choice == 0) break;
@@ -75,12 +78,14 @@ public class Main {
                     CreateNewMember.createNewMember(memberList);
                     break;
                 case 3:
+                    CoachHandler.createCoaches(coachList);
+                case 4:
                      ChangeActivityStatus.changeActivityStatus(memberList);
                     break;
-                case 4:
+                case 5:
                     Team.updateTeams(memberList);
                     break;
-                case 5:
+                case 6:
                     Team.showMembersinTeams();
                     break;
                 default:
@@ -124,20 +129,7 @@ public class Main {
             if (choice == 0) break;
             switch (choice) {
                 case 1:
-                    /*  Metode is not done
-                    CoachHandler.createCoaches();
-                    boolean aktivate=false;
-                    for (Coach c: CoachHandler.coachlist) {
-                        if(c.team == Team.competitiveO18) {
-                            System.out.print("competitiveO18: ");
-                            for(Member t: Team.competitiveO18){
-                                System.out.println(t.memberName);
-                            }
-                        }}
-
-                        //CoachHandler.printTeam(CoachHandler.coachlist.get(0));
-                     */
-                    // TODO: open a method to see who they are Coaching for.
+                    CoachHandler.printCoachTeam(coachList);
                     break;
                 case 2:
                     CompMemberHandler.getTopFiveSwimmers(memberList);
@@ -145,8 +137,10 @@ public class Main {
                 case 3:
                     CompMemberHandler.printMemberTimes(memberList);
                     break;
-                case 4: CompMemberHandler.createNewTime(memberList);
+                case 4:
+                    CompMemberHandler.createNewTime(memberList);
                     break;
+
                 default:
                     System.out.println("Du valgte ikke en af mulighederne præsenteret, prøv igen");
                     System.out.println();
