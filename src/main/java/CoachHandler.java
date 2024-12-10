@@ -117,8 +117,25 @@ public class CoachHandler {
         }
         return tempList;
     }
-    public static void printTeam (Coach coach){
-        System.out.println(coach.team);
+    public static void printTeam (ArrayList<Coach>templist){
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Indtast ID på den pågældende træner");
+        int coachId = Main.checkIntFromUser(keyboard);
+        for (Coach c : templist){
+            if (c.id == coachId){
+                System.out.println(c.arrayName +" antal elever:"+ c.team.size()+": "+c.name);
+                if(!c.team.isEmpty()) {
+                    System.out.println("Elever:");
+                    for (Member m : c.team) {
+                        System.out.println(m.getProfile());
+                    }
+
+                    System.out.println("");
+                }
+
+            }
+
+        }
     }
     public static void printCoachTeam(ArrayList<Coach> coachList){
         Collections.sort(coachList, new Comparator<Coach>() {
@@ -129,7 +146,7 @@ public class CoachHandler {
         });
 
         for(Coach c: coachList){
-            System.out.println(c.arrayName +" Lære("+ c.team.size()+"): "+c.name);
+            System.out.println(c.arrayName +" Træner("+ c.team.size()+"): "+c.name);
             if(!c.team.isEmpty()) {
                 System.out.println("Elever:");
                 for (Member m : c.team) {

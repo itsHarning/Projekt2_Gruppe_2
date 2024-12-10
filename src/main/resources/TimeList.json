@@ -1,4 +1,5 @@
 [ {
+  "profile" : "Katie Ledecky Kvinde 17",
   "memberId" : 1,
   "memberName" : "Katie Ledecky",
   "memberGender" : "FEMALE",
@@ -37,6 +38,7 @@
     "meetName" : "Olympic Games"
   } ]
 }, {
+  "profile" : "Bob Mand 22",
   "memberId" : 2,
   "memberName" : "Bob",
   "memberGender" : "MALE",
@@ -47,6 +49,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
+  "profile" : "György Tumpek Mand 28",
   "memberId" : 3,
   "memberName" : "György Tumpek",
   "memberGender" : "MALE",
@@ -71,6 +74,7 @@
     "meetName" : null
   } ]
 }, {
+  "profile" : "Vladimir Salnikov Andet 17",
   "memberId" : 4,
   "memberName" : "Vladimir Salnikov",
   "memberGender" : "OTHER",
@@ -81,6 +85,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
+  "profile" : "Leyline Hex Kvinde 99",
   "memberId" : 5,
   "memberName" : "Leyline Hex",
   "memberGender" : "FEMALE",
@@ -105,6 +110,7 @@
     "meetName" : null
   } ]
 }, {
+  "profile" : "Don Schollander Mand 77",
   "memberId" : 7,
   "memberName" : "Don Schollander",
   "memberGender" : "MALE",
@@ -115,6 +121,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
+  "profile" : "Duke Kahanamoku Mand 35",
   "memberId" : 8,
   "memberName" : "Duke Kahanamoku",
   "memberGender" : "MALE",
@@ -125,6 +132,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
+  "profile" : "Hansen Kvinde 88",
   "memberId" : 9,
   "memberName" : "Hansen",
   "memberGender" : "FEMALE",
@@ -135,6 +143,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
+  "profile" : "Mark Spitz Andet 30",
   "memberId" : 10,
   "memberName" : "Mark Spitz",
   "memberGender" : "OTHER",
@@ -145,6 +154,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
+  "profile" : "Kirstin Otto Kvinde 55",
   "memberId" : 11,
   "memberName" : "Kirstin Otto",
   "memberGender" : "FEMALE",
@@ -155,6 +165,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
+  "profile" : "Benny Nielsen Mand 55",
   "memberId" : 12,
   "memberName" : "Benny Nielsen",
   "memberGender" : "MALE",
@@ -165,6 +176,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
+  "profile" : "Pernille Blume  Kvinde 44",
   "memberId" : 13,
   "memberName" : "Pernille Blume ",
   "memberGender" : "FEMALE",
@@ -182,6 +194,7 @@
     "meetName" : "Christmas Meet"
   } ]
 }, {
+  "profile" : "Ole Okocha Mand 11",
   "memberId" : 14,
   "memberName" : "Ole Okocha",
   "memberGender" : "MALE",
@@ -192,6 +205,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
+  "profile" : "Kira Toussaint Kvinde 30",
   "memberId" : 15,
   "memberName" : "Kira Toussaint",
   "memberGender" : "FEMALE",
@@ -209,6 +223,7 @@
     "meetName" : "Christmas Meet"
   } ]
 }, {
+  "profile" : "Jeanette Ottesen Kvinde 36",
   "memberId" : 16,
   "memberName" : "Jeanette Ottesen",
   "memberGender" : "FEMALE",
@@ -226,6 +241,7 @@
     "meetName" : "Weekends Testing"
   } ]
 }, {
+  "profile" : "Rikako Ikee Kvinde 24",
   "memberId" : 17,
   "memberName" : "Rikako Ikee",
   "memberGender" : "FEMALE",
@@ -236,6 +252,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
+  "profile" : "Inge de Bruijn Kvinde 51",
   "memberId" : 18,
   "memberName" : "Inge de Bruijn",
   "memberGender" : "FEMALE",
@@ -253,6 +270,7 @@
     "meetName" : "Streamer Awards"
   } ]
 }, {
+  "profile" : "Keralis Mand 69",
   "memberId" : 19,
   "memberName" : "Keralis",
   "memberGender" : "MALE",
@@ -270,6 +288,7 @@
     "meetName" : "Streamer Awards"
   } ]
 }, {
+  "profile" : "Mike Sheets Mand 18",
   "memberId" : 20,
   "memberName" : "Mike Sheets",
   "memberGender" : "MALE",
@@ -350,6 +369,7 @@
     "meetName" : null
   } ]
 }, {
+  "profile" : "Lotte Friis Kvinde 36",
   "memberId" : 21,
   "memberName" : "Lotte Friis",
   "memberGender" : "FEMALE",
@@ -360,6 +380,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
+  "profile" : "Hanni Pham Kvinde 20",
   "memberId" : 22,
   "memberName" : "Hanni Pham",
   "memberGender" : "FEMALE",

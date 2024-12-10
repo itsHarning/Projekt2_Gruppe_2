@@ -62,10 +62,11 @@ public class Main {
         while (true) {
             System.out.println("Tast 1: Se alle medlemmer");
             System.out.println("Tast 2: Opret nyt medlem");
-            System.out.println("Tast 3: Opret ny lære");
-            System.out.println("Tast 4: Ændre om medlemmet er aktive eller passive");
-            System.out.println("Tast 5: Ændre om medlemmet stiller op til stævner");
-            System.out.println("Tast 6: For at se alle hold");
+            System.out.println("Tast 3: Se alle trænere");
+            System.out.println("Tast 4: Opret ny træner");
+            System.out.println("Tast 5: Ændre om medlemmet er aktive eller passive");
+            System.out.println("Tast 6: Ændre om medlemmet stiller op til stævner");
+            System.out.println("Tast 7: For at se alle hold");
 
             System.out.println("Tast 0: Tilbage til start");
             int choice = checkIntFromUser(keyboard);
@@ -78,14 +79,16 @@ public class Main {
                     CreateNewMember.createNewMember(memberList);
                     break;
                 case 3:
-                    CoachHandler.createCoaches(coachList);
+                    CoachHandler.printCoachTeam(coachList);
                 case 4:
+                    CoachHandler.createCoaches(coachList);
+                case 5:
                      ChangeActivityStatus.changeActivityStatus(memberList);
                     break;
-                case 5:
+                case 6:
                     Team.updateTeams(memberList);
                     break;
-                case 6:
+                case 7:
                     Team.showMembersinTeams();
                     break;
                 default:
@@ -129,7 +132,7 @@ public class Main {
             if (choice == 0) break;
             switch (choice) {
                 case 1:
-                    CoachHandler.printCoachTeam(coachList);
+                    CoachHandler.printTeam(coachList);
                     break;
                 case 2:
                     CompMemberHandler.getTopFiveSwimmers(memberList);

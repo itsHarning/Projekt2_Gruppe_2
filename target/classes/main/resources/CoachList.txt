@@ -13,3 +13,4 @@
 13,Ole,competitiveO18
 14,Grete,competitiveO18
 15,Ole hansenbansen,competitiveU18
+16,Kim Flankenstein,competitiveO18
