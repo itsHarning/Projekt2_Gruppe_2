@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,6 +23,7 @@ public class Team {
             }
         }
     }
+
     static void showMembersinTeams() {
 
         System.out.println("Exerciseteam");
@@ -38,7 +40,49 @@ public class Team {
         }
     }
 
-    public static void updateTeams(ArrayList<Member> UpdateList) {
+    static void updateTeams(ArrayList<Member> templist) {
+    Scanner keyboard = new Scanner(System.in);
+    System.out.println("Hvilket ID har medlemet");
+    int memberID =Main.checkIntFromUser(keyboard);
+
+    for (Member m : templist) {
+        if (m.memberId == memberID && m.isActiveMember == true && m.isCompeting == false) {
+
+            System.out.println("Er det det rigtige medlem?" + m.getProfile());
+            System.out.println("ja/nej");
+            String answer = keyboard.nextLine();
+
+            if (answer.equalsIgnoreCase("Ja")) {
+                System.out.println("Vil personen starte på et svømmehold?");
+                System.out.println("ja/nej");
+                answer = keyboard.nextLine();
+
+                if (answer.equalsIgnoreCase("Ja")) {
+                    if (m.memberAge < 18) {
+                        exerciseteam.remove(m);
+                        competitiveU18.add(m);
+                        m.isCompeting = true;
+
+                    }
+                    if (m.memberAge >= 18) {
+                        exerciseteam.remove(m);
+                        competitiveO18.add(m);
+                        m.isCompeting = true;
+
+                    }
+                }
+            }
+
+
+
+
+        }
+    }
+    }
+    }
+
+
+    /* public static void updateTeams(ArrayList<Member> UpdateList) {
         Scanner keyboard = new Scanner(System.in);
         boolean memberfound = false;
         int memberId;
@@ -89,7 +133,6 @@ public class Team {
                                 competitiveU18.remove(m);
                                 exerciseteam.add(m);
                             }
-
                         }
                         if (m.isCompeting == true && m.memberAge >= 18){
                             System.out.println("Skal personen ud af deres svømmehold?");
@@ -108,5 +151,5 @@ public class Team {
                 }
             }
         }
-    }
-}
+    }*/
+
