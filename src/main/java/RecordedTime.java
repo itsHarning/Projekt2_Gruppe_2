@@ -46,8 +46,16 @@ public class RecordedTime {
     }
 
     public String toString() {
-        if (isOfficial) return "\nDisciplin: "+discipline+"\tTid: "+ CompMemberHandler.durationToStringFormatter(duration)+"\tDato: "+dateSet+"\tSat til stævnet \"" + meetName+"\"";
-        else return "\nDisciplin: "+discipline+"\tTid: "+ CompMemberHandler.durationToStringFormatter(duration)+"\tDato: "+dateSet+"\tTiden blev sat til en træning";
+        if (isOfficial)
+            return "\nDisciplin: "+distance+"m "+discipline+
+                    "\tTid: "+ CompMemberHandler.durationToStringFormatter(duration)+
+                    "\tDato: "+dateSet+
+                    "\tSat til stævnet \"" + meetName+"\"";
+        else
+            return "\nDisciplin: "+distance+"m "+discipline +
+                    "\tTid: "+ CompMemberHandler.durationToStringFormatter(duration)+
+                    "\tDato: "+dateSet+
+                    "\tTiden blev sat til en træning";
     }
 
     public Duration getDuration() {

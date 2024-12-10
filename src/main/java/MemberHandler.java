@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MemberHandler {
-        static ArrayList<Member> membersList; // creates the main list of members
-        static Scanner keyboard = new Scanner(System.in);
+    static ArrayList<Member> membersList; // creates the main list of members
+    static Scanner keyboard = new Scanner(System.in);
 
         /*
         // needs to be used when you first run the program to get the list of members
@@ -71,70 +71,77 @@ public class MemberHandler {
         }
          */
 
-        // prints the given list in a nicely formatted way
-        public static void printList(ArrayList<Member> tempList) {
-                for (Member m:tempList){
-                        System.out.println(
-                                "ID: "+m.memberId+"\t\t" +
-                                "NAVN: "+m.memberName+" ".repeat(18-m.memberName.length())+
-                                "KØN: "+m.memberGender+" ".repeat(7-m.memberGender.name().length())+"\t"+
-                                "ALDER: "+m.memberAge);
-                        if (m.isActiveMember) {
-                                System.out.print("Medlemskabet er aktivt, ");
-                                if (m.isCompeting) System.out.println("og de stiller op i stævner");
-                                else System.out.println("og de er motionister");
-                        }
-                        else System.out.println("Ikke aktivt medlemskab");
-                        if (m.hasPaid) System.out.println("Medlemmet har betalt");
-                        else {
-                                System.out.format("Medlemmet har ikke betalt, og skylder %.2f DKK\n",PaymentHandler.getAmount(m));
-                        }
-                        System.out.println();
-                }
+    // prints the given list in a nicely formatted way
+    public static void printList(ArrayList<Member> tempList) {
+        for (Member m:tempList){
+            System.out.println(
+                    "ID: "+m.memberId+"\t\t" +
+                            "NAVN: "+m.memberName+" ".repeat(18-m.memberName.length())+
+                            "KØN: "+m.memberGender+" ".repeat(7-m.memberGender.name().length())+"\t"+
+                            "ALDER: "+m.memberAge);
+            if (m.isActiveMember) {
+                System.out.print("Medlemskabet er aktivt, ");
+                if (m.isCompeting)
+                    System.out.println("og de stiller op i stævner");
+                else
+                    System.out.println("og de er motionister");
+            }
+            else
+                System.out.println("Ikke aktivt medlemskab");
+            if (m.hasPaid)
+                System.out.println("Medlemmet har betalt");
+            else {
+                System.out.format("Medlemmet har ikke betalt, og skylder %.2f DKK\n",PaymentHandler.getAmount(m));
+            }
+            System.out.println();
         }
+    }
 
-        public static Member getMemberFromId(ArrayList<Member> memberList) {
-                // this loop will run as long as a member is not found.
-                while (true) {
-                        System.out.println("Indtast IDet på medlemmet");
-                        int memberId = CompMemberHandler.checkIntFromUser();
-                        if (memberId == 0) break;
+    public static Member getMemberFromId(ArrayList<Member> memberList) {
+        // this loop will run as long as a member is not found.
+        while (true) {
+            System.out.println("Indtast IDet på medlemmet");
+            int memberId = CompMemberHandler.checkIntFromUser();
+            if (memberId == 0)
+                break;
 
-                        if (memberId > Member.numOfMembers){
-                                System.out.println("Dette er ikke et gyldigt medlems nummer\nDer er kun "+Member.numOfMembers+" medlemmer i klubben");
-                                continue;
-                        }
+            if (memberId > memberList.getLast().memberId){
+                System.out.println("Dette er ikke et gyldigt medlems nummer\nDer er kun "+Member.numOfMembers+" medlemmer i klubben");
+                continue;
+            }
 
-                        // loops through the member list to find the member with a matching ID given
+            // loops through the member list to find the member with a matching ID given
+            while (true) {
+                for (Member member : memberList) {
+                    if (member.memberId == memberId) {
                         while (true) {
-                                for (Member member : memberList) {
-                                        if (member.memberId == memberId) {
-                                                while (true) {
+                            // double checks that you've gotten the member you intended
+                            System.out.println("Er dette det rigtige medlem?");
+                            System.out.println(member.memberName + "?");
+                            System.out.println("Ja / Nej");
+                            String answer = keyboard.nextLine();
+                            if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q"))
+                                break;
+                            if (answer.equalsIgnoreCase("ja")) {
+                                return member;
 
-                                                        // double checks that you've gotten the member you intended
-                                                        System.out.println("Er dette det rigtige medlem?");
-                                                        System.out.println(member.memberName + "?");
-                                                        System.out.println("Ja / Nej");
-                                                        String answer = keyboard.nextLine();
-                                                        if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q")) break;
-                                                        if (answer.equalsIgnoreCase("ja")) {
-                                                                return member;
-                                                                // handles if you wrote the incorrect ID, and need to write a new one
-                                                        } else if (answer.equalsIgnoreCase("nej")) {
-                                                                System.out.println("Prøv igen med et nyt ID.");
-                                                                memberId = CompMemberHandler.checkIntFromUser();
-                                                                if (memberId == 0) return member;
-                                                                break;
+                                // handles if you wrote the incorrect ID, and need to write a new one
+                            } else if (answer.equalsIgnoreCase("nej")) {
+                                System.out.println("Prøv igen med et nyt ID.");
+                                memberId = CompMemberHandler.checkIntFromUser();
+                                if (memberId == 0)
+                                    return member;
+                                break;
 
-                                                                // handles if what's written isn't a valid ID
-                                                        } else {
-                                                                System.out.println("Ugyldigt svar. Prøv igen (Ja / Nej)");
-                                                        }
-                                                }
-                                        }
-                                }
+                                // handles if what's written isn't a valid ID
+                            } else {
+                                System.out.println("Ugyldigt svar. Prøv igen (Ja / Nej)");
+                            }
                         }
+                    }
                 }
-                return new Member();
+            }
         }
+        return new Member();
+    }
 }

@@ -19,7 +19,6 @@ public class FileHandler {
         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         objectMapper.setVisibility(VisibilityChecker.Std.defaultInstance().withFieldVisibility(JsonAutoDetect.Visibility.ANY));
         try {
-            //memberList.forEach(x -> System.out.println(x.toString()));
             return objectMapper.readValue(
                     new File("src/main/resources/TimeList.json"),
                     new TypeReference<List<Member>>() {});
@@ -35,44 +34,9 @@ public class FileHandler {
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS); // to write java.util.Date, Calendar as number (timestamp):
 
         try {
-            // System.out.println(tempList);
-            // String jsonString = objectMapper.writeValueAsString(tempList);
-            // System.out.println(jsonString);
             objectMapper.writeValue(new File("src/main/resources/TimeList.json"), tempList);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static void main(String[] args) {
-        //ArrayList<Member> memberList = new ArrayList<>(FileHandler.getListFromJson());
-        //System.out.println(memberList);
-        //System.out.println("Member List Loaded");
-        //ChangeActivityStatus.changeCompetitiveStatus(memberList);
-        //System.out.println("Activity Status Changed");
-        //Member testMember = memberList.getFirst();
-        //System.out.println(testMember);
-        //System.out.println("Member Printed");
-        //System.out.println(testMember.competitiveSwimmer);
-        //ArrayList<TimeHolder> testList = testMember.competitiveSwimmer.personalTimes;
-        //testList.add(new TimeHolder(Discipline.BUTTERFLY,200, Duration.parse("pt4m20s"), LocalDate.now(),true,"Danish Champienship"));
-        //testList.add(new TimeHolder(Discipline.FREESTYLE,50,Duration.parse("pt45.69s"),LocalDate.now(),true,"Olympic Games"));
-        //System.out.println("times added");
-        //System.out.println(testMember.competitiveSwimmer);
-        //System.out.println(testList);
-        //System.out.println("testList printed");
-        //writeListToJson(memberList);
-        //System.out.println("written to json");
-        //List<Member> test = getListFromJson();
-        ArrayList<Member> test = new ArrayList<>(FileHandler.getListFromJson());
-        System.out.println("read from json");
-        System.out.println(test);
-        Member newTestMember = test.getFirst();
-        System.out.println(newTestMember);
-        System.out.println(newTestMember.personalTimes);
-        ArrayList<RecordedTime> testTimeList = newTestMember.personalTimes;
-        System.out.println(testTimeList);
-        ArrayList<Member> listToArrayListTest = new ArrayList<>(test);
-        System.out.println(listToArrayListTest);
     }
 }

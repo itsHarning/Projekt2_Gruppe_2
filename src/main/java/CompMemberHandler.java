@@ -14,7 +14,7 @@ public class CompMemberHandler {
         Discipline discipline;
         int distance;
         Duration swimTime = Duration.parse("pt0s"); // parses duration from string in correct format, such as "1h33m7.69s"
-        LocalDate dateSet = LocalDate.now();
+        LocalDate dateSet;
         boolean isOfficial = false;
         String meetName = "";
         Member member = new Member();
@@ -26,15 +26,18 @@ public class CompMemberHandler {
         while (true) {
             if (newMember) {
                 member = MemberHandler.getMemberFromId(memberList);
-                if (member.memberId == 0) return;
+                if (member.memberId == 0) {
+                    return;
+                }
             }
 
             while (true) {
                 if (member.personalTimes.isEmpty()) {
                     System.out.println(member.memberName + " er ikke oprettet som konkurrence svømmer");
-                    System.out.println("Vil du oprette dem, og registrere deres tid?");
+                    System.out.println("Vil du oprette dem, og registrere deres tid? (Ja / Nej)");
                     String answer = keyboard.nextLine();
-                    if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q")) return;
+                    if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q"))
+                        return;
                     if (answer.equalsIgnoreCase("ja")) {
                         System.out.println(member.memberName + " er nu registreret som konkurrencesvømmer");
                         member.isCompeting = true;
@@ -42,13 +45,15 @@ public class CompMemberHandler {
                     } else if (answer.equalsIgnoreCase("nej")) {
                         System.out.println("Medlemmet skal være, eller tidligere have været konkurrence svømmer for at få registreret tider");
                         return;
-                    } else System.out.println("Ikke et gyldigt svar, prøv igen! (Ja / Nej)");
+                    } else
+                        System.out.println("Ikke et gyldigt svar, prøv igen! (Ja / Nej)");
                 } else break;
             }
 
             // gets the discipline and distance with the method getDisciplineAndDistance
             RecordedTime disciplineAndDistance = getDisciplineAndDistance();
-            if (disciplineAndDistance == null) return;
+            if (disciplineAndDistance == null)
+                return;
             else {
                 discipline = disciplineAndDistance.discipline;
                 distance = disciplineAndDistance.distance;
@@ -58,18 +63,16 @@ public class CompMemberHandler {
             System.out.println("Hvad er svømmerens tid? (0h0m0.0s)");
             swimTime = parseDuration();
 
-            System.out.println("Hvilken dato blev tiden sat? (yyyy-mm-dd)");
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // sets up a formatter for how LocalDateTime should parse strings
-            String givenDate = keyboard.nextLine();
-            if (givenDate.equalsIgnoreCase("0") || givenDate.equalsIgnoreCase("q")) return;
-            else if (givenDate.equalsIgnoreCase("i dag")) dateSet = LocalDate.now();
-            else dateSet = LocalDate.parse(givenDate, formatter);
+            dateSet = parseDate();
+            if (dateSet == null)
+                return;
 
             // gets if the time was set at a meet or not
             System.out.println("Blev tiden sat til et stævne? (Ja / Nej)");
             while (true) {
                 String meetAnswer = keyboard.nextLine();
-                if (meetAnswer.equalsIgnoreCase("0") || meetAnswer.equalsIgnoreCase("q")) return;
+                if (meetAnswer.equalsIgnoreCase("0") || meetAnswer.equalsIgnoreCase("q"))
+                    return;
 
                 // gets the name of the meet, if the time was set at one
                 switch (meetAnswer) {
@@ -91,14 +94,29 @@ public class CompMemberHandler {
             System.out.println("Er dette den korrekte information?");
             String formattedTime = durationToStringFormatter(swimTime);
             if (isOfficial) {
-                System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName + "\tDisciplin: " + discipline + "\tDistance: " + distance + "\tTid: " + formattedTime + "\tDato: " + dateSet + "\tSat til stævnet " + meetName);
+                System.out.println("ID: "+member.memberId+
+                    "\tNavn: " + member.memberName+
+                    "\tDisciplin: "+discipline+
+                    "\tDistance: "+distance+
+                    "\tTid: "+formattedTime+
+                    "\tDato: "+dateSet+
+                    "\tSat til stævnet \""+
+                    meetName+"\"");
             } else {
-                System.out.println("ID: " + member.memberId + "\tNavn: " + member.memberName + "\tDisciplin: " + discipline + "\tDistance: " + distance + "\tTid: " + formattedTime + "\tDato: " + dateSet + "\tTiden blev sat til en træning");
+                System.out.println("ID: "+
+                    member.memberId+
+                    "\tNavn: "+member.memberName+
+                    "\tDisciplin: "+discipline+
+                    "\tDistance: "+distance+
+                    "\tTid: "+formattedTime
+                    + "\tDato: "+dateSet+
+                    "\tTiden blev sat til en træning");
             }
             System.out.println("Ja / Nej");
             while (true) {
                 String infoAnswer = keyboard.nextLine();
-                if (infoAnswer.equalsIgnoreCase("0") || infoAnswer.equalsIgnoreCase("q")) return;
+                if (infoAnswer.equalsIgnoreCase("0") || infoAnswer.equalsIgnoreCase("q"))
+                    return;
 
                 // either continues if correct, or restarts method if incorrect
                 switch (infoAnswer) {
@@ -124,21 +142,27 @@ public class CompMemberHandler {
             while (true) {
                 System.out.println("Vil du gerne oprette endnu en tid? (Ja / Nej)");
                 String answer = keyboard.nextLine();
-                if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q")) return;
+                if (answer.equalsIgnoreCase("0") || answer.equalsIgnoreCase("q"))
+                    return;
                 if (answer.equalsIgnoreCase("ja")) {
                     while (true) {
                         System.out.println("Samme medlem? (Ja / Nej)");
                         String secondAnswer = keyboard.nextLine();
-                        if (secondAnswer.equalsIgnoreCase("0") || secondAnswer.equalsIgnoreCase("q")) return;
+                        if (secondAnswer.equalsIgnoreCase("0") || secondAnswer.equalsIgnoreCase("q"))
+                            return;
                         if (secondAnswer.equalsIgnoreCase("ja")) {
                             newMember = false;
                             break;
-                        } else if (secondAnswer.equalsIgnoreCase("nej")) break;
-                        else System.out.println("Ikke et gyldigt svar, prøv igen! (Ja / Nej)");
+                        } else if (secondAnswer.equalsIgnoreCase("nej"))
+                            break;
+                        else
+                            System.out.println("Ikke et gyldigt svar, prøv igen! (Ja / Nej)");
                     }
                     break;
-                } else if (answer.equalsIgnoreCase("nej")) return;
-                else System.out.println("Ikke et gyldigt svar, prøv igen! (Ja / Nej)");
+                } else if (answer.equalsIgnoreCase("nej"))
+                    return;
+                else
+                    System.out.println("Ikke et gyldigt svar, prøv igen! (Ja / Nej)");
             }
             FileHandler.writeListToJson(memberList);
         }
@@ -190,7 +214,8 @@ public class CompMemberHandler {
                     System.out.println("De mulige distancer er 100 og 200");
                     while (true) {
                         distance = checkIntFromUser();
-                        if (distance == 0) return null;
+                        if (distance == 0)
+                            return null;
                         switch (distance) {
                             case (100):
                             case (200):
@@ -209,7 +234,8 @@ public class CompMemberHandler {
                     System.out.println("De mulige distancer er 200 og 400");
                     while (true) {
                         distance = checkIntFromUser();
-                        if (distance == 0) return null;
+                        if (distance == 0)
+                            return null;
                         switch (distance) {
                             case (200):
                             case (400):
@@ -252,7 +278,8 @@ public class CompMemberHandler {
         filteredTimeList.sort(Comparator.comparing(RecordedTime::getDuration));
 
         // trims the filteredTimeList to at most show the top five swimmers
-        if (filteredTimeList.size() > 5) filteredTimeList.subList(5, filteredTimeList.size()).clear();
+        if (filteredTimeList.size() > 5)
+            filteredTimeList.subList(5, filteredTimeList.size()).clear();
         filteredTimeList.addAll(dumpList);  // the times that didn't match the parameters are added back into the list
         return filteredTimeList;            // the list with all the times are returned
     }
@@ -276,7 +303,8 @@ public class CompMemberHandler {
 
         // gets the discipline and distance with the method getDisciplineAndDistance
         RecordedTime disciplineAndDistance = getDisciplineAndDistance();
-        if (disciplineAndDistance == null) return;
+        if (disciplineAndDistance == null)
+            return;
         else {
             discipline = disciplineAndDistance.discipline;
             distance = disciplineAndDistance.distance;
@@ -284,15 +312,15 @@ public class CompMemberHandler {
 
         // stream through the memberList, filters through based on the given parameters, and adds the members that match to filteredMemberList
         List<Member> filteredMemberList = memberList
-                .stream()
-                .filter(
-                        member -> member.memberGender == gender
-                                && member.personalTimes
-                                .stream()                                       // streams through the personalTimes list of each member
-                                .anyMatch(
-                                        time -> time.discipline == discipline   // makes sure it has given discipline
-                                                && time.distance == distance))  // and distance
-                .toList();
+            .stream()
+            .filter(
+                member -> member.memberGender == gender
+                    && member.personalTimes
+                    .stream()                                       // streams through the personalTimes list of each member
+                    .anyMatch(
+                        time -> time.discipline == discipline   // makes sure it has given discipline
+                            && time.distance == distance))  // and distance
+            .toList();
 
         // goes through all the filtered members, and makes sure their personal time list is sorted so the fastest relevant time appears first
         for (Member member: filteredMemberList) {
@@ -301,13 +329,13 @@ public class CompMemberHandler {
 
         // sorts filteredMemberList based off of the first item in each members personalTimes list
         filteredMemberList = filteredMemberList
-                .stream()
-                .sorted(
-                        Comparator.comparing(
-                                member -> member.personalTimes
-                                        .getFirst()
-                                        .duration))
-                .toList();
+            .stream()
+            .sorted(
+                Comparator.comparing(
+                    member -> member.personalTimes
+                        .getFirst()
+                        .duration))
+            .toList();
 
         // trims the filteredMemberList to at most show the top five swimmers
         if (filteredMemberList.size() > 5) filteredMemberList.subList(5, filteredMemberList.size()).clear();
@@ -316,20 +344,39 @@ public class CompMemberHandler {
                 System.out.println("#\tTid\t\t\tID\tNavn"+" ".repeat(16)+"\tDato\t\t\tStævne");
         for (Member member: filteredMemberList){
             num++;
-            System.out.println(num+"\t"+
-                    CompMemberHandler.durationToStringFormatter(
-                            member.personalTimes.getFirst().duration)+"\t"+
-                            member.memberId+"\t"+
-                            member.memberName+" ".repeat(20-member.memberName.length())+"\t"+
-                            member.personalTimes.getFirst().dateSet+"\t\t"+
-                            member.personalTimes.getFirst().meetName);
+            System.out.println(
+                num+"\t"+
+                CompMemberHandler.durationToStringFormatter(member.personalTimes.getFirst().duration)+"\t"+
+                member.memberId+"\t"+
+                member.memberName+" ".repeat(20-member.memberName.length())+"\t"+
+                member.personalTimes.getFirst().dateSet+"\t\t"+
+                member.personalTimes.getFirst().meetName);
         }
         System.out.println();
     }
 
     public static void printMemberTimes(ArrayList<Member> memberList){
         Member member = MemberHandler.getMemberFromId(memberList);
-        System.out.println(member.personalTimes);
+        List<RecordedTime> sortedTimeList = member.personalTimes
+            .stream()
+                .sorted(Comparator.comparing(RecordedTime::getDuration))
+            .sorted(
+                Comparator.comparing(time -> time.distance))
+            .sorted(Comparator.comparing(
+                    time -> time.discipline))
+                .toList();
+        System.out.println("Disciplin\t\t\t\tTid\t\t\t\tDato\t\tStævne");
+        for (RecordedTime time: sortedTimeList){
+            String disciplineString = time.discipline.toString();
+            String durationString = CompMemberHandler.durationToStringFormatter(time.duration);
+            System.out.println(
+                time.distance+"m"+" ".repeat(7-Integer.toString(time.distance).length())+
+                time.discipline+" ".repeat(15-disciplineString.length())+"\t"+
+                durationString+" ".repeat(12-durationString.length())+"\t"+
+                time.dateSet+"\t"+
+                time.meetName);
+        }
+        System.out.println();
     }
 
     public static int checkIntFromUser() {
@@ -363,6 +410,24 @@ public class CompMemberHandler {
         return duration;
     }
 
+    public static LocalDate parseDate(){
+        System.out.println("Hvilken dato blev tiden sat? (yyyy-mm-dd)");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // sets up a formatter for how LocalDateTime should parse strings
+        while (true) {
+            try {
+                String givenDate = keyboard.nextLine();
+                if (givenDate.equalsIgnoreCase("0") || givenDate.equalsIgnoreCase("q"))
+                    return null;
+                else if (givenDate.equalsIgnoreCase("i dag"))
+                    return LocalDate.now();
+                else
+                    return LocalDate.parse(givenDate, formatter);
+            } catch (RuntimeException e) {
+                System.out.println("Ikke en gyldig dato, prøv igen i formatted \"yyyy-MM-dd\"");
+            }
+        }
+    }
+
     // gets the duration, and returns a nicely formatted string that's easier to read than the original formatting
     public static String durationToStringFormatter(Duration duration) {
         String minutes = String.format("%02d", duration.toMinutesPart());
@@ -371,7 +436,9 @@ public class CompMemberHandler {
             String hours = String.format("%d", duration.toHours());
             return hours+":"+minutes+":"+seconds;
         }
-        else if (duration.getSeconds() > 60) return minutes+":"+seconds;
-        else return seconds;
+        else if (duration.getSeconds() > 60)
+            return minutes+":"+seconds;
+        else
+            return seconds+"s";
     }
 }

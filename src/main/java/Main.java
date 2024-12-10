@@ -125,7 +125,7 @@ public class Main {
         while (true) {
             System.out.println("Tast 1: Se hvem du er træner for");
             System.out.println("Tast 2: Se top 5 tid inden for hver svømmedisciplin");
-            System.out.println("Tast 3: Få information for et givent medlem");
+            System.out.println("Tast 3: Få alle tider for et givent medlem");
             System.out.println("Tast 4: Opret ny rekord tid for et medlem");
             System.out.println("Tast 0: For at gå tilbage");
             int choice = checkIntFromUser(keyboard);
