@@ -41,13 +41,13 @@ public class Team {
     }
 
     static void updateTeams(ArrayList<Member> templist) {
-    Scanner keyboard = new Scanner(System.in);
-    System.out.println("Hvilket ID har medlemet");
-    int memberID =Main.checkIntFromUser(keyboard);
-
-    for (Member m : templist) {
-        if (m.memberId == memberID && m.isActiveMember == true && m.isCompeting == false) {
-
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Hvilket ID har medlemet");
+        int memberID = Main.checkIntFromUser(keyboard);
+        boolean membernotfound = true;
+        for (Member m : templist) {
+            if (m.memberId == memberID && m.isActiveMember == true && m.isCompeting == false) {
+                membernotfound = false;
             System.out.println("Er det det rigtige medlem?" + m.getProfile());
             System.out.println("ja/nej");
             String answer = keyboard.nextLine();
@@ -62,24 +62,33 @@ public class Team {
                         exerciseteam.remove(m);
                         competitiveU18.add(m);
                         m.isCompeting = true;
+                        FileHandler.writeListToJson(templist);
 
                     }
+
                     if (m.memberAge >= 18) {
                         exerciseteam.remove(m);
                         competitiveO18.add(m);
                         m.isCompeting = true;
-
+                        FileHandler.writeListToJson(templist);
                     }
+
+                }
+                if(answer.equalsIgnoreCase("nej")){
+                    break;
                 }
             }
-
-
-
-
+            if (answer.equalsIgnoreCase("nej")) {
+                return;
+            }
+            }
+        } if(membernotfound == true) {
+            System.out.println("Kunne ikke finde medlemmet, prøv igen");
+            System.out.println("");
         }
+
     }
-    }
-    }
+}
 
 
     /* public static void updateTeams(ArrayList<Member> UpdateList) {

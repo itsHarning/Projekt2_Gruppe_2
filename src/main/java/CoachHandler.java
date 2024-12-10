@@ -129,12 +129,10 @@ public class CoachHandler {
                     for (Member m : c.team) {
                         System.out.println(m.getProfile());
                     }
-
                     System.out.println("");
                 }
 
             }
-
         }
     }
     public static void printCoachTeam(ArrayList<Coach> coachList){
