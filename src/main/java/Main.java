@@ -63,6 +63,7 @@ public class Main {
             System.out.println("Tast 2: Opret nyt medlem");
             System.out.println("Tast 3: Ændre om medlemmet er aktive eller passive");
             System.out.println("Tast 4: Ændre om medlemmet stiller op til stævner");
+            System.out.println("Tast 5: For at se alle hold");
             System.out.println("Tast 0: Tilbage til start");
             int choice = checkIntFromUser(keyboard);
             if (choice == 0) break;
@@ -78,6 +79,9 @@ public class Main {
                     break;
                 case 4:
                     Team.updateTeams(memberList);
+                    break;
+                case 5:
+                    Team.showMembersinTeams();
                     break;
                 default:
                     System.out.println("Du valgte ikke en af mulighederne præsenteret, prøv igen");

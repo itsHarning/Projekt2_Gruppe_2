@@ -22,6 +22,21 @@ public class Team {
             }
         }
     }
+    static void showMembersinTeams() {
+
+        System.out.println("Exerciseteam");
+        for (Member m : Team.exerciseteam) {
+            System.out.println(m);
+        }
+        System.out.println("CompetitiveU18");
+        for (Member m : Team.competitiveU18) {
+            System.out.println(m);
+        }
+        System.out.println("CompetitiveO18");
+        for (Member m : Team.competitiveO18) {
+            System.out.println(m);
+        }
+    }
 
     public static void updateTeams(ArrayList<Member> UpdateList) {
         Scanner keyboard = new Scanner(System.in);
