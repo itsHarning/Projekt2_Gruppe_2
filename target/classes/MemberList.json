@@ -1,5 +1,5 @@
 [ {
-  "profile" : "Katie Ledecky Kvinde 17",
+  "profile" : "Katie Ledecky, Kvinde, 17 år",
   "memberId" : 1,
   "memberName" : "Katie Ledecky",
   "memberGender" : "FEMALE",
@@ -38,7 +38,7 @@
     "meetName" : "Olympic Games"
   } ]
 }, {
-  "profile" : "Bob Mand 22",
+  "profile" : "Bob, Mand, 22 år",
   "memberId" : 2,
   "memberName" : "Bob",
   "memberGender" : "MALE",
@@ -49,7 +49,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "György Tumpek Mand 28",
+  "profile" : "György Tumpek, Mand, 28 år",
   "memberId" : 3,
   "memberName" : "György Tumpek",
   "memberGender" : "MALE",
@@ -74,7 +74,7 @@
     "meetName" : "-"
   } ]
 }, {
-  "profile" : "Vladimir Salnikov Andet 17",
+  "profile" : "Vladimir Salnikov, Andet, 17 år",
   "memberId" : 4,
   "memberName" : "Vladimir Salnikov",
   "memberGender" : "OTHER",
@@ -85,7 +85,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Leyline Hex Kvinde 99",
+  "profile" : "Leyline Hex, Kvinde, 99 år",
   "memberId" : 5,
   "memberName" : "Leyline Hex",
   "memberGender" : "FEMALE",
@@ -166,7 +166,7 @@
     "meetName" : null
   } ]
 }, {
-  "profile" : "Don Schollander Mand 77",
+  "profile" : "Don Schollander, Mand, 77 år",
   "memberId" : 7,
   "memberName" : "Don Schollander",
   "memberGender" : "MALE",
@@ -177,7 +177,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Duke Kahanamoku Mand 35",
+  "profile" : "Duke Kahanamoku, Mand, 35 år",
   "memberId" : 8,
   "memberName" : "Duke Kahanamoku",
   "memberGender" : "MALE",
@@ -188,7 +188,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Hansen Kvinde 88",
+  "profile" : "Hansen, Kvinde, 88 år",
   "memberId" : 9,
   "memberName" : "Hansen",
   "memberGender" : "FEMALE",
@@ -199,7 +199,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Mark Spitz Andet 30",
+  "profile" : "Mark Spitz, Andet, 30 år",
   "memberId" : 10,
   "memberName" : "Mark Spitz",
   "memberGender" : "OTHER",
@@ -210,7 +210,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Kirstin Otto Kvinde 55",
+  "profile" : "Kirstin Otto, Kvinde, 55 år",
   "memberId" : 11,
   "memberName" : "Kirstin Otto",
   "memberGender" : "FEMALE",
@@ -221,7 +221,7 @@
   "automaticPayment" : true,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Benny Nielsen Mand 55",
+  "profile" : "Benny Nielsen, Mand, 55 år",
   "memberId" : 12,
   "memberName" : "Benny Nielsen",
   "memberGender" : "MALE",
@@ -232,7 +232,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Pernille Blume  Kvinde 44",
+  "profile" : "Pernille Blume , Kvinde, 44 år",
   "memberId" : 13,
   "memberName" : "Pernille Blume ",
   "memberGender" : "FEMALE",
@@ -250,7 +250,7 @@
     "meetName" : "Christmas Meet"
   } ]
 }, {
-  "profile" : "Ole Okocha Mand 11",
+  "profile" : "Ole Okocha, Mand, 11 år",
   "memberId" : 14,
   "memberName" : "Ole Okocha",
   "memberGender" : "MALE",
@@ -261,7 +261,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Kira Toussaint Kvinde 30",
+  "profile" : "Kira Toussaint, Kvinde, 30 år",
   "memberId" : 15,
   "memberName" : "Kira Toussaint",
   "memberGender" : "FEMALE",
@@ -279,7 +279,7 @@
     "meetName" : "Christmas Meet"
   } ]
 }, {
-  "profile" : "Jeanette Ottesen Kvinde 36",
+  "profile" : "Jeanette Ottesen, Kvinde, 36 år",
   "memberId" : 16,
   "memberName" : "Jeanette Ottesen",
   "memberGender" : "FEMALE",
@@ -297,7 +297,7 @@
     "meetName" : "Weekends Testing"
   } ]
 }, {
-  "profile" : "Rikako Ikee Kvinde 24",
+  "profile" : "Rikako Ikee, Kvinde, 24 år",
   "memberId" : 17,
   "memberName" : "Rikako Ikee",
   "memberGender" : "FEMALE",
@@ -308,7 +308,7 @@
   "automaticPayment" : true,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Inge de Bruijn Kvinde 51",
+  "profile" : "Inge de Bruijn, Kvinde, 51 år",
   "memberId" : 18,
   "memberName" : "Inge de Bruijn",
   "memberGender" : "FEMALE",
@@ -326,7 +326,7 @@
     "meetName" : "Streamer Awards"
   } ]
 }, {
-  "profile" : "Keralis Mand 69",
+  "profile" : "Keralis, Mand, 69 år",
   "memberId" : 19,
   "memberName" : "Keralis",
   "memberGender" : "MALE",
@@ -344,7 +344,7 @@
     "meetName" : "Streamer Awards"
   } ]
 }, {
-  "profile" : "Mike Sheets Mand 18",
+  "profile" : "Mike Sheets, Mand, 18 år",
   "memberId" : 20,
   "memberName" : "Mike Sheets",
   "memberGender" : "MALE",
@@ -425,7 +425,7 @@
     "meetName" : "-"
   } ]
 }, {
-  "profile" : "Lotte Friis Kvinde 36",
+  "profile" : "Lotte Friis, Kvinde, 36 år",
   "memberId" : 21,
   "memberName" : "Lotte Friis",
   "memberGender" : "FEMALE",
@@ -436,7 +436,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Hanni Pham Kvinde 20",
+  "profile" : "Hanni Pham, Kvinde, 20 år",
   "memberId" : 22,
   "memberName" : "Hanni Pham",
   "memberGender" : "FEMALE",
@@ -447,7 +447,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Ripster Mand 16",
+  "profile" : "Ripster, Mand, 16 år",
   "memberId" : 23,
   "memberName" : "Ripster",
   "memberGender" : "MALE",
@@ -556,7 +556,7 @@
     "meetName" : "-"
   } ]
 }, {
-  "profile" : "Jab Hill Andet 5",
+  "profile" : "Jab Hill, Andet, 5 år",
   "memberId" : 24,
   "memberName" : "Jab Hill",
   "memberGender" : "OTHER",
@@ -567,7 +567,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Jimmy Neutron Mand 11",
+  "profile" : "Jimmy Neutron, Mand, 11 år",
   "memberId" : 25,
   "memberName" : "Jimmy Neutron",
   "memberGender" : "MALE",
@@ -578,7 +578,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Sheen Estévez Mand 11",
+  "profile" : "Sheen Estévez, Mand, 11 år",
   "memberId" : 26,
   "memberName" : "Sheen Estévez",
   "memberGender" : "MALE",
@@ -589,7 +589,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Carl Wheezer Mand 11",
+  "profile" : "Carl Wheezer, Mand, 11 år",
   "memberId" : 27,
   "memberName" : "Carl Wheezer",
   "memberGender" : "MALE",
@@ -600,7 +600,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Rikki Chadwick Kvinde 16",
+  "profile" : "Rikki Chadwick, Kvinde, 16 år",
   "memberId" : 28,
   "memberName" : "Rikki Chadwick",
   "memberGender" : "FEMALE",
@@ -611,7 +611,7 @@
   "automaticPayment" : true,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Emma Gilbert Kvinde 17",
+  "profile" : "Emma Gilbert, Kvinde, 17 år",
   "memberId" : 29,
   "memberName" : "Emma Gilbert",
   "memberGender" : "FEMALE",
@@ -622,7 +622,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Cleo Sertori Kvinde 16",
+  "profile" : "Cleo Sertori, Kvinde, 16 år",
   "memberId" : 30,
   "memberName" : "Cleo Sertori",
   "memberGender" : "FEMALE",
@@ -633,7 +633,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Cthulhu Andet 99",
+  "profile" : "Cthulhu, Andet, 99 år",
   "memberId" : 31,
   "memberName" : "Cthulhu",
   "memberGender" : "OTHER",
@@ -644,7 +644,7 @@
   "automaticPayment" : true,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Davy Jones Mand 69",
+  "profile" : "Davy Jones, Mand, 69 år",
   "memberId" : 32,
   "memberName" : "Davy Jones",
   "memberGender" : "MALE",
@@ -655,7 +655,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Jack Sparrow Mand 25",
+  "profile" : "Jack Sparrow, Mand, 25 år",
   "memberId" : 33,
   "memberName" : "Jack Sparrow",
   "memberGender" : "MALE",
@@ -666,7 +666,7 @@
   "automaticPayment" : true,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Elizabeth Swann Kvinde 15",
+  "profile" : "Elizabeth Swann, Kvinde, 15 år",
   "memberId" : 34,
   "memberName" : "Elizabeth Swann",
   "memberGender" : "FEMALE",
@@ -677,7 +677,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Will Turner Mand 20",
+  "profile" : "Will Turner, Mand, 20 år",
   "memberId" : 35,
   "memberName" : "Will Turner",
   "memberGender" : "MALE",
@@ -688,7 +688,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Keith Haring Mand 8",
+  "profile" : "Keith Haring, Mand, 8 år",
   "memberId" : 36,
   "memberName" : "Keith Haring",
   "memberGender" : "MALE",
@@ -699,7 +699,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Ole Henriksen Mand 66",
+  "profile" : "Ole Henriksen, Mand, 66 år",
   "memberId" : 37,
   "memberName" : "Ole Henriksen",
   "memberGender" : "MALE",
@@ -710,7 +710,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "James Olesen Andet 4",
+  "profile" : "James Olesen, Andet, 4 år",
   "memberId" : 38,
   "memberName" : "James Olesen",
   "memberGender" : "OTHER",
@@ -721,7 +721,7 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Philip Hjoth Mand 28",
+  "profile" : "Philip Hjoth, Mand, 28 år",
   "memberId" : 39,
   "memberName" : "Philip Hjoth",
   "memberGender" : "MALE",
@@ -732,13 +732,24 @@
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
-  "profile" : "Jens Olse Andet 55",
+  "profile" : "Jens Olse, Andet, 55 år",
   "memberId" : 40,
   "memberName" : "Jens Olse",
   "memberGender" : "OTHER",
   "memberAge" : 55,
   "isActiveMember" : true,
   "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Maria van Hovedloos, Kvinde, 29 år",
+  "memberId" : 41,
+  "memberName" : "Maria van Hovedloos",
+  "memberGender" : "FEMALE",
+  "memberAge" : 29,
+  "isActiveMember" : true,
+  "isCompeting" : true,
   "hasPaid" : false,
   "automaticPayment" : false,
   "TimeHolder" : [ ]
