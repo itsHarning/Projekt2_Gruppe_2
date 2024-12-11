@@ -90,7 +90,8 @@ public class CoachHandler {
         int coachId = Main.checkIntFromUser(keyboard);
         for (Coach c : templist){
             if (c.id == coachId){
-                System.out.println(c.arrayName +" antal elever:"+ c.team.size()+": "+c.name);
+                System.out.println("Træner ID: "+c.id+". Navn på træner: "+ c.name+", er træner på holdet: "+c.arrayName+". "+ "Antal elever: "+ c.team.size()+".");
+                System.out.println("");
                 if(!c.team.isEmpty()) {
                     System.out.println("Elever:");
                     for (Member m : c.team) {
