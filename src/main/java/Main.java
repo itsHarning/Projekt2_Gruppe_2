@@ -85,7 +85,7 @@ public class Main {
                     CoachHandler.createCoaches(coachList);
                     break;
                 case 5:
-                     ChangeActivityStatus.changeActivityStatus(memberList);
+                     MemberHandler.changeActivityStatus(memberList);
                     break;
                 case 6:
                     Team.updateTeams(memberList);

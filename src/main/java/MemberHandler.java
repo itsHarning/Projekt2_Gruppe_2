@@ -71,6 +71,34 @@ public class MemberHandler {
         }
          */
 
+    public static void changeActivityStatus(ArrayList<Member> memberList) {
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Skriv ID på medlemmet");
+        int memberID = keyboard.nextInt();
+        keyboard.nextLine();
+        for (Member m : memberList) {
+            if (m.memberId == memberID) {
+                System.out.println("Hvad skal medlemmets status rettet til? (aktiv/passiv)");
+                String answer = keyboard.nextLine();
+                if (answer.equals("aktiv")) {
+                    m.isActiveMember = true;
+                    System.out.println(m.memberName + "s" + " aktivitetsstatus er nu ændret til aktiv");
+                    System.out.println();
+                    break;
+                } else if (answer.equals("passiv")) {
+                    m.isActiveMember = false;
+                    System.out.println(m.memberName + "s" + " medlemsstatus er nu ændret til passiv");
+                    break;
+                } else {
+                    System.out.println("Dette er ikke et gyldigt svar, prøv igen");
+                    System.out.println();
+                }
+            }
+        }
+        FileHandler.writeListToJson(memberList);
+    }
+
+
     // prints the given list in a nicely formatted way
     public static void printList(ArrayList<Member> tempList) {
         for (Member m:tempList){
