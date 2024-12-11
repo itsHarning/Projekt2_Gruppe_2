@@ -28,7 +28,7 @@
     "time" : 260.000000000,
     "dateSet" : "2024-12-05",
     "isOfficial" : true,
-    "meetName" : "Danish Champienship"
+    "meetName" : "Danish Championship"
   }, {
     "discipline" : "FREESTYLE",
     "distance" : 50,
@@ -555,4 +555,26 @@
     "isOfficial" : false,
     "meetName" : null
   } ]
+}, {
+  "profile" : "Jab Hill Andet 5",
+  "memberId" : 24,
+  "memberName" : "Jab Hill",
+  "memberGender" : "OTHER",
+  "memberAge" : 5,
+  "isActiveMember" : true,
+  "isCompeting" : true,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Jimmy Neutron Mand 11",
+  "memberId" : 25,
+  "memberName" : "Jimmy Neutron",
+  "memberGender" : "MALE",
+  "memberAge" : 11,
+  "isActiveMember" : false,
+  "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
 } ]

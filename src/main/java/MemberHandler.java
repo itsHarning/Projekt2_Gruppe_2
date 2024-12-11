@@ -9,68 +9,6 @@ public class MemberHandler {
     static ArrayList<Member> membersList; // creates the main list of members
     static Scanner keyboard = new Scanner(System.in);
 
-        /*
-        // needs to be used when you first run the program to get the list of members
-        public static ArrayList loadMembersFromTextFile() {
-                ArrayList<Member> tempList = new ArrayList<>();
-                try {
-                        FileReader fil = new FileReader("src/main/resources/MemberList.txt");
-                        BufferedReader ind = new BufferedReader(fil);
-                        String line = ind.readLine(); // converts the read lines to string
-                        while (line !=null) {
-                                String[]bites = line.split(",");
-
-                                String id = bites [0];
-                                String name = bites[1];
-                                Gender gender = Gender.valueOf(bites[2]);
-                                String age = bites[3];
-
-                                boolean active = Boolean.parseBoolean(bites[4]);
-                                boolean competitive = Boolean.parseBoolean(bites[5]);
-                                boolean paid = Boolean.parseBoolean(bites[6]);
-                                boolean autoPay = Boolean.parseBoolean(bites[7]);
-
-                                try {
-                                        int parsedId = Integer.parseInt(id);
-                                        int parsedAge = Integer.parseInt(age);
-
-                                        tempList.add(new Member(parsedId,name,gender,parsedAge,active,competitive,paid,autoPay));
-
-                                } catch (NumberFormatException e){
-                                        System.out.println("Not a number");
-                                }
-                                line = ind.readLine();
-                        }
-                } catch (IOException e) {
-                        System.out.println("Could not find file");;
-                }
-                return tempList;
-        }
-
-        // updates the MemberList.txt to comply with the current status of the membersList
-        public static void updateTextFile(ArrayList<Member> tempList) {
-                try {
-                        FileWriter file = new FileWriter("src/main/resources/MemberList.txt", false);
-                        PrintWriter out = new PrintWriter(file);
-                        for (Member m: tempList){
-                                int id = m.memberId;
-                                String name = m.memberName;
-                                Gender gender = m.memberGender;
-                                int age = m.memberAge;
-                                boolean active = m.isActiveMember;
-                                boolean competing = m.isCompeting;
-                                boolean paid = m.hasPaid;
-                                boolean autoPay = m.automaticPayment;
-
-                                out.println(id+","+name+","+gender+","+age+","+active+","+competing+","+paid+","+autoPay);
-                        }
-                        out.close(); // Closes so all data gets written to the Textfile
-                } catch (IOException e) {
-                        System.out.println("could not write to file");
-                }
-        }
-         */
-
     public static void changeActivityStatus(ArrayList<Member> memberList) {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Skriv ID på medlemmet");

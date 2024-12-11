@@ -270,7 +270,8 @@ public class CompMemberHandler {
 
         // goes through the timeList and sorts each TimeHolder object into the correct ArrayList
         for (RecordedTime time: timeList){
-            if (time.discipline == discipline && time.distance == distance) filteredTimeList.add(time);
+            if (time.discipline == discipline && time.distance == distance)
+                filteredTimeList.add(time);
             else dumpList.add(time);
         }
 
@@ -338,7 +339,8 @@ public class CompMemberHandler {
             .toList();
 
         // trims the filteredMemberList to at most show the top five swimmers
-        if (filteredMemberList.size() > 5) filteredMemberList.subList(5, filteredMemberList.size()).clear();
+        if (filteredMemberList.size() > 5)
+            filteredMemberList.subList(5, filteredMemberList.size()).clear();
 
         int num = 0;
                 System.out.println("#\tTid\t\t\tID\tNavn"+" ".repeat(16)+"\tDato\t\t\tStævne");
@@ -369,6 +371,8 @@ public class CompMemberHandler {
         for (RecordedTime time: sortedTimeList){
             String disciplineString = time.discipline.toString();
             String durationString = CompMemberHandler.durationToStringFormatter(time.duration);
+            if (!time.isOfficial)
+                time.meetName = "-";
             System.out.println(
                 time.distance+"m"+" ".repeat(7-Integer.toString(time.distance).length())+
                 time.discipline+" ".repeat(15-disciplineString.length())+"\t"+
