@@ -41,6 +41,7 @@ public class PaymentHandler {
             }
 
             memberId = keyboard.nextInt();
+
             keyboard.nextLine();
             boolean existingMemberFound = false;
             //boolean memberFound will make sure the right member is found.
@@ -55,6 +56,7 @@ public class PaymentHandler {
 
                     System.out.println("Ja / Nej");
                     String answer = checkValidInput();  // This method will only allow yes/no answer.
+
 
                     if (answer.equalsIgnoreCase("ja")) {
                         if (member.hasPaid) {            // Makes sure a member can't pay twice.
@@ -74,6 +76,9 @@ public class PaymentHandler {
                         System.out.println("Prøv igen med et nyt ID.");     // Continue while loop.
                         existingMemberFound = true;
                         break;
+                    }
+                    else if (answer.equalsIgnoreCase("0")) {
+                        return null;
                     }
                 }
             }
@@ -156,6 +161,10 @@ public class PaymentHandler {
         System.out.println("Skriv ID på medlemmet.");
         memberId = Main.checkIntFromUser(keyboard); //This method will allow an integer.
 
+        if (memberId == 0){
+            return;
+        }
+
         for (Member m : tempList) {
             // Loop will go through the list.
             // If statements: if the member-id match with the right member.
@@ -174,6 +183,9 @@ public class PaymentHandler {
                 } else if (answer.equalsIgnoreCase("nej")) {
                     System.out.println("Abonnement vil ikke ændres.");
                 }
+                else  if (answer.equalsIgnoreCase("0")){
+                    return;
+                }
             }
 
             if (m.memberId == memberId && m.automaticPayment) {         // If the member doesn't have an active subscription.
@@ -187,18 +199,23 @@ public class PaymentHandler {
                     m.automaticPayment = false;      // The member doesn't want a subscription.
                 } else if (answer.equalsIgnoreCase("nej")) {
                     System.out.println("Abonnement vil ikke ændres.");
+                } else if (answer.equalsIgnoreCase("0")){
+                    return;
                 }
             }
         }
     }
 
     public static String checkValidInput() {
-        //This method will only allow a yes/no answer.
+        //This method will only allow a yes/no answer (or 0).
         Scanner keyboard = new Scanner(System.in);
         String answer;
         while (true) {
             answer = keyboard.nextLine();
             if (answer.equalsIgnoreCase("ja") || answer.equalsIgnoreCase("nej")) {
+                break;
+            }
+            if (answer.equalsIgnoreCase("0")) {
                 break;
             } else {
                 System.out.println("Indtast korrekt input. Ja/Nej");
