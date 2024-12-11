@@ -42,6 +42,10 @@ public class PaymentHandler {
 
             memberId = keyboard.nextInt();
 
+            if (memberId == 0) {
+                return null;
+            }
+
             keyboard.nextLine();
             boolean existingMemberFound = false;
             //boolean memberFound will make sure the right member is found.
