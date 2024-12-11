@@ -24,66 +24,93 @@ public class Team {
 
     static void showMembersinTeams() {
 
-        System.out.println("Exerciseteam");
+        System.out.println("Exerciseteam:");
         for (Member m : Team.exerciseteam) {
-            System.out.println(m);
+            System.out.println(m.getProfile());
         }
-        System.out.println("CompetitiveU18");
+        System.out.println();
+        System.out.println("CompetitiveU18:");
         for (Member m : Team.competitiveU18) {
-            System.out.println(m);
+            System.out.println(m.getProfile());
         }
-        System.out.println("CompetitiveO18");
+        System.out.println();
+        System.out.println("CompetitiveO18:");
         for (Member m : Team.competitiveO18) {
-            System.out.println(m);
+            System.out.println(m.getProfile());
         }
+        System.out.println();
     }
 
     static void updateTeams(ArrayList<Member> templist) {
+        System.out.println("Her kan du ændre competetiv status");
+        while (true) {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Hvilket ID har medlemet");
-        int memberID = Main.checkIntFromUser(keyboard);
-        boolean membernotfound = true;
-        for (Member m : templist) {
-            if (m.memberId == memberID && m.isActiveMember == true && m.isCompeting == false) {
-                membernotfound = false;
-            System.out.println("Er det det rigtige medlem?" + m.getProfile());
-            System.out.println("ja/nej");
-            String answer = keyboard.nextLine();
+            int memberID = Main.checkIntFromUser(keyboard);
+            boolean membernotfound = true;
+            for (Member m : templist) {
+                if (m.memberId == memberID && m.isActiveMember == true && m.isCompeting == false) {
+                    membernotfound = false;
+                    System.out.println("Vil du melde dette medlem til stævner? " + m.getProfile());
+                    System.out.println("ja/nej");
+                    String answer = keyboard.nextLine();
 
-            if (answer.equalsIgnoreCase("Ja")) {
-                System.out.println("Vil personen starte på et svømmehold?");
-                System.out.println("ja/nej");
-                answer = keyboard.nextLine();
+                        if (answer.equalsIgnoreCase("Ja")) {
+                            if (m.memberAge < 18) {
+                                exerciseteam.remove(m);
+                                competitiveU18.add(m);
+                                m.isCompeting = true;
+                                FileHandler.writeListToJson(templist);
+                                return;
+                            }
 
-                if (answer.equalsIgnoreCase("Ja")) {
-                    if (m.memberAge < 18) {
-                        exerciseteam.remove(m);
-                        competitiveU18.add(m);
-                        m.isCompeting = true;
-                        FileHandler.writeListToJson(templist);
+                            if (m.memberAge >= 18) {
+                                exerciseteam.remove(m);
+                                competitiveO18.add(m);
+                                m.isCompeting = true;
+                                FileHandler.writeListToJson(templist);
+                                return;
+                            }
 
+                        }
+
+                    if (answer.equalsIgnoreCase("nej")) {
+                        break;
                     }
+                }
+                if(m.memberId == memberID && m.isActiveMember == true && m.isCompeting == true){
+                    membernotfound = false;
+                    System.out.println("Vil du melde dette medlem ud af stævner? " + m.getProfile());
+                    System.out.println("ja/nej");
+                    String answer = keyboard.nextLine();
 
-                    if (m.memberAge >= 18) {
-                        exerciseteam.remove(m);
-                        competitiveO18.add(m);
-                        m.isCompeting = true;
-                        FileHandler.writeListToJson(templist);
+                        if (answer.equalsIgnoreCase("Ja")) {
+                            if (m.memberAge < 18) {
+                                exerciseteam.add(m);
+                                competitiveU18.remove(m);
+                                m.isCompeting = false;
+                                FileHandler.writeListToJson(templist);
+                                return;
+                            }
+
+                            if (m.memberAge >= 18) {
+                                exerciseteam.add(m);
+                                competitiveO18.remove(m);
+                                m.isCompeting = false;
+                                FileHandler.writeListToJson(templist);
+                                return;
+                            }
+
+                        }
+                    if (answer.equalsIgnoreCase("nej")) {
+                        break;
                     }
+                }
+            }
+            if (membernotfound == true) {
+                System.out.println("Kunne ikke finde medlemmet, prøv igen");
+            }
+            }
 
-                }
-                if(answer.equalsIgnoreCase("nej")){
-                    break;
-                }
-            }
-            if (answer.equalsIgnoreCase("nej")) {
-                return;
-            }
-            }
-        } if(membernotfound == true) {
-            System.out.println("Kunne ikke finde medlemmet, prøv igen");
-            System.out.println("");
         }
-
     }
-}
