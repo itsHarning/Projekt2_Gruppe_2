@@ -80,8 +80,10 @@ public class Main {
                     break;
                 case 3:
                     CoachHandler.printCoachTeam(coachList);
+                    break;
                 case 4:
                     CoachHandler.createCoaches(coachList);
+                    break;
                 case 5:
                      ChangeActivityStatus.changeActivityStatus(memberList);
                     break;
