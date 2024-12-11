@@ -64,14 +64,14 @@
     "time" : 63.400000000,
     "dateSet" : "1957-05-26",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "MEDLEY",
     "distance" : 200,
     "time" : 344.000000000,
     "dateSet" : "2024-09-09",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   } ]
 }, {
   "profile" : "Vladimir Salnikov Andet 17",
@@ -462,14 +462,14 @@
     "time" : 1342.220000000,
     "dateSet" : "1995-01-12",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "OPEN_WATER",
     "distance" : 10000,
     "time" : 4271.111000000,
     "dateSet" : "1995-01-05",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "OPEN_WATER",
     "distance" : 10000,
@@ -497,7 +497,7 @@
     "time" : 444.444000000,
     "dateSet" : "1994-11-07",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "BUTTERFLY",
     "distance" : 100,
@@ -553,7 +553,7 @@
     "time" : 50.000000000,
     "dateSet" : "1994-09-07",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   } ]
 }, {
   "profile" : "Jab Hill Andet 5",

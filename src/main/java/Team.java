@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -110,7 +109,7 @@ public class Team {
             if (membernotfound == true) {
                 System.out.println("Kunne ikke finde medlemmet, prøv igen");
             }
-            }
-
         }
+
     }
+}
