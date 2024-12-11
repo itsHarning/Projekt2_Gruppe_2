@@ -90,8 +90,7 @@ public class CoachHandler {
         int coachId = Main.checkIntFromUser(keyboard);
         for (Coach c : templist){
             if (c.id == coachId){
-                System.out.println("Træner ID: "+c.id+". Navn på træner: "+ c.name+", er træner på holdet: "+c.arrayName+". "+ "Antal elever: "+ c.team.size()+".");
-                System.out.println("");
+                System.out.println("Træner ID: "+c.id+"\t Navn: "+ c.name+"\t Hold: "+c.arrayName);
                 if(!c.team.isEmpty()) {
                     System.out.println("Elever:");
                     for (Member m : c.team) {
@@ -112,9 +111,9 @@ public class CoachHandler {
         });
 
         for(Coach c: coachList){
-            System.out.println(c.arrayName +" Træner("+ c.team.size()+"): "+c.name);
+            System.out.println("Træner ID :"+c.id+"\t Navn: "+c.name+"\t Hold: "+ c.arrayName);
             if(!c.team.isEmpty()) {
-                System.out.println("Elever:");
+                System.out.println("Antal elever "+c.team.size()+":");
                 for (Member m : c.team) {
                     System.out.println(m.getProfile());
                 }
