@@ -64,7 +64,7 @@ public class PaymentHandler {
                             System.out.println("Medlemmet har en aktiv abonnementsaftale. Medlemmet skal ikke betale ekstra.");
                         } else {
                             double missingPayment = PaymentHandler.getAmount(member);        // Re-use the getAmount function from PaymentHandler. Makes it more clean and effective.
-                            System.out.println(member.memberName + " på " + member.memberAge + " har nu betalt det manglende kontigent på: " + missingPayment + " DKK.");
+                            System.out.println(member.memberName + " på " + member.memberAge + " år har nu betalt det manglende kontigent på: " + missingPayment + " DKK.");
                             member.hasPaid = true;              // Updates the member's payment status.
                             memberfound = true;                 // The member is found == the loop can end.
                         }
@@ -91,7 +91,7 @@ public class PaymentHandler {
         // The purpose of this method is to print out a list of members who hasn't paid the subscription.
         for (Member m : tempList) {
             if (!m.hasPaid) {   // Members who hasn't paid.
-                System.out.println("ID: " + m.memberId + " Navn: " + m.memberName + ". Alder: " + m.memberAge + "år." + " Mangler at betale: " + getAmount(m) + " DKK");
+                System.out.println("ID: " + m.memberId + " Navn: " + m.memberName + ". Alder: " + m.memberAge + "år." + " Mangler at betale: " + getAmount(m) + " DKK.");
             }
         }
     }
@@ -153,40 +153,40 @@ public class PaymentHandler {
         System.out.println();
 
         System.out.println("Hvilket medlem skal ændre sit abonnement?");
-        System.out.println("Skriv ID på medlemmet");
+        System.out.println("Skriv ID på medlemmet.");
         memberId = Main.checkIntFromUser(keyboard); //This method will allow an integer.
 
         for (Member m : tempList) {
             // Loop will go through the list.
             // If statements: if the member-id match with the right member.
             if (m.memberId == memberId && !m.automaticPayment) {         // If the member already has an active subscription.
-                System.out.println(m.memberName + " har ikke en aktiv abonnementsaftale");
+                System.out.println(m.memberName + " har ikke en aktiv abonnementsaftale.");
                 System.out.println("Vil du gerne oprette et abonnement på " + m.memberName + "? Ja/Nej");
 
                 String answer = checkValidInput();      // This method will only allow yes/no answer.
 
                 if (answer.equalsIgnoreCase("ja")) {
-                    System.out.println(m.memberName + "'s abonnement er ændret til aktiv");
+                    System.out.println(m.memberName + "'s abonnement er ændret til aktiv.");
                     m.automaticPayment = true;      // Give the member an active subscription.
                     m.hasPaid = true;         // Makes sure the members pays with the subscription.
                     // Breaks out of the loop. Makes sure exit the method.
                     break;
                 } else if (answer.equalsIgnoreCase("nej")) {
-                    System.out.println("Abonnement vil ikke ændres");
+                    System.out.println("Abonnement vil ikke ændres.");
                 }
             }
 
             if (m.memberId == memberId && m.automaticPayment) {         // If the member doesn't have an active subscription.
-                System.out.println(m.memberName + " har en aktiv abonnementsaftale");
+                System.out.println(m.memberName + " har en aktiv abonnementsaftale.");
                 System.out.println("Vil du stoppe " + m.memberName + "'s abonnement? Ja/Nej");
 
                 String answer = checkValidInput();      // This method will only allow yes/no answer.
 
                 if (answer.equalsIgnoreCase("ja")) {
-                    System.out.println(m.memberName + "'s har nu stoppet sit abonnement");
+                    System.out.println(m.memberName + "'s har nu stoppet sit abonnement.");
                     m.automaticPayment = false;      // The member doesn't want a subscription.
                 } else if (answer.equalsIgnoreCase("nej")) {
-                    System.out.println("Abonnement vil ikke ændres");
+                    System.out.println("Abonnement vil ikke ændres.");
                 }
             }
         }
@@ -209,31 +209,38 @@ public class PaymentHandler {
     }
 
     public static void subscriberPayment(ArrayList<Member> tempList) {
+        // The purpose of this method is making all members pay with their subscription.
+        // This is a yearly subscription, and it has a fixed start and end date. (Would be nice if
         LocalDate startDate = LocalDate.of(2024, 1, 1);
-        LocalDate endDate = LocalDate.of(2023, 12, 31);
-        LocalDate currentDate = LocalDate.now();
+        LocalDate endDate = LocalDate.of(2024, 12, 31);
+        LocalDate currentDate = LocalDate.now();    // The exact date for the current date today.
 
+        // This loop will only run, if it's the correct date.
         if (currentDate.isAfter(endDate)) {
             for (Member m : tempList) {
-                if (m.automaticPayment) {
-                    m.hasPaid = true;
+                if (m.automaticPayment) {       // if any members has a subscription.
+                    m.hasPaid = true;           // Makes sure they'll pay.
                 }
                 else {
-                    m.hasPaid = false;
+                    m.hasPaid = false;          // Makes sure members without a subscription isn't charged.
                 }
             }
             System.out.println("Medlemmer med et aktivt abonnement har nu betalt deres kontingent.");
-            System.out.println(tempList);
-            startDate = LocalDate.of(2025,1,1);
-            endDate = LocalDate.of(2025,12,31);
-            System.out.println("Den nye abonnements periode er således: " + startDate + " " + endDate);
+            viewActiveSubscription(tempList);   // Print list with active subscribers.
+            viewNoSubscription(tempList);       // Print list with non-active subscribers.
+            startDate = LocalDate.of(2025,1,1);     // Remember to make new start and end date.
+            endDate = LocalDate.of(2025,12,31);     // Would be awful for members paying more than once
+            System.out.println("Den nye abonnements periode er således: " + startDate + " " + endDate); // Show the user the new dates.
 
+        // If this instance is true, it isn't the correct date .
         } else if (currentDate.isBefore(endDate)) {
-            System.out.println("Medlemmer med abonnement betaler årligt. Medlemmer skal først betale igen " + endDate);
+            System.out.println("Medlemmer med abonnement betaler årligt. Medlemmer skal først betale igen " + endDate);     // Tell the user when it's time.
         }
-
     }
 
+
+
+    // Prob gonna delete.
     public class Subscription {
         LocalDate startDate;
         LocalDate endDate;

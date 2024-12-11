@@ -95,6 +95,20 @@
   "hasPaid" : false,
   "automaticPayment" : false,
   "TimeHolder" : [ {
+    "discipline" : "BREASTSTROKE",
+    "distance" : 100,
+    "time" : 1420.690000000,
+    "dateSet" : "2024-12-11",
+    "isOfficial" : false,
+    "meetName" : null
+  }, {
+    "discipline" : "BREASTSTROKE",
+    "distance" : 100,
+    "time" : 1670.000000000,
+    "dateSet" : "2024-12-11",
+    "isOfficial" : false,
+    "meetName" : null
+  }, {
     "discipline" : "FREESTYLE",
     "distance" : 800,
     "time" : 888.888000000,
@@ -148,13 +162,6 @@
     "distance" : 200,
     "time" : 1686.000000000,
     "dateSet" : "2024-08-09",
-    "isOfficial" : false,
-    "meetName" : null
-  }, {
-    "discipline" : "BREASTSTROKE",
-    "distance" : 100,
-    "time" : 1420.690000000,
-    "dateSet" : "2024-12-11",
     "isOfficial" : false,
     "meetName" : null
   } ]
