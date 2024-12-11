@@ -16,6 +16,7 @@ public class CoachHandler {
             while (true){
             System.out.println("Tast 1: Konkurrenceholdet under 18");
             System.out.println("Tast 2: Konkurrenceholdet over 18");
+            System.out.println("Tast 0: Tilbage");
 
             int valg = Main.checkIntFromUser(keyboard);
             String arrayName = "";
@@ -35,6 +36,7 @@ public class CoachHandler {
                     break;
                 default:
                     System.out.println("Ugyldigt svar.");
+                    System.out.println("Hvilket hold skal den nye træner være på?");
             }
 
          }
