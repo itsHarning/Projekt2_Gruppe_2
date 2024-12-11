@@ -3,26 +3,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PaymentHandler {
-    public static void main(String[] args) {
-        // Temporary list
-        ArrayList<Member> testlist = new ArrayList<>();
-        Member a1 = new Member(1, "j1 under", Gender.MALE, 16, true, true, false, true);
-        Member a2 = new Member(2, "j2", Gender.FEMALE, 20, false, true, false, false);
-        Member a3 = new Member(3, "j3 senior", Gender.OTHER, 61, true, true, false, false);
-        Member a4 = new Member(4, "j4", Gender.OTHER, 18, true, true, false, false);
-        Member a5 = new Member(5, "j5 over", Gender.FEMALE, 18, true, true, true, false);
-        Member a6 = new Member(6, "j6 auto", Gender.MALE, 18, true, true, true, true);
-
-        testlist.add(a1);
-        testlist.add(a2);
-        testlist.add(a3);
-        testlist.add(a4);
-        testlist.add(a5);
-        testlist.add(a6);
-
-
-        changeSubscription(testlist);
-    }
 
     public static ArrayList<Member> payMembership(ArrayList<Member> tempList) {
         // This method is going to allow the user to select a member and help them pay their membership.

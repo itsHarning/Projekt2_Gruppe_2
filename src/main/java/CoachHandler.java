@@ -6,22 +6,6 @@ import java.util.Scanner;
 
 
 public class CoachHandler {
-    public static void main(String[] args) {
-        //opretter ny Arrayliste med Coaches
-
-        ArrayList<Coach>coachList = loadMembersFromTextFile();
-        ArrayList<Member> memberList = new ArrayList<>(FileHandler.getListFromJson());
-        CoachHandler coachHandler = new CoachHandler();
-
-        Team.assignTeams(memberList);
-
-        createCoaches(coachList);
-        coachHandler.assignmembersContainer(coachList);
-        printCoachTeam(coachList);
-
-        // createCoaches(coachlist);
-    }
-
 
         public static void createCoaches(ArrayList<Coach>templist) {
         Scanner keyboard = new Scanner(System.in);
