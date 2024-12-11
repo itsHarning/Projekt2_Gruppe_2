@@ -34,19 +34,16 @@ public class CoachHandler {
             System.out.println("Tast 2: Konkurrenceholdet over 18");
 
             int valg = Main.checkIntFromUser(keyboard);
-            ArrayList team = Team.competitiveO18;
             String arrayName = "";
             if (valg==0) break;
             switch (valg) {
                 case 1:
-                    team = Team.competitiveU18;
                     arrayName = "competitiveU18";
                     System.out.println(newCoachName + " er nu oprettet som træner på Konkurrenceholdet under 18 i svømmeklubben Delfinen");
                     templist.add(new Coach(newCoachName,arrayName));
                     updateTextFile(templist);
                      break;
                 case 2:
-                    team = Team.competitiveO18;
                     arrayName =  "competitiveO18";
                     System.out.println(newCoachName + " er nu oprettet som træner på Konkurrenceholdet over 18 i svømmeklubben Delfinen");
                     templist.add(new Coach(newCoachName,arrayName));
@@ -86,24 +83,10 @@ public class CoachHandler {
             while (line != null) {
                 String[] bites = line.split(",");
 
-                String id = bites[0];
                 String name = bites[1];
                 String arrayname = bites[2];
-                ArrayList team = Team.competitiveO18;
-                if(arrayname.equals("competitiveO18")){
-                    team =Team.competitiveO18;
-                }
-                if(arrayname.equals("competitiveU18")){
-                    team = Team.competitiveU18;
-                }
-                if(arrayname.equals("exerciseteam")){
-                    team = Team.exerciseteam;
-                }
-
 
                 try {
-                    int parseId = Integer.parseInt(id);
-
                     tempList.add(new Coach (name, arrayname));
 
                 } catch (NumberFormatException e) {
