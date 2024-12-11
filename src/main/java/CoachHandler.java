@@ -88,9 +88,16 @@ public class CoachHandler {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Indtast ID på den pågældende træner");
         int coachId = Main.checkIntFromUser(keyboard);
+        String hold ="";
         for (Coach c : templist){
+            if(c.arrayName.equals("competitiveU18")){
+                hold="Under 18";
+            }
+            else{
+                hold="Over 18";
+            }
             if (c.id == coachId){
-                System.out.println("Træner ID: "+c.id+"\t Navn: "+ c.name+"\t Hold: "+c.arrayName);
+                System.out.println("Træner ID: "+c.id+"\t Navn: "+ c.name+"\t Hold: "+hold);
                 if(!c.team.isEmpty()) {
                     System.out.println("Elever:");
                     for (Member m : c.team) {
@@ -110,8 +117,15 @@ public class CoachHandler {
             }
         });
 
-        for(Coach c: coachList){
-            System.out.println("Træner ID :"+c.id+"\t Navn: "+c.name+"\t Hold: "+ c.arrayName);
+        String hold ="";
+        for (Coach c : coachList){
+            if(c.arrayName.equals("competitiveU18")){
+                hold="Under 18";
+            }
+            else{
+                hold="Over 18";
+            }
+            System.out.println("Træner ID :"+c.id+"\t Navn: "+c.name+"\t Hold: "+hold);
             if(!c.team.isEmpty()) {
                 System.out.println("Antal elever "+c.team.size()+":");
                 for (Member m : c.team) {
