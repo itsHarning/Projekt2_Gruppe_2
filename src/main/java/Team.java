@@ -23,17 +23,17 @@ public class Team {
 
     static void showMembersinTeams() {
 
-        System.out.println("Exerciseteam:");
+        System.out.println("Motions hold:");
         for (Member m : Team.exerciseteam) {
             System.out.println(m.getProfile());
         }
         System.out.println();
-        System.out.println("CompetitiveU18:");
+        System.out.println("Under 18:");
         for (Member m : Team.competitiveU18) {
             System.out.println(m.getProfile());
         }
         System.out.println();
-        System.out.println("CompetitiveO18:");
+        System.out.println("Over 18:");
         for (Member m : Team.competitiveO18) {
             System.out.println(m.getProfile());
         }
