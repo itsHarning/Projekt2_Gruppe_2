@@ -293,6 +293,9 @@ public class CompMemberHandler {
         System.out.println("Hvilket køn (Mand / Kvinde/ Andet)");
         while (true) {
             String genderString = keyboard.nextLine().toUpperCase();
+            if (genderString.equals("0")){
+                return;
+            }
             if (Gender.fromString(genderString) == null){
                 System.out.println("Ikke et gyldigt køn, prøv igen (Mand / Kvinde / Andet)");
             }
@@ -359,6 +362,8 @@ public class CompMemberHandler {
 
     public static void printMemberTimes(ArrayList<Member> memberList){
         Member member = MemberHandler.getMemberFromId(memberList);
+        if (member == null)
+            return;
         List<RecordedTime> sortedTimeList = member.personalTimes
             .stream()
                 .sorted(Comparator.comparing(RecordedTime::getDuration))

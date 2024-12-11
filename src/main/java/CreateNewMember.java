@@ -92,7 +92,20 @@ public class CreateNewMember {
         boolean hasPaid = false;
         boolean automaticPayment = false;
         // gives message of what you have ridden
-        System.out.println("Du har skrevet, navn: "+Name+", Køn: "+gender+", Alder: "+Age+", Medlemskabs status status: "+isActiveMember+". Kompetetiv status: "+isCompeting);
+        String memberString = "";
+        if (isActiveMember){
+            memberString = "medlemmet er aktivt";
+        } else {
+            memberString = "medlemmet er passivt";
+        }
+
+        String competingString = "";
+        if (isCompeting){
+            competingString = "medlemmet stiller op til stævner";
+        } else {
+            competingString = "medlemmet er motionist";
+        }
+        System.out.println("Du har oprettet medlemmet: ID: "+(Member.numOfMembers+1)+", Navn: "+Name+", Køn: "+gender+", Alder: "+Age+", "+memberString+", "+competingString);
 
         // here it adds the information to memberList, jsonfile and creates a new object
         membersList.add(new Member(Name, gender,  Age, isActiveMember, isCompeting, hasPaid, automaticPayment));

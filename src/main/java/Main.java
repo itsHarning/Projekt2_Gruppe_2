@@ -105,6 +105,8 @@ public class Main {
         while (true) {
             System.out.println("Tast 1: Se kontingent");
             System.out.println("Tast 2: Indskriv et medlems betaling");
+            System.out.println("Tast 3: Ændre abonent status på et medlem");
+            System.out.println("Test 4: Alle med abonnement betaler");
             System.out.println("Tast 0: For at gå tilbage");
             int choice = checkIntFromUser(keyboard);
             if (choice == 0) break;
@@ -114,6 +116,12 @@ public class Main {
                     break;
                 case 2:
                     PaymentHandler.payMembership(memberList);
+                    break;
+                case 3:
+                    PaymentHandler.changeSubscription(memberList);
+                    break;
+                case 4:
+                    PaymentHandler.subscriberPayment(memberList);
                     break;
                 default:
                     System.out.println("Du valgte ikke en af mulighederne præsenteret, prøv igen");
