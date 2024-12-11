@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PaymentHandler {
-
     public static ArrayList<Member> payMembership(ArrayList<Member> tempList) {
         // This method is going to allow the user to select a member and help them pay their membership.
         Scanner keyboard = new Scanner(System.in);
@@ -236,20 +235,6 @@ public class PaymentHandler {
         // If this instance is true, it isn't the correct date .
         } else if (currentDate.isBefore(endDate)) {
             System.out.println("Medlemmer med abonnement betaler årligt. Medlemmer skal først betale igen " + endDate);     // Tell the user when it's time.
-        }
-    }
-
-
-
-    // Prob gonna delete.
-    public class Subscription {
-        LocalDate startDate;
-        LocalDate endDate;
-
-
-        Subscription(LocalDate startDate, LocalDate endDate) {
-            this.startDate = startDate;
-            this.endDate = endDate;
         }
     }
 }
