@@ -79,7 +79,8 @@ public class PaymentHandler {
         // The purpose of this method is to print out a list of members who hasn't paid the subscription.
         for (Member m : tempList) {
             if (!m.hasPaid) {   // Members who hasn't paid.
-                System.out.println("ID: " + m.memberId + " Navn: " + m.memberName + ". Alder: " + m.memberAge + "år." + " Mangler at betale: " + getAmount(m) + " DKK.");
+                // TODO: fix formatting .00
+                System.out.println("ID: " + m.memberId + " Navn: " + m.memberName + ". Alder: " + m.memberAge + "år." + " Mangler at betale: " + getAmount(m) + "0 DKK.");
             }
         }
     }

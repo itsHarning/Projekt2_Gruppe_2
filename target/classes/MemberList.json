@@ -64,14 +64,14 @@
     "time" : 63.400000000,
     "dateSet" : "1957-05-26",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "MEDLEY",
     "distance" : 200,
     "time" : 344.000000000,
     "dateSet" : "2024-09-09",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   } ]
 }, {
   "profile" : "Vladimir Salnikov Andet 17",
@@ -80,7 +80,7 @@
   "memberGender" : "OTHER",
   "memberAge" : 17,
   "isActiveMember" : true,
-  "isCompeting" : false,
+  "isCompeting" : true,
   "hasPaid" : false,
   "automaticPayment" : false,
   "TimeHolder" : [ ]
@@ -92,8 +92,8 @@
   "memberAge" : 99,
   "isActiveMember" : true,
   "isCompeting" : true,
-  "hasPaid" : false,
-  "automaticPayment" : false,
+  "hasPaid" : true,
+  "automaticPayment" : true,
   "TimeHolder" : [ {
     "discipline" : "BREASTSTROKE",
     "distance" : 100,
@@ -217,8 +217,8 @@
   "memberAge" : 55,
   "isActiveMember" : true,
   "isCompeting" : false,
-  "hasPaid" : false,
-  "automaticPayment" : false,
+  "hasPaid" : true,
+  "automaticPayment" : true,
   "TimeHolder" : [ ]
 }, {
   "profile" : "Benny Nielsen Mand 55",
@@ -304,8 +304,8 @@
   "memberAge" : 24,
   "isActiveMember" : true,
   "isCompeting" : true,
-  "hasPaid" : false,
-  "automaticPayment" : false,
+  "hasPaid" : true,
+  "automaticPayment" : true,
   "TimeHolder" : [ ]
 }, {
   "profile" : "Inge de Bruijn Kvinde 51",
@@ -462,14 +462,14 @@
     "time" : 1342.220000000,
     "dateSet" : "1995-01-12",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "OPEN_WATER",
     "distance" : 10000,
     "time" : 4271.111000000,
     "dateSet" : "1995-01-05",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "OPEN_WATER",
     "distance" : 10000,
@@ -497,7 +497,7 @@
     "time" : 444.444000000,
     "dateSet" : "1994-11-07",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "BUTTERFLY",
     "distance" : 100,
@@ -553,7 +553,7 @@
     "time" : 50.000000000,
     "dateSet" : "1994-09-07",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   } ]
 }, {
   "profile" : "Jab Hill Andet 5",
@@ -574,7 +574,7 @@
   "memberAge" : 11,
   "isActiveMember" : false,
   "isCompeting" : false,
-  "hasPaid" : false,
+  "hasPaid" : true,
   "automaticPayment" : false,
   "TimeHolder" : [ ]
 }, {
@@ -607,8 +607,8 @@
   "memberAge" : 16,
   "isActiveMember" : true,
   "isCompeting" : true,
-  "hasPaid" : false,
-  "automaticPayment" : false,
+  "hasPaid" : true,
+  "automaticPayment" : true,
   "TimeHolder" : [ ]
 }, {
   "profile" : "Emma Gilbert Kvinde 17",
@@ -640,8 +640,8 @@
   "memberAge" : 99,
   "isActiveMember" : true,
   "isCompeting" : false,
-  "hasPaid" : false,
-  "automaticPayment" : false,
+  "hasPaid" : true,
+  "automaticPayment" : true,
   "TimeHolder" : [ ]
 }, {
   "profile" : "Davy Jones Mand 69",
@@ -662,8 +662,8 @@
   "memberAge" : 25,
   "isActiveMember" : false,
   "isCompeting" : false,
-  "hasPaid" : false,
-  "automaticPayment" : false,
+  "hasPaid" : true,
+  "automaticPayment" : true,
   "TimeHolder" : [ ]
 }, {
   "profile" : "Elizabeth Swann Kvinde 15",
@@ -682,6 +682,61 @@
   "memberName" : "Will Turner",
   "memberGender" : "MALE",
   "memberAge" : 20,
+  "isActiveMember" : true,
+  "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Keith Haring Mand 8",
+  "memberId" : 36,
+  "memberName" : "Keith Haring",
+  "memberGender" : "MALE",
+  "memberAge" : 8,
+  "isActiveMember" : true,
+  "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Ole Henriksen Mand 66",
+  "memberId" : 37,
+  "memberName" : "Ole Henriksen",
+  "memberGender" : "MALE",
+  "memberAge" : 66,
+  "isActiveMember" : false,
+  "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "James Olesen Andet 4",
+  "memberId" : 38,
+  "memberName" : "James Olesen",
+  "memberGender" : "OTHER",
+  "memberAge" : 4,
+  "isActiveMember" : false,
+  "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Philip Hjoth Mand 28",
+  "memberId" : 39,
+  "memberName" : "Philip Hjoth",
+  "memberGender" : "MALE",
+  "memberAge" : 28,
+  "isActiveMember" : false,
+  "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Jens Olse Andet 55",
+  "memberId" : 40,
+  "memberName" : "Jens Olse",
+  "memberGender" : "OTHER",
+  "memberAge" : 55,
   "isActiveMember" : true,
   "isCompeting" : false,
   "hasPaid" : false,

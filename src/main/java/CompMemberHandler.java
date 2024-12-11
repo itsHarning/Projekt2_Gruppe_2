@@ -359,6 +359,8 @@ public class CompMemberHandler {
 
     public static void printMemberTimes(ArrayList<Member> memberList){
         Member member = MemberHandler.getMemberFromId(memberList);
+        if (member == null)
+            return;
         List<RecordedTime> sortedTimeList = member.personalTimes
             .stream()
                 .sorted(Comparator.comparing(RecordedTime::getDuration))
