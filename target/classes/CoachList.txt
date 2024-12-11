@@ -1,18 +1,14 @@
-2,Leo Beenhakker,competitiveU18
-4,Rikke Olsen,competitiveU18
-5,Jay Houseman,competitiveU18
-8,Thomas Sankara,competitiveU18
-10,Henrik Bønnestage,competitiveU18
-15,Ole hansenbansen,competitiveU18
-1,Tinka Fistelsovs,competitiveU18
-11,Konrad Maldini,competitiveO18
-12,Bruce van Hooijdonk,competitiveO18
-13,Ole,competitiveO18
-14,Grete,competitiveO18
-16,Kim Flankenstein,competitiveO18
-3,Lena Baldersbæk,competitiveO18
-6,Luca Modric,competitiveO18
-7,Anne Rosenbæk,competitiveO18
-9,Sune Hussein,competitiveO18
-17,0,competitiveU18
-18,0,competitiveO18
+1,Leo Beenhakker,competitiveU18
+2,Rikke Olsen,competitiveU18
+3,Jay Houseman,competitiveU18
+4,Thomas Sankara,competitiveU18
+5,Henrik Bønnestage,competitiveU18
+6,Ole hansenbansen,competitiveU18
+7,Tinka Fistelsovs,competitiveU18
+8,Konrad Maldini,competitiveO18
+9,Bruce van Hooijdonk,competitiveO18
+10,Ole,competitiveO18
+11,Grete,competitiveO18
+12,Kim Flankenstein,competitiveO18
+13,Lena Baldersbæk,competitiveO18
+14, Anne Nilsen,exerciseteam

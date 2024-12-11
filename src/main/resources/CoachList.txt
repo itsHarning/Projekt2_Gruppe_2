@@ -11,3 +11,4 @@
 11,Grete,competitiveO18
 12,Kim Flankenstein,competitiveO18
 13,Lena Baldersbæk,competitiveO18
+14, Anne Nilsen,exerciseteam

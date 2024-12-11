@@ -90,22 +90,35 @@ public class CoachHandler {
         int coachId = Main.checkIntFromUser(keyboard);
         String hold ="";
         for (Coach c : templist){
-            if(c.arrayName.equals("competitiveU18")){
-                hold="Under 18";
-            }
-            else{
-                hold="Over 18";
-            }
-            if (c.id == coachId){
-                System.out.println("Træner ID: "+c.id+"\t Navn: "+ c.name+"\t Hold: "+hold);
+            if(c.arrayName.equals("exerciseteam"))
+            {
+                System.out.println("Træner ID :"+c.id+"\t Navn: "+c.name+"\t Hold: Motion");
                 if(!c.team.isEmpty()) {
-                    System.out.println("Elever:");
+                    System.out.println("Antal elever "+c.team.size()+":");
                     for (Member m : c.team) {
                         System.out.println(m.getProfile());
                     }
+
                     System.out.println("");
                 }
+            }
+            if(c.arrayName.equals("competitiveU18") || c.arrayName.equals("competitiveO18")) {
+                if (c.arrayName.equals("competitiveU18")) {
+                    hold = "Under 18";
+                } else {
+                    hold = "Over 18";
+                }
+                if (c.id == coachId) {
+                    System.out.println("Træner ID: " + c.id + "\t Navn: " + c.name + "\t Konkurrencehold: " + hold);
+                    if (!c.team.isEmpty()) {
+                        System.out.println("Elever:");
+                        for (Member m : c.team) {
+                            System.out.println(m.getProfile());
+                        }
+                        System.out.println("");
+                    }
 
+                }
             }
         }
     }
@@ -119,20 +132,33 @@ public class CoachHandler {
 
         String hold ="";
         for (Coach c : coachList){
-            if(c.arrayName.equals("competitiveU18")){
-                hold="Under 18";
-            }
-            else{
-                hold="Over 18";
-            }
-            System.out.println("Træner ID :"+c.id+"\t Navn: "+c.name+"\t Hold: "+hold);
-            if(!c.team.isEmpty()) {
-                System.out.println("Antal elever "+c.team.size()+":");
-                for (Member m : c.team) {
-                    System.out.println(m.getProfile());
-                }
+            if(c.arrayName.equals("exerciseteam"))
+            {
+                System.out.println("Træner ID :"+c.id+"\t Navn: "+c.name+"\t Hold: Motion");
+                if(!c.team.isEmpty()) {
+                    System.out.println("Antal elever "+c.team.size()+":");
+                    for (Member m : c.team) {
+                        System.out.println(m.getProfile());
+                    }
 
-                System.out.println("");
+                    System.out.println("");
+                }
+            }
+            if(c.arrayName.equals("competitiveU18") || c.arrayName.equals("competitiveO18")) {
+                if (c.arrayName.equals("competitiveU18")) {
+                    hold = "Under 18";
+                } else {
+                    hold = "Over 18";
+                }
+                System.out.println("Træner ID :" + c.id + "\t Navn: " + c.name + "\t Konkurrencehold: " + hold);
+                if (!c.team.isEmpty()) {
+                    System.out.println("Antal elever " + c.team.size() + ":");
+                    for (Member m : c.team) {
+                        System.out.println(m.getProfile());
+                    }
+
+                    System.out.println("");
+                }
             }
         }
     }
