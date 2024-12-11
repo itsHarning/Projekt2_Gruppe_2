@@ -11,7 +11,3 @@
 11,Grete,competitiveO18
 12,Kim Flankenstein,competitiveO18
 13,Lena Baldersbæk,competitiveO18
-14,Luca Modric,competitiveO18
-15,Anne Rosenbæk,competitiveO18
-16,Sune Hussein,competitiveO18
-17,Joa doa,competitiveO18
