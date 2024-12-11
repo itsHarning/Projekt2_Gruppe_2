@@ -20,7 +20,7 @@ public class FileHandler {
         objectMapper.setVisibility(VisibilityChecker.Std.defaultInstance().withFieldVisibility(JsonAutoDetect.Visibility.ANY));
         try {
             return objectMapper.readValue(
-                    new File("src/main/resources/TimeList.json"),
+                    new File("src/main/resources/MemberList.json"),
                     new TypeReference<List<Member>>() {});
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -34,7 +34,7 @@ public class FileHandler {
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS); // to write java.util.Date, Calendar as number (timestamp):
 
         try {
-            objectMapper.writeValue(new File("src/main/resources/TimeList.json"), tempList);
+            objectMapper.writeValue(new File("src/main/resources/MemberList.json"), tempList);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
