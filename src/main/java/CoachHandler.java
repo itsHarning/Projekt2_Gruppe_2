@@ -97,7 +97,7 @@ public class CoachHandler {
                 hold="Over 18";
             }
             if (c.id == coachId){
-                System.out.println("Træner ID: "+c.id+"\t Navn: "+ c.name+"\t Hold: "+hold);
+                System.out.println("Træner ID: "+c.id+"\t Navn: "+ c.name+"\t Hold: "+hold+"\t Antal elever: "+c.team.size());
                 if(!c.team.isEmpty()) {
                     System.out.println("Elever:");
                     for (Member m : c.team) {
@@ -125,9 +125,9 @@ public class CoachHandler {
             else{
                 hold="Over 18";
             }
-            System.out.println("Træner ID :"+c.id+"\t Navn: "+c.name+"\t Hold: "+hold);
+            System.out.println("Træner ID :"+c.id+"\t Navn: "+c.name+"\t Hold: "+hold+"\t Antal elver: "+c.team.size());
             if(!c.team.isEmpty()) {
-                System.out.println("Antal elever "+c.team.size()+":");
+                System.out.println("Elever:");
                 for (Member m : c.team) {
                     System.out.println(m.getProfile());
                 }

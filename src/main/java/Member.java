@@ -44,7 +44,7 @@ public class Member {
     }
 
     public String getProfile(){
-        return memberName + " " + memberGender + " " + memberAge;
+        return memberName + ", " + memberGender + ", " + memberAge+" år";
     }
 
     public String toString(){
