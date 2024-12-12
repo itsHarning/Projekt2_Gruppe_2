@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PaymentHandler {
-    public static ArrayList<Member> payMembership(ArrayList<Member> tempList) {
+    public static ArrayList<Member> payMembership(ArrayList<Member> memberList) {
         // This method is going to allow the user to select a member and help them pay their membership.
         Scanner keyboard = new Scanner(System.in);
         boolean memberfound = false;
@@ -32,7 +32,7 @@ public class PaymentHandler {
 
 
             //This loop is looking for matching ID with the arraylist.
-            for (Member member : tempList) {
+            for (Member member : memberList) {
                 if (member.memberId == memberId) {           // If the ID's match with arraylist.
                     System.out.println("Medlem fundet. Er det, det rigtige medlem?");
                     System.out.println(member);              // Makes sure the program is user-friendly and asks if the user wants to continue.
@@ -71,13 +71,13 @@ public class PaymentHandler {
             }
         }
         // Remember to return the list.
-        return tempList;
+        return memberList;
     }
 
-    public static void getPaymentStatus(ArrayList<Member> tempList) {
+    public static void getPaymentStatus(ArrayList<Member> memberList) {
         System.out.println("Disse medlemmer har ikke betalt deres kontingent endnu:");
         // The purpose of this method is to print out a list of members who hasn't paid the subscription.
-        for (Member m : tempList) {
+        for (Member m : memberList) {
             if (!m.hasPaid) {   // Members who hasn't paid.
                 // TODO: fix formatting .00
                 System.out.println("ID: " + m.memberId + " Navn: " + m.memberName + ". Alder: " + m.memberAge + "år." + " Mangler at betale: " + getAmount(m) + "0 DKK.");
@@ -110,35 +110,35 @@ public class PaymentHandler {
         return amount;
     }
 
-    public static void viewActiveSubscription(ArrayList<Member> tempList) {
+    public static void viewActiveSubscription(ArrayList<Member> memberList) {
         System.out.println("Disse medlemmer har en aktiv abonnementsaftale:");
         // This method will print out a list of members with an active subscription.
-        for (Member m : tempList) {
+        for (Member m : memberList) {
             if (m.automaticPayment) {
                 System.out.println("ID: " + m.memberId + " Navn: " + m.memberName + ". Alder: " + m.memberAge + "år.");
             }
         }
     }
 
-    public static void viewNoSubscription(ArrayList<Member> tempList) {
+    public static void viewNoSubscription(ArrayList<Member> memberList) {
         System.out.println("Disse medlemmer har en ikke aktiv abonnementsaftale:");
         // This method will print out a list with members without a subscription.
-        for (Member m : tempList) {
+        for (Member m : memberList) {
             if (!m.automaticPayment) {
                 System.out.println("ID: " + m.memberId + " Navn: " + m.memberName + ". Alder: " + m.memberAge + "år.");
             }
         }
     }
 
-    public static void changeSubscription(ArrayList<Member> tempList) {
+    public static void changeSubscription(ArrayList<Member> memberList) {
         // This method is going to allow the user to select a member and change their membership to active/inactive.
         Scanner keyboard = new Scanner(System.in);
         int memberId;
 
         // Makes it user-friendly and allows the user to see a list of members beforehand.
-        viewActiveSubscription(tempList);
+        viewActiveSubscription(memberList);
         System.out.println();
-        viewNoSubscription(tempList);
+        viewNoSubscription(memberList);
         System.out.println();
 
         System.out.println("Hvilket medlem skal ændre sit abonnement?");
@@ -149,7 +149,7 @@ public class PaymentHandler {
             return;
         }
 
-        for (Member m : tempList) {
+        for (Member m : memberList) {
             // Loop will go through the list.
             // If statements: if the member-id match with the right member.
             if (m.memberId == memberId && !m.automaticPayment) {         // If the member already has an active subscription.
@@ -209,7 +209,7 @@ public class PaymentHandler {
         return answer;
     }
 
-    public static void subscriberPayment(ArrayList<Member> tempList) {
+    public static void subscriberPayment(ArrayList<Member> memberList) {
         // The purpose of this method is making all members pay with their subscription.
         // This is a yearly subscription, and it has a fixed start and end date. (Would be nice if
         LocalDate startDate = LocalDate.of(2024, 1, 1);
@@ -218,7 +218,7 @@ public class PaymentHandler {
 
         // This loop will only run, if it's the correct date.
         if (currentDate.isAfter(endDate)) {
-            for (Member m : tempList) {
+            for (Member m : memberList) {
                 if (m.automaticPayment) {       // if any members has a subscription.
                     m.hasPaid = true;           // Makes sure they'll pay.
                 }
@@ -227,8 +227,8 @@ public class PaymentHandler {
                 }
             }
             System.out.println("Medlemmer med et aktivt abonnement har nu betalt deres kontingent.");
-            viewActiveSubscription(tempList);   // Print list with active subscribers.
-            viewNoSubscription(tempList);       // Print list with non-active subscribers.
+            viewActiveSubscription(memberList);   // Print list with active subscribers.
+            viewNoSubscription(memberList);       // Print list with non-active subscribers.
             startDate = LocalDate.of(2025,1,1);     // Remember to make new start and end date.
             endDate = LocalDate.of(2025,12,31);     // Would be awful for members paying more than once
             System.out.println("Den nye abonnements periode er således: " + startDate + " " + endDate); // Show the user the new dates.
