@@ -25,15 +25,17 @@ public class CoachHandler {
                 case 1:
                     arrayName = "competitiveU18";
                     System.out.println(newCoachName + " er nu oprettet som træner på Konkurrenceholdet under 18 i svømmeklubben Delfinen");
+                    System.out.println();
                     templist.add(new Coach(newCoachName,arrayName));
                     updateTextFile(templist);
-                     break;
+                    return;
                 case 2:
                     arrayName =  "competitiveO18";
                     System.out.println(newCoachName + " er nu oprettet som træner på Konkurrenceholdet over 18 i svømmeklubben Delfinen");
+                    System.out.println();
                     templist.add(new Coach(newCoachName,arrayName));
                     updateTextFile(templist);
-                    break;
+                    return;
                 default:
                     System.out.println("Ugyldigt svar.");
                     System.out.println("Hvilket hold skal den nye træner være på?");

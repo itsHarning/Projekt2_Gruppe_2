@@ -1,18 +1,21 @@
-1,Leo Beenhakker,competitiveU18
-2,Rikke Olsen,competitiveU18
-3,Jay Houseman,competitiveU18
-4,Thomas Sankara,competitiveU18
-5,Henrik Bønnestage,competitiveU18
-6,Ole hansenbansen,competitiveU18
-7,Tinka Fistelsovs,competitiveU18
-8,Konrad Maldini,competitiveO18
-9,Bruce van Hooijdonk,competitiveO18
-10,Ole,competitiveO18
-11,Grete,competitiveO18
-12,Kim Flankenstein,competitiveO18
-13,Lena Baldersbæk,competitiveO18
-14,Peter Fatboy ,competitiveO18
-15,Benny Fladfis,competitiveU18
-16,2,competitiveU18
-17,Pablo Escabur,competitiveO18
-14, Anne Nilsen,exerciseteam
+1,Benny Fladfis,competitiveU18
+2,2,competitiveU18
+3, Anne Nilsen,exerciseteam
+4,Leo Beenhakker,competitiveU18
+5,Rikke Olsen,competitiveU18
+6,Jay Houseman,competitiveU18
+7,Thomas Sankara,competitiveU18
+8,Henrik Bønnestage,competitiveU18
+9,Ole hansenbansen,competitiveU18
+10,Tinka Fistelsovs,competitiveU18
+11,Pablo Escabur,competitiveO18
+12,Konrad Maldini,competitiveO18
+13,Bruce van Hooijdonk,competitiveO18
+14,Ole,competitiveO18
+15,Grete,competitiveO18
+16,Kim Flankenstein,competitiveO18
+17,Lena Baldersbæk,competitiveO18
+18,Peter Fatboy ,competitiveO18
+19,Nicky Happyboss,competitiveO18
+20,Marie-Louise Wermeer,competitiveU18
+21,Jehona Dalifa,competitiveU18
