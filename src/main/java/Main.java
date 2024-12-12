@@ -76,7 +76,7 @@ public class Main {
                     MemberHandler.printList(memberList);
                     break;
                 case 2:
-                    CreateNewMember.createNewMember(memberList);
+                    MemberHandler.createNewMember(memberList);
                     break;
                 case 3:
                     CoachHandler.printCoachTeam(coachList);
