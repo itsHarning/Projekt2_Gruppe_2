@@ -11,4 +11,8 @@
 11,Grete,competitiveO18
 12,Kim Flankenstein,competitiveO18
 13,Lena Baldersbæk,competitiveO18
+14,Peter Fatboy ,competitiveO18
+15,Benny Fladfis,competitiveU18
+16,2,competitiveU18
+17,Pablo Escabur,competitiveO18
 14, Anne Nilsen,exerciseteam

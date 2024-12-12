@@ -16,6 +16,7 @@ public class CoachHandler {
             while (true){
             System.out.println("Tast 1: Konkurrenceholdet under 18");
             System.out.println("Tast 2: Konkurrenceholdet over 18");
+            System.out.println("Tast 0: Tilbage");
 
             int valg = Main.checkIntFromUser(keyboard);
             String arrayName = "";
@@ -35,6 +36,7 @@ public class CoachHandler {
                     break;
                 default:
                     System.out.println("Ugyldigt svar.");
+                    System.out.println("Hvilket hold skal den nye træner være på?");
             }
 
          }
@@ -87,39 +89,36 @@ public class CoachHandler {
     public static void printTeam (ArrayList<Coach>templist){
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Indtast ID på den pågældende træner");
-        int coachId = Main.checkIntFromUser(keyboard);
-        String hold ="";
-        for (Coach c : templist){
-            if(c.arrayName.equals("exerciseteam"))
-            {
-                System.out.println("Træner ID :"+c.id+"\t Navn: "+c.name+"\t Hold: Motion");
-                if(!c.team.isEmpty()) {
-                    System.out.println("Antal elever "+c.team.size()+":");
-                    for (Member m : c.team) {
-                        System.out.println(m.getProfile());
-                    }
-
-                    System.out.println("");
-                }
-            }
-            if(c.arrayName.equals("competitiveU18") || c.arrayName.equals("competitiveO18")) {
-                if (c.arrayName.equals("competitiveU18")) {
-                    hold = "Under 18";
-                } else {
-                    hold = "Over 18";
-                }
+        boolean coachFound = false;
+        while (!coachFound) {
+            int coachId = Main.checkIntFromUser(keyboard);
+            String hold;
+            for (Coach c : templist) {
                 if (c.id == coachId) {
-                    System.out.println("Træner ID: " + c.id + "\t Navn: " + c.name + "\t Konkurrencehold: " + hold);
-                    if (!c.team.isEmpty()) {
-                        System.out.println("Elever:");
-                        for (Member m : c.team) {
-                            System.out.println(m.getProfile());
+                    if (c.arrayName.equals("exerciseteam")) {
+                        System.out.println("Træner ID :" + c.id + "\t Navn: " + c.name + "\t Hold: Motion");
+                            System.out.println();
+                        coachFound = true;
+                    } else if (c.arrayName.equals("competitiveU18") || c.arrayName.equals("competitiveO18")) {
+                        if (c.arrayName.equals("competitiveU18")) {
+                            hold = "Under 18";
+                        } else {
+                            hold = "Over 18";
                         }
-                        System.out.println("");
+                        System.out.println("Træner ID: " + c.id + "\t Navn: " + c.name + "\t Konkurrencehold: " + hold);
+                        if (!c.team.isEmpty()) {
+                            System.out.println("Elever:");
+                            for (Member m : c.team) {
+                                System.out.println(m.getProfile());
+                            }
+                            System.out.println();
+                        }
+                        coachFound = true;
                     }
-
                 }
             }
+            if (!coachFound)
+                System.out.println("IDet matchede ikke en træner, prøv igen");
         }
     }
     public static void printCoachTeam(ArrayList<Coach> coachList){
