@@ -372,6 +372,7 @@ public class CompMemberHandler {
             .sorted(Comparator.comparing(
                     time -> time.discipline))
                 .toList();
+
         System.out.println("Disciplin\t\t\t\tTid\t\t\t\tDato\t\tStævne");
         for (RecordedTime time: sortedTimeList){
             String disciplineString = time.discipline.toString();

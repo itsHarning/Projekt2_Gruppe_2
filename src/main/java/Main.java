@@ -88,10 +88,10 @@ public class Main {
                      MemberHandler.changeActivityStatus(memberList);
                     break;
                 case 6:
-                    Team.updateTeams(memberList);
+                    Team.changeCompetitiveStatus(memberList);
                     break;
                 case 7:
-                    Team.showMembersinTeams();
+                    Team.showMembersInTeams();
                     break;
                 default:
                     System.out.println("Du valgte ikke en af mulighederne præsenteret, prøv igen");

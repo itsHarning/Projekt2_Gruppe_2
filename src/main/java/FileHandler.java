@@ -15,7 +15,7 @@ public class FileHandler {
     static ObjectMapper objectMapper = new ObjectMapper();
 
     public static List<Member> getListFromJson() {
-        ObjectMapper objectMapper = JsonMapper.builder().findAndAddModules().build();
+        ObjectMapper objectMapper = JsonMapper.builder().findAndAddModules().build(); // enables working with duration
         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         objectMapper.setVisibility(VisibilityChecker.Std.defaultInstance().withFieldVisibility(JsonAutoDetect.Visibility.ANY));
         try {
@@ -28,10 +28,10 @@ public class FileHandler {
     }
 
     public static void writeListToJson(ArrayList<Member> tempList){
-        ObjectMapper objectMapper = JsonMapper.builder().findAndAddModules().build();
+        ObjectMapper objectMapper = JsonMapper.builder().findAndAddModules().build(); // enables working with Duration
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables standard indentation ("pretty printing")
-        objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS); // to allow serialization of "empty" POJOs (no properties to serialize, without this setting, an exception is thrown in those cases)
-        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS); // to write java.util.Date, Calendar as number (timestamp):
+        objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS); // to allow serialization of "empty" POJOs (POJO = plain old java object)(no properties to serialize, without this setting, an exception is thrown in those cases)
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS); // to write java.util.Date, Calendar as number (timestamp)
 
         try {
             objectMapper.writeValue(new File("src/main/resources/MemberList.json"), tempList);
