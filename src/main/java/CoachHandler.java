@@ -177,7 +177,7 @@ public class CoachHandler {
                 TeamCoach.add(c);
             }
         }
-        assignMembers(Team.competitiveO18, TeamCoach);
+        assignMembersToCoach(Team.competitiveO18, TeamCoach);
         TeamCoach.clear();
         for (Coach c: coachList)
         {
@@ -185,12 +185,10 @@ public class CoachHandler {
                 TeamCoach.add(c);
             }
         }
-        assignMembers(Team.competitiveU18, TeamCoach);
+        assignMembersToCoach(Team.competitiveU18, TeamCoach);
     }
 
-    public static void assignMembers(ArrayList<Member> memberList, ArrayList<Coach> coachList){
-
-
+    public static void assignMembersToCoach(ArrayList<Member> memberList, ArrayList<Coach> coachList){
         int numCoaches = coachList.size();  // Number of coaches available
         int totalMembers = memberList.size();     // Total members in the team
         int membersPerCoach = totalMembers / numCoaches;  // Basic number of members per coach
