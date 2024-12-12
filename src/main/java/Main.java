@@ -12,10 +12,10 @@ public class Main {
 
         // Sort members in teams
         Team.assignMembersToTeams(memberList);
-        coachHandler.assignmembersContainer(coachList);
+        coachHandler.assignMembersContainer(coachList);
 
         AsciiPrinter.asciiPrint();
-        
+
         System.out.println("\t\t\t\t\t\t\t--velkommen til Svømmeklubben Delfinen--");
         System.out.println("Hvem vil du logge ind som?");
         while (true) {
@@ -65,7 +65,7 @@ public class Main {
                     MemberHandler.createNewMember(memberList);
                     break;
                 case 3:
-                    CoachHandler.printCoachTeam(coachList);
+                    CoachHandler.printCoach(coachList);
                     break;
                 case 4:
                     CoachHandler.createCoaches(coachList);
@@ -128,7 +128,7 @@ public class Main {
             if (choice == 0) break;
             switch (choice) {
                 case 1:
-                    CoachHandler.printTeam(coachList);
+                    CoachHandler.printCoachesTeam(coachList);
                     break;
                 case 2:
                     CompMemberHandler.getTopFiveSwimmers(memberList);

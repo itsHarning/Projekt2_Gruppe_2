@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class CoachHandler {
 
-        public static void createCoaches(ArrayList<Coach>templist) {
+    public static void createCoaches(ArrayList<Coach>coachList) {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Hvad er navnet på den nye træner? (skriv fornavn og efternavn)");
         String newCoachName = keyboard.nextLine();
@@ -26,15 +26,15 @@ public class CoachHandler {
                     arrayName = "competitiveU18";
                     System.out.println(newCoachName + " er nu oprettet som træner på Konkurrenceholdet under 18 i svømmeklubben Delfinen");
                     System.out.println();
-                    templist.add(new Coach(newCoachName,arrayName));
-                    updateTextFile(templist);
+                    coachList.add(new Coach(newCoachName,arrayName));
+                    updateTextFile(coachList);
                     return;
                 case 2:
                     arrayName =  "competitiveO18";
                     System.out.println(newCoachName + " er nu oprettet som træner på Konkurrenceholdet over 18 i svømmeklubben Delfinen");
                     System.out.println();
-                    templist.add(new Coach(newCoachName,arrayName));
-                    updateTextFile(templist);
+                    coachList.add(new Coach(newCoachName,arrayName));
+                    updateTextFile(coachList);
                     return;
                 default:
                     System.out.println("Ugyldigt svar.");
@@ -44,7 +44,6 @@ public class CoachHandler {
          }
     }
 
-
     public static void updateTextFile(ArrayList<Coach> tempList) {
         try {
             FileWriter file = new FileWriter("src/main/resources/CoachList.txt", false);
@@ -52,7 +51,7 @@ public class CoachHandler {
             for (Coach coach: tempList){
                 int id = coach.id;
                 String name = coach.name;
-                String arrayName = coach.arrayName;
+                String arrayName = coach.teamName;
 
                 out.println(id+","+name+","+arrayName);
             }
@@ -62,7 +61,7 @@ public class CoachHandler {
         }
     }
 
-    public static ArrayList loadMembersFromTextFile() {
+    public static ArrayList<Coach> loadMembersFromTextFile() {
         ArrayList<Coach> tempList = new ArrayList<>();
         try {
             FileReader fil = new FileReader("src/main/resources/CoachList.txt");
@@ -72,10 +71,10 @@ public class CoachHandler {
                 String[] bites = line.split(",");
 
                 String name = bites[1];
-                String arrayname = bites[2];
+                String teamName = bites[2];
 
                 try {
-                    tempList.add(new Coach (name, arrayname));
+                    tempList.add(new Coach (name, teamName));
 
                 } catch (NumberFormatException e) {
                     System.out.println("Not a number");
@@ -88,29 +87,30 @@ public class CoachHandler {
         }
         return tempList;
     }
-    public static void printTeam (ArrayList<Coach>templist){
+
+    public static void printCoachesTeam(ArrayList<Coach>coachList){
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Indtast ID på den pågældende træner");
         boolean coachFound = false;
         while (!coachFound) {
             int coachId = Main.checkIntFromUser(keyboard);
             String hold;
-            for (Coach c : templist) {
+            for (Coach c : coachList) {
                 if (c.id == coachId) {
-                    if (c.arrayName.equals("exerciseteam")) {
+                    if (c.teamName.equals("exerciseteam")) {
                         System.out.println("Træner ID :" + c.id + "\t Navn: " + c.name + "\t Hold: Motion");
                             System.out.println();
                         coachFound = true;
-                    } else if (c.arrayName.equals("competitiveU18") || c.arrayName.equals("competitiveO18")) {
-                        if (c.arrayName.equals("competitiveU18")) {
+                    } else if (c.teamName.equals("competitiveU18") || c.teamName.equals("competitiveO18")) {
+                        if (c.teamName.equals("competitiveU18")) {
                             hold = "Under 18";
                         } else {
                             hold = "Over 18";
                         }
                         System.out.println("Træner ID: " + c.id + "\t Navn: " + c.name + "\t Konkurrencehold: " + hold);
-                        if (!c.team.isEmpty()) {
+                        if (!c.assignedMembers.isEmpty()) {
                             System.out.println("Elever:");
-                            for (Member m : c.team) {
+                            for (Member m : c.assignedMembers) {
                                 System.out.println(m.getProfile());
                             }
                             System.out.println();
@@ -123,39 +123,40 @@ public class CoachHandler {
                 System.out.println("IDet matchede ikke en træner, prøv igen");
         }
     }
-    public static void printCoachTeam(ArrayList<Coach> coachList){
+
+    public static void printCoach(ArrayList<Coach> coachList){
         Collections.sort(coachList, new Comparator<Coach>() {
             @Override
             public int compare(Coach c1, Coach c2) {
-                return Integer.compare(c1.getTeam().size(), c2.getTeam().size());
+                return Integer.compare(c1.getAssignedMembers().size(), c2.getAssignedMembers().size());
             }
         });
 
         String hold ="";
         for (Coach c : coachList){
-            if(c.arrayName.equals("exerciseteam"))
+            if(c.teamName.equals("exerciseteam"))
             {
                 System.out.println("Træner ID :"+c.id+"\t Navn: "+c.name+"\t Hold: Motion");
-                if(!c.team.isEmpty()) {
-                    System.out.println("Antal elever "+c.team.size()+":");
-                    for (Member m : c.team) {
+                if(!c.assignedMembers.isEmpty()) {
+                    System.out.println("Antal elever "+c.assignedMembers.size()+":");
+                    for (Member m : c.assignedMembers) {
                         System.out.println(m.getProfile());
                     }
 
                     System.out.println("");
                 }
             }
-            if(c.arrayName.equals("competitiveU18") || c.arrayName.equals("competitiveO18")) {
+            if(c.teamName.equals("competitiveU18") || c.teamName.equals("competitiveO18")) {
 
-                if (c.arrayName.equals("competitiveU18")) {
+                if (c.teamName.equals("competitiveU18")) {
                     hold = "Under 18";
                 } else {
                     hold = "Over 18";
                 }
-                System.out.println("Træner ID :" + c.id + "\t Navn: " + c.name + "\t Hold: " + hold + "\t Antal elver: " + c.team.size());
-                if (!c.team.isEmpty()) {
+                System.out.println("Træner ID :" + c.id + "\t Navn: " + c.name + "\t Hold: " + hold + "\t Antal elver: " + c.assignedMembers.size());
+                if (!c.assignedMembers.isEmpty()) {
                     System.out.println("Elever:");
-                    for (Member m : c.team) {
+                    for (Member m : c.assignedMembers) {
                         System.out.println(m.getProfile());
                     }
 
@@ -165,26 +166,26 @@ public class CoachHandler {
         }
     }
 
-    public void assignmembersContainer(ArrayList<Coach> coachList) {
+    public void assignMembersContainer(ArrayList<Coach> coachList) {
         ArrayList<Coach> TeamCoach = new ArrayList<>();
         for (Coach c: coachList)
         {
-            if(c.arrayName.contains("competitiveO18")){
+            if(c.teamName.contains("competitiveO18")){
                 TeamCoach.add(c);
             }
         }
-        assignmembers(Team.competitiveO18, TeamCoach);
+        assignMembers(Team.competitiveO18, TeamCoach);
         TeamCoach.clear();
         for (Coach c: coachList)
         {
-            if(c.arrayName.contains("competitiveU18")){
+            if(c.teamName.contains("competitiveU18")){
                 TeamCoach.add(c);
             }
         }
-        assignmembers(Team.competitiveU18, TeamCoach);
+        assignMembers(Team.competitiveU18, TeamCoach);
     }
 
-    public static void assignmembers(ArrayList<Member> memberList, ArrayList<Coach> coachList){
+    public static void assignMembers(ArrayList<Member> memberList, ArrayList<Coach> coachList){
 
 
         int numCoaches = coachList.size();  // Number of coaches available
@@ -206,7 +207,7 @@ public class CoachHandler {
                 Member currentMember = memberList.get(i);
 
                 // Add member to the coach's assignedMembers
-                currentCoach.getTeam().add(currentMember);
+                currentCoach.getAssignedMembers().add(currentMember);
 
 
                 assignedMembersCount++;
