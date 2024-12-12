@@ -53,8 +53,7 @@ public class Main {
             System.out.println(AsciiPrinter.YELLOW+"Tast 5:"+AsciiPrinter.RESET+" Ændre om medlemmet er aktive eller passive");
             System.out.println(AsciiPrinter.YELLOW+"Tast 6:"+AsciiPrinter.RESET+" Ændre om medlemmet stiller op til stævner");
             System.out.println(AsciiPrinter.YELLOW+"Tast 7:"+AsciiPrinter.RESET+" For at se alle hold");
-
-            System.out.println("Tast 0: Tilbage til start");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 0:"+AsciiPrinter.RESET+" Tilbage til start");
             int choice = checkIntFromUser(keyboard);
             if (choice == 0) break;
             switch (choice) {
@@ -119,11 +118,11 @@ public class Main {
     static void coachMenu() {
         System.out.println("--Træner--");
         while (true) {
-            System.out.println("Tast 1: Se hvem du er træner for");
-            System.out.println("Tast 2: Se top 5 tid inden for hver svømmedisciplin");
-            System.out.println("Tast 3: Få alle tider for et givent medlem");
-            System.out.println("Tast 4: Opret ny rekord tid for et medlem");
-            System.out.println("Tast 0: For at gå tilbage");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 1:"+AsciiPrinter.RESET+" Se hvem du er træner for");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 2:"+AsciiPrinter.RESET+" Se top 5 tid inden for hver svømmedisciplin");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 3:"+AsciiPrinter.RESET+" Få alle tider for et givent medlem");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 4:"+AsciiPrinter.RESET+" Opret ny rekord tid for et medlem");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 0:"+AsciiPrinter.RESET+" For at gå tilbage");
             int choice = checkIntFromUser(keyboard);
             if (choice == 0) break;
             switch (choice) {

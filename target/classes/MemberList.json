@@ -79,7 +79,7 @@
   "memberName" : "Vladimir Salnikov",
   "memberGender" : "OTHER",
   "memberAge" : 17,
-  "isActiveMember" : false,
+  "isActiveMember" : true,
   "isCompeting" : true,
   "hasPaid" : false,
   "automaticPayment" : false,

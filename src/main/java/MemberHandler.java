@@ -40,7 +40,8 @@ public class MemberHandler {
         // here you enter you're age
         System.out.println("Hvor gammel er medlemmet?");
         int Age = Main.checkIntFromUser(keyboard);
-        // tjeks if the age is over 100
+
+        // checks if the age is over 100
         while(Age >= 100){
             System.out.println("Du skal melde dig på pensionist swømmeklubben hvis du er over 100 (Du kan gå tilbage ved at taste 0)");
             Age = Main.checkIntFromUser(keyboard);
@@ -128,44 +129,31 @@ public class MemberHandler {
                     else {
                         status = "passiv";
                     }
-                    System.out.println(m.memberName+"s status er "+status+ ". Hvad skal medlemmets status være fremadrettet? (aktiv/passiv)");
+                    System.out.println(m.memberName+"s status er "+status+ ". \nHvad skal medlemmets status være fremadrettet? (aktiv/passiv)");
+                    while (true) {
                     String answer = keyboard.nextLine();
-                    if (answer.equals("aktiv")) {
-                        m.isActiveMember = true;
-                        System.out.println(m.memberName + "s" + " aktivitetsstatus er nu registreret som aktiv");
-                        System.out.println();
-                        return;
-                    } else if (answer.equals("passiv")) {
-                        m.isActiveMember = false;
-                        System.out.println(m.memberName + "s" + " medlemsstatus er nu registreret som passiv");
-                        return;
-                    } else {
-                        System.out.println("Dette er ikke et gyldigt svar, prøv igen");
-                        System.out.println();
+                        if (answer.equals("aktiv")) {
+                            m.isActiveMember = true;
+                            System.out.println(m.memberName + "s" + " aktivitetsstatus er nu registreret som aktiv");
+                            System.out.println();
+                            return;
+                        } else if (answer.equals("passiv")) {
+                            m.isActiveMember = false;
+                            System.out.println(m.memberName + "s" + " medlemsstatus er nu registreret som passiv");
+                            System.out.println();
+                            return;
+                        } else {
+                            System.out.println("Dette er ikke et gyldigt svar, prøv igen");
+                        }
                     }
-                    memberFound=true;
-
                 }
-
-                if (!memberFound){
-                    System.out.println("ID ikke fundet, prøv igen.");
-
-
-                }
-
-
+            }
+            if (!memberFound){
+                System.out.println("ID ikke fundet, prøv igen.");
             }
             FileHandler.writeListToJson(memberList);
-                }
-            }
-
-
-
-
-
-
-
-
+        }
+    }
 
     // prints the given list in a nicely formatted way
     public static void printList(ArrayList<Member> tempList) {
