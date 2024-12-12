@@ -14,7 +14,7 @@ public class Main {
         CoachHandler coachHandler = new CoachHandler();
 
         // Sort members in teams
-        Team.assignTeams(memberList);
+        Team.assignMembersToTeams(memberList);
         coachHandler.assignmembersContainer(coachList);
         // Makes dolphin from ascii text file
         try {
@@ -88,10 +88,10 @@ public class Main {
                      MemberHandler.changeActivityStatus(memberList);
                     break;
                 case 6:
-                    Team.changeCompetitiveStatus(memberList);
+                    MemberHandler.changeCompetitiveStatus(memberList);
                     break;
                 case 7:
-                    Team.showMembersInTeams();
+                    Team.printMembersInTeams();
                     break;
                 default:
                     System.out.println("Du valgte ikke en af mulighederne præsenteret, prøv igen");
