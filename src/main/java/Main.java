@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,27 +13,16 @@ public class Main {
         // Sort members in teams
         Team.assignMembersToTeams(memberList);
         coachHandler.assignmembersContainer(coachList);
-        // Makes dolphin from ascii text file
-        try {
-            FileReader fil = new FileReader("ascii.txt");
-            BufferedReader ind = new BufferedReader(fil);
-            String line = ind.readLine(); // converts the read lines to string
-            while (line != null) {
-                System.out.println(line);
-                line = ind.readLine();
-            }
-        } catch (IOException e) {
-            System.out.println("fejl");
-        }
 
-
+        AsciiPrinter.asciiPrint();
+        
         System.out.println("\t\t\t\t\t\t\t--velkommen til Svømmeklubben Delfinen--");
         System.out.println("Hvem vil du logge ind som?");
         while (true) {
-        System.out.println("Tast 1: Klubbens formand");
-        System.out.println("Tast 2: Klubbens kasserer");
-        System.out.println("Tast 3: Træner");
-        System.out.println("Tast 0: Luk programmet");
+        System.out.println(AsciiPrinter.YELLOW+"Tast 1:"+AsciiPrinter.RESET+" Klubbens formand");
+        System.out.println(AsciiPrinter.YELLOW+"Tast 2:"+AsciiPrinter.RESET+" Klubbens kasserer");
+        System.out.println(AsciiPrinter.YELLOW+"Tast 3:"+AsciiPrinter.RESET+" Træner");
+        System.out.println(AsciiPrinter.YELLOW+"Tast 0:"+AsciiPrinter.RESET+" Luk programmet");
         int choice = checkIntFromUser(keyboard);
         if (choice == 0) break;
         switch (choice) {
@@ -60,13 +46,13 @@ public class Main {
     static void chairmanMenu(){
         System.out.println("--Formand--");
         while (true) {
-            System.out.println("Tast 1: Se alle medlemmer");
-            System.out.println("Tast 2: Opret nyt medlem");
-            System.out.println("Tast 3: Se alle trænere");
-            System.out.println("Tast 4: Opret ny træner");
-            System.out.println("Tast 5: Ændre om medlemmet er aktive eller passive");
-            System.out.println("Tast 6: Ændre om medlemmet stiller op til stævner");
-            System.out.println("Tast 7: For at se alle hold");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 1:"+AsciiPrinter.RESET+" Se alle medlemmer");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 2:"+AsciiPrinter.RESET+" Opret nyt medlem");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 3:"+AsciiPrinter.RESET+" Se alle trænere");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 4:"+AsciiPrinter.RESET+" Opret ny træner");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 5:"+AsciiPrinter.RESET+" Ændre om medlemmet er aktive eller passive");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 6:"+AsciiPrinter.RESET+" Ændre om medlemmet stiller op til stævner");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 7:"+AsciiPrinter.RESET+" For at se alle hold");
 
             System.out.println("Tast 0: Tilbage til start");
             int choice = checkIntFromUser(keyboard);
@@ -103,11 +89,11 @@ public class Main {
     static  void cashierMenu(){
         System.out.println("--Kasser--");
         while (true) {
-            System.out.println("Tast 1: Se kontingent");
-            System.out.println("Tast 2: Indskriv et medlems betaling");
-            System.out.println("Tast 3: Ændre abonent status på et medlem");
-            System.out.println("Test 4: Alle med abonnement betaler");
-            System.out.println("Tast 0: For at gå tilbage");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 1:"+AsciiPrinter.RESET+" Se kontingent");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 2:"+AsciiPrinter.RESET+" Indskriv et medlems betaling");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 3:"+AsciiPrinter.RESET+" Ændre abonent status på et medlem");
+            System.out.println(AsciiPrinter.YELLOW+"Test 4:"+AsciiPrinter.RESET+" Alle med abonnement betaler");
+            System.out.println(AsciiPrinter.YELLOW+"Tast 0:"+AsciiPrinter.RESET+" For at gå tilbage");
             int choice = checkIntFromUser(keyboard);
             if (choice == 0) break;
             switch (choice) {

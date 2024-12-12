@@ -146,9 +146,9 @@ public class MemberHandler {
         for (Member m:tempList){
             System.out.println(
                     "ID: "+m.memberId+"\t\t" +
-                            "NAVN: "+m.memberName+" ".repeat(20-m.memberName.length())+
-                            "KØN: "+m.memberGender+" ".repeat(7-m.memberGender.name().length())+"\t"+
-                            "ALDER: "+m.memberAge);
+                    "NAVN: "+m.memberName+" ".repeat(20-m.memberName.length())+
+                    "KØN: "+m.memberGender+" ".repeat(7-m.memberGender.name().length())+"\t"+
+                    "ALDER: "+m.memberAge);
             if (m.isActiveMember) {
                 System.out.print("Medlemskabet er aktivt, ");
                 if (m.isCompeting)
