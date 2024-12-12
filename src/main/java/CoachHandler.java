@@ -116,11 +116,14 @@ public class CoachHandler {
                             System.out.println();
                         }
                         coachFound = true;
+                        break;
                     }
                 }
+
             }
             if (!coachFound)
                 System.out.println("IDet matchede ikke en træner, prøv igen");
+
         }
     }
 
