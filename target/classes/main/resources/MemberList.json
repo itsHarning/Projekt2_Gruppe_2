@@ -95,6 +95,13 @@
   "hasPaid" : true,
   "automaticPayment" : true,
   "TimeHolder" : [ {
+    "discipline" : "BUTTERFLY",
+    "distance" : 100,
+    "time" : 241.300000000,
+    "dateSet" : "2024-10-12",
+    "isOfficial" : true,
+    "meetName" : "Brønshøj Masters"
+  }, {
     "discipline" : "BREASTSTROKE",
     "distance" : 100,
     "time" : 1420.690000000,
