@@ -14,14 +14,14 @@
     "time" : 420.000000000,
     "dateSet" : "2024-12-05",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "BUTTERFLY",
     "distance" : 100,
     "time" : 500.000000000,
     "dateSet" : "2024-12-05",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "BUTTERFLY",
     "distance" : 200,
@@ -107,14 +107,14 @@
     "time" : 1420.690000000,
     "dateSet" : "2024-12-11",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "BREASTSTROKE",
     "distance" : 100,
     "time" : 1670.000000000,
     "dateSet" : "2024-12-11",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "FREESTYLE",
     "distance" : 800,
@@ -142,21 +142,21 @@
     "time" : 309.690000000,
     "dateSet" : "2024-12-11",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "FREESTYLE",
     "distance" : 50,
     "time" : 69.000000000,
     "dateSet" : "2024-12-08",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "FREESTYLE",
     "distance" : 50,
     "time" : 69.690000000,
     "dateSet" : "2024-12-11",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "BREASTSTROKE",
     "distance" : 200,
@@ -170,7 +170,7 @@
     "time" : 1686.000000000,
     "dateSet" : "2024-08-09",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   } ]
 }, {
   "profile" : "Don Schollander, Mand, 77 år",

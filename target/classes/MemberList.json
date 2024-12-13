@@ -14,14 +14,14 @@
     "time" : 420.000000000,
     "dateSet" : "2024-12-05",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "BUTTERFLY",
     "distance" : 100,
     "time" : 500.000000000,
     "dateSet" : "2024-12-05",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "BUTTERFLY",
     "distance" : 200,
@@ -107,14 +107,14 @@
     "time" : 1420.690000000,
     "dateSet" : "2024-12-11",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "BREASTSTROKE",
     "distance" : 100,
     "time" : 1670.000000000,
     "dateSet" : "2024-12-11",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "FREESTYLE",
     "distance" : 800,
@@ -142,21 +142,21 @@
     "time" : 309.690000000,
     "dateSet" : "2024-12-11",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "FREESTYLE",
     "distance" : 50,
     "time" : 69.000000000,
     "dateSet" : "2024-12-08",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "FREESTYLE",
     "distance" : 50,
     "time" : 69.690000000,
     "dateSet" : "2024-12-11",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   }, {
     "discipline" : "BREASTSTROKE",
     "distance" : 200,
@@ -170,7 +170,7 @@
     "time" : 1686.000000000,
     "dateSet" : "2024-08-09",
     "isOfficial" : false,
-    "meetName" : null
+    "meetName" : "-"
   } ]
 }, {
   "profile" : "Don Schollander, Mand, 77 år",
@@ -755,6 +755,105 @@
   "memberName" : "Maria van Hovedloos",
   "memberGender" : "FEMALE",
   "memberAge" : 29,
+  "isActiveMember" : true,
+  "isCompeting" : true,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Mac Miller, Mand, 26 år",
+  "memberId" : 42,
+  "memberName" : "Mac Miller",
+  "memberGender" : "MALE",
+  "memberAge" : 26,
+  "isActiveMember" : false,
+  "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Malcolm McCormick, Mand, 26 år",
+  "memberId" : 43,
+  "memberName" : "Malcolm McCormick",
+  "memberGender" : "MALE",
+  "memberAge" : 26,
+  "isActiveMember" : false,
+  "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Odee Elliott, Andet, 8 år",
+  "memberId" : 44,
+  "memberName" : "Odee Elliott",
+  "memberGender" : "OTHER",
+  "memberAge" : 8,
+  "isActiveMember" : true,
+  "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Zoë Hange, Andet, 24 år",
+  "memberId" : 45,
+  "memberName" : "Zoë Hange",
+  "memberGender" : "OTHER",
+  "memberAge" : 24,
+  "isActiveMember" : false,
+  "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Neferpitou, Andet, 2 år",
+  "memberId" : 46,
+  "memberName" : "Neferpitou",
+  "memberGender" : "OTHER",
+  "memberAge" : 2,
+  "isActiveMember" : true,
+  "isCompeting" : true,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Haruka Tenoh, Andet, 15 år",
+  "memberId" : 47,
+  "memberName" : "Haruka Tenoh",
+  "memberGender" : "OTHER",
+  "memberAge" : 15,
+  "isActiveMember" : true,
+  "isCompeting" : true,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Bron Breakker, Mand, 27 år",
+  "memberId" : 48,
+  "memberName" : "Bron Breakker",
+  "memberGender" : "MALE",
+  "memberAge" : 27,
+  "isActiveMember" : true,
+  "isCompeting" : true,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Demi Bennett, Kvinde, 28 år",
+  "memberId" : 49,
+  "memberName" : "Demi Bennett",
+  "memberGender" : "FEMALE",
+  "memberAge" : 28,
+  "isActiveMember" : true,
+  "isCompeting" : false,
+  "hasPaid" : false,
+  "automaticPayment" : false,
+  "TimeHolder" : [ ]
+}, {
+  "profile" : "Rhea Ripley, Kvinde, 28 år",
+  "memberId" : 50,
+  "memberName" : "Rhea Ripley",
+  "memberGender" : "FEMALE",
+  "memberAge" : 28,
   "isActiveMember" : true,
   "isCompeting" : true,
   "hasPaid" : false,
